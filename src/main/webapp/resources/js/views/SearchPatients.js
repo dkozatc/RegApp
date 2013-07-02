@@ -39,6 +39,7 @@ var App = App || {};
 
     },
     searchSend: function(){
+
         $('.autocompleteSearch').show();
         $('.autocompleteSearch').append("<p class='serchBars'>"+$('#inputSearch').val()+"</p>");
 
