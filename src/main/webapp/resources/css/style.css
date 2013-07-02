@@ -1,0 +1,23 @@
+#inputSearch{
+	height:25px;
+
+
+}
+.autocompleteSearch{
+   position:absolute;
+   top:35px;
+   left:758px;
+   Z-INDEX:999;
+   width: 202px;
+
+   border:1px solid silver;
+   background-color: white;
+
+
+}
+.serchBars{
+
+
+
+
+}
