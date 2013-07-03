@@ -16,8 +16,8 @@
     <div class="navbar span10">
         <div class="navbar-inner">
             <a class="brand" href="#">Registration Application</a>
-            <form class="navbar-form pull-left">
-                <input id="inputSearch" type="text" class="span3">
+            <form action="/test" method="post" class="navbar-form pull-left">
+                <input id="inputSearch" name="inputSearch" type="text" class="span3">
                 <button type="submit" class="btn">Submit</button>
             </form>
             <ul class="nav">
@@ -34,6 +34,7 @@
 <script src="/resources/js/lib/underscore.js"></script>
 <script src="/resources/js/lib/backbone.js"></script>
 <script src="/resources/js/defaults.js"></script>
+<script src="/resources/js/lib/tools.js"></script>
 <script src="/resources/js/models/Patient.js"></script>
 <script src="/resources/js/collections/Patients.js"></script>
 <script src="/resources/js/views/SearchPatients.js"></script>

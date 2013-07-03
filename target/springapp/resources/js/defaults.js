@@ -7,7 +7,8 @@ var App = App || {};
 		Models: App.Models || {},
 		Views: App.Views || {},
 		Collections: App.Collections || {},
-		Events : _.extend( {}, Backbone.Events ),
+        Tools: App.Tools || {},
+		Events : _.extend( {}, Backbone.Events )
 		
 
 	};

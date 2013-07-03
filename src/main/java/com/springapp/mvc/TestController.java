@@ -5,6 +5,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 /**
  * Created with IntelliJ IDEA.
@@ -20,11 +22,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 @RequestMapping("/test")
 public class TestController {
-    @RequestMapping(method = RequestMethod.GET)
-    public String showTest(ModelMap model) {
-        model.addAttribute("testdata", "Test new Controller");
-            return "test";
 
-
+    @RequestMapping(method = RequestMethod.POST)
+    public String printWelcome(@RequestParam("requestString") String requestString ,ModelMap model) {
+        model.addAttribute("message", requestString);
+        return "test";
     }
 }

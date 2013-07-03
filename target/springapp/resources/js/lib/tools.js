@@ -9,14 +9,14 @@ var App = App || {};
 
 (function(){
 
-    App.Tool.SearchRequest  = function(request){
+    App.Tools.SearchRequest  = function(request){
 
         $.ajax({
             type: "POST",
-            url: "/some/",
+            url: "/test",
             data:{requestString:request},
             success: function(msg){
-
+               console.log(msg);
             }
         });
 

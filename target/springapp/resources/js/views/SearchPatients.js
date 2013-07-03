@@ -14,7 +14,7 @@ var App = App || {};
     events:{
 		'mouseover #inputSearch': 'showAutocomplete',
         'mouseout #inputSearch ': 'hideAutocomplete',
-        'keypress #inputSearch':'searchSend'
+        'keyup #inputSearch':'searchSend'
 
 
 	},
@@ -42,7 +42,7 @@ var App = App || {};
 
         $('.autocompleteSearch').show();
         $('.autocompleteSearch').append("<p class='serchBars'>"+$('#inputSearch').val()+"</p>");
-
+        App.Tools.SearchRequest($("#inputSearch").val());
 
     }
 
