@@ -3,6 +3,7 @@
     <script scr="js/lib/bootstrap.js"></script>
     <link rel="stylesheet" type="text/css" href="/resources/css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="/resources/css/style.css">
+
 </head>
 <body>
 <div class="container">
@@ -29,16 +30,7 @@
 
 </script>
 
-
-<script src="/resources/js/lib/jquery-1.10.1.min.js"></script>
-<script src="/resources/js/lib/underscore.js"></script>
-<script src="/resources/js/lib/backbone.js"></script>
-<script src="/resources/js/defaults.js"></script>
-<script src="/resources/js/lib/tools.js"></script>
-<script src="/resources/js/models/Patient.js"></script>
-<script src="/resources/js/collections/Patients.js"></script>
-<script src="/resources/js/views/SearchPatients.js"></script>
-<script src="/resources/js/app.js"></script>
+<script  data-main="/resources/js/main.js" scr="/resources/js/lib/require.js"></script>
 
 </body>
 </html>

@@ -1,54 +1,51 @@
-var App = App || {};
+define([
+    'backbone'
+  ], function(Backbone){
 
-(function(){
-	
-	App.Views.SearchPatients =  Backbone.View.extend({
+	     var SearchPatientsView =  Backbone.View.extend({
 
-	el:'.container',
+	          el:'.container',
 
-	initialize: function(){
+	          initialize: function(){
 
-      this.render();
+                this.render();
 
-	},
-    events:{
-		'mouseover #inputSearch': 'showAutocomplete',
-        'mouseout #inputSearch ': 'hideAutocomplete',
-        'keyup #inputSearch':'searchSend'
-
-
-	},
-	render: function(){
-          this.$el.append($('#navBarTemplate').html());
-          this.$el.append("<div class='autocompleteSearch'></div>");
-           $('.autocompleteSearch').hide();
-	},
-	searchPatients: function(){
-		console.log("click");
-
-	},
-    showAutocomplete: function(){
-        console.log("showAutocomplite")
-        $('.autocompleteSearch').show();
+	           },
+            events:{
+		            'mouseover #inputSearch': 'showAutocomplete',
+                'mouseout #inputSearch ': 'hideAutocomplete',
+                'keyup #inputSearch':'searchSend'
 
 
-    },
-    hideAutocomplete: function(){
-        setTimeout(function(){ $('.autocompleteSearch').hide();}, 2000);
+	           },
+            render: function(){
+                 this.$el.append($('#navBarTemplate').html());
+                 this.$el.append("<div class='autocompleteSearch'></div>");
+                 $('.autocompleteSearch').hide();
+            },
+            searchPatients: function(){
+                console.log("click");
+           	},
+            showAutocomplete: function(){
+                console.log("showAutocomplite")
+                $('.autocompleteSearch').show();
 
 
-    },
-    searchSend: function(){
+            },
+            hideAutocomplete: function(){
+                setTimeout(function(){ $('.autocompleteSearch').hide();}, 2000);
 
-        $('.autocompleteSearch').show();
-        $('.autocompleteSearch').append("<p class='serchBars'>"+$('#inputSearch').val()+"</p>");
-        App.Tools.SearchRequest($("#inputSearch").val());
+            },
+            searchSend: function(){
+                $('.autocompleteSearch').show();
+                $('.autocompleteSearch').append("<p class='serchBars'>"+$('#inputSearch').val()+"</p>");
+                App.Tools.SearchRequest($("#inputSearch").val());
 
-    }
+            }
 
 
 
-
+    return SearchPatientsView;
 
 
 	});
@@ -60,4 +57,4 @@ var App = App || {};
 
 
 
-})();
+});

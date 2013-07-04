@@ -1,10 +1,11 @@
-var App = App || {};
+define([
+		'backbone',
+		'Patient'
+	], function(Backbone, PatientModel){
+		
+	var PatientsCollection = Backbone.Collection.extend({
 
-(function(){
-	
-	App.Collections.Patients = Backbone.Collection.extend({
-
-		model:App.Models.Patient
+		model:PatientModel
 
 		
 
@@ -15,7 +16,7 @@ var App = App || {};
 
 
 
+	return PatientsCollection;
 
 
-
-}());
+});

@@ -5,11 +5,10 @@
  * Time: 5:40 PM
  * To change this template use File | Settings | File Templates.
  */
-var App = App || {};
+define(['jquery'], function($){
 
-(function(){
 
-    App.Tools.SearchRequest  = function(request){
+     var SearchRequest  = function(request){
 
         $.ajax({
             type: "POST",
@@ -19,15 +18,14 @@ var App = App || {};
                console.log(msg);
             }
         });
+    }
 
 
 
+    return SearchRequest;
 
 
-
-
-
-    };
+});
 
 
 
