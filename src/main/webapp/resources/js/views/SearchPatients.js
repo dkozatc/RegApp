@@ -1,6 +1,8 @@
 define([
-    'backbone'
-  ], function(Backbone){
+    'jquery',
+    'backbone',
+    'tools'
+  ], function( $, Backbone, SearchRequest){
 
 	     var SearchPatientsView =  Backbone.View.extend({
 
@@ -39,19 +41,19 @@ define([
             searchSend: function(){
                 $('.autocompleteSearch').show();
                 $('.autocompleteSearch').append("<p class='serchBars'>"+$('#inputSearch').val()+"</p>");
-                App.Tools.SearchRequest($("#inputSearch").val());
+                SearchRequest($("#inputSearch").val());
 
             }
 
 
 
-    return SearchPatientsView;
+   
 
 
 	});
 
 
-
+   return SearchPatientsView;
 
 
 

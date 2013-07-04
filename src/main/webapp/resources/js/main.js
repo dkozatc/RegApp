@@ -1,13 +1,14 @@
 require.config({
-	path:{
-		"jquery" : '/resourse/js/lib/jquery-1.10.1.min',
-		"underscore" : '/resourse/js/lib/underscore',
-		"backbone" : '/resourse/js/lib/backbone',
-		"bootstrap" : '/resourse/js/lib/bootstrap',
-		"Patients" : '/resourse/js/collections/Patients',
-		"Patient:" '/resourse/js/models/Patient',
-		"tools": '/resourse/js/lib/tools',
-		"SearchPatients" : '/resourse/js/views/SearchPatients'
+	baseUrl:'/resources/js/',
+	paths:{
+		'jquery': 'lib/jquery-1.10.1.min',
+		'underscore' : 'lib/underscore',
+		'backbone' : 'lib/backbone',
+		'bootstrap' : 'lib/bootstrap',
+		'Patients' : 'collections/Patients',
+		'Patient':  'models/Patient',
+		'tools': 'lib/tools',
+		'SearchPatients' : 'views/SearchPatients'
 
 
 
@@ -40,7 +41,7 @@ require.config({
 
 });
 
-require(['Patients', 'SearchPatients', 'tools'], function(PatientsCollection, SearchPatientsView, Tools){
+require(['Patients', 'SearchPatients'], function(PatientsCollection, SearchPatientsView){
 
 	var Patients =  new PatientsCollection;
 	var SearchView = new SearchPatientsView({collection:Patients});

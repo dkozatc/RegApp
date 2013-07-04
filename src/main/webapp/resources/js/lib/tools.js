@@ -41,4 +41,3 @@ define(['jquery'], function($){
 
 
 
-}());
