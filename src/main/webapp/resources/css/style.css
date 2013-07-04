@@ -3,29 +3,104 @@
 
 
 }
+#addPatientForm{
+  margin: 70px auto;
+  padding-left:50px;
+
+
+}
 .autocompleteSearch{
    position:absolute;
    top:35px;
    left:758px;
    Z-INDEX:999;
-   width: 202px;
+   width: 287px;
 
    border:1px solid silver;
    background-color: white;
 
 
 }
-.serchBars{
+.formAdd{
+  padding-left: 30px;
 
+}
+select{
+height: 27px;
 
+}
+body{
+    background-position: 790px  200px;
+}
+p label{
+ font-size: 18px;
+ padding-bottom: 10px;
+ height: 20px;
+
+}
+p input[type="text"]{
+  height: 20px;
+}
+.labelSSN{
+  margin-left: 45px;
+}
+.birthData{
+  padding-left: 10px;
+}
+.bloc1{
+  padding-left: 10px;
+}
+.gender{
+padding-left: 16px;
+
+}
+.Marital{
+position:relative;
+left: -31px;
+
+}
+.Race{
+padding-left: 45px;
+}
+.Religion{
+padding-left: 24px;
+
+}
+.Language{
+padding-left: 9px;
+
+}
+.Address{
+padding-left: 20px;
+}
+.City{
+padding-left: 55px;
+
+}
+.State{
+padding-left: 45px;
+}
+.Phone{
+position: relative;
+left:-40px;
+
+}
+.Zip{
+padding-left: 60px;
+
+}
+.EmpName{
+position: relative;
+left:-40px;  
+}
+#addPatientForm .btn{
+margin-left: 620px;
 
 
 }
-
-body{
-    background-image: url(/resources/img/healthMarck.jpg);
-    background-repeat: no-repeat;
-    background-position: 790px  200px;
-
-
+.hederInfo{
+font-size: 20px;
+background-color: #f2f2f2;
+width: 700px;
+height: 25px;
 }

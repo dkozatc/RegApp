@@ -1,8 +1,9 @@
 define([
     'jquery',
     'backbone',
-    'tools'
-  ], function( $, Backbone, SearchRequest){
+    'tools',
+    'views/addPatients'
+  ], function( $, Backbone, SearchRequest, AddPatientView){
 
 	     var SearchPatientsView =  Backbone.View.extend({
 
@@ -16,7 +17,8 @@ define([
             events:{
 		            'mouseover #inputSearch': 'showAutocomplete',
                 'mouseout #inputSearch ': 'hideAutocomplete',
-                'keyup #inputSearch':'searchSend'
+                'keyup #inputSearch':'searchSend',
+                'click #addPatient' : 'addNewPatient'
 
 
 	           },
@@ -42,6 +44,23 @@ define([
                 $('.autocompleteSearch').show();
                 $('.autocompleteSearch').append("<p class='serchBars'>"+$('#inputSearch').val()+"</p>");
                 SearchRequest($("#inputSearch").val());
+
+            },
+            addNewPatient: function(){
+              console.log($('#addPatientForm').length);
+                if($('#addPatientForm').length == 0){
+                  
+                  var AddView = new AddPatientView;
+                  console.log(AddView.el);
+                  this.$el.append(AddView.el);
+
+
+
+                }
+
+
+
+
 
             }
 
