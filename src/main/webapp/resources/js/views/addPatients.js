@@ -5,8 +5,14 @@
  * Time: 12:08 PM
  * To change this template use File | Settings | File Templates.
  */
-define(['underscore','jquery','backbone'], function( _, $, Backbone){
+define(['underscore',
+        'jquery',
+        'backbone',
+        'tools'],
+        
+        function( _, $, Backbone, Tools){
 
+    var Event = _.extend(Backbone.Events);
     var AddPatientsView =  Backbone.View.extend({
 
        tagName: 'div',
@@ -16,9 +22,19 @@ define(['underscore','jquery','backbone'], function( _, $, Backbone){
 
 
           this.render();
+          Event.on('LoadTemplate', this.loadTemplate, this);
         },
         render: function() {
-            this.$el.html($('#PatientsForm').html());
+            Tools.LoadTemplate("PatientAddForm");
+
+
+
+         },
+         loadTemplate: function (template){
+            this.$el.html(template);
+            Event.off('LoadTemplate');
+
+
 
 
 

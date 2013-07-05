@@ -3,28 +3,28 @@ define([
 ], function(Backbone){
 
     var PatientModel = Backbone.Model.extend({
-
-        FirstName:"",
-        LastName:"",
-        SSN:"",
-        DateOfbirth:"00.00.0000",
-        Gender:"-",
-        MaritalStatus:"",
-        Race:"",
-        Religion:"",
-        Language:"",
-        PatientAddress:"",
-        PatientCity:"",
-        PatientState:"",
-        PatientZip:"",
-        PatientPhone:"",
-        EmployerName:"",
-        EmployerAddress:"",
-        EmployerCity:"",
-        EmployerState:"",
-        EmployerZip:"",
-        EmployerPhone:""
-
+        default:{
+        "FirstName":"s",
+        "LastName" :"a",
+        "SSN" :"123",
+        "DateOfbirth" :"00.00.0000",
+        "Gender" :"-",
+        "MaritalStatus" :"xc",
+        "Race" :"asf",
+        "Religion" :"asf",
+        "Language" :"qw",
+        "PatientAddress" :"ag",
+        "PatientCity" :"asd",
+        "PatientState" :"xcb",
+        "PatientZip" :"e",
+        "PatientPhone" :"cvz",
+        "EmployerName" :"123",
+        "EmployerAddress" :"abg",
+        "EmployerCity" :"sdg",
+        "EmployerState" :"ag",
+        "EmployerZip" :"dsag",
+        "EmployerPhone" :"dsag"
+        }
 
     });
 

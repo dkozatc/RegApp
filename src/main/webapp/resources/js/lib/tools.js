@@ -5,24 +5,44 @@
  * Time: 5:40 PM
  * To change this template use File | Settings | File Templates.
  */
-define(['jquery'], function($){
+define(['underscore','jquery', 'backbone'], function( _, $, Backbone){
 
-
-     var SearchRequest  = function(request){
+     var Event = _.extend(Backbone.Events);
+     var Tools = {};
+        Tools.SearchRequest  = function(request){
+        
 
         $.ajax({
             type: "POST",
             url: "/test",
             data:{requestString:request},
             success: function(msg){
-               console.log(msg);
-            }
+                Event.trigger('SuccessSearch', msg);      
+            }   
         });
-    }
+
+        
+
+        };
+
+        Tools.LoadTemplate = function(name){
+
+            $.ajax({
+            type: "GET",
+            url: "/resources/templates/"+name+".html",
+            data:{},
+            success: function(msg){
+                Event.trigger('LoadTemplate', msg);      
+            }   
+            });
 
 
 
-    return SearchRequest;
+
+        };
+
+
+    return Tools;
 
 
 });

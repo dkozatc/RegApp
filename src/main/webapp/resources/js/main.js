@@ -8,7 +8,9 @@ require.config({
 		'Patients' : 'collections/Patients',
 		'Patient':  'models/Patient',
 		'tools': 'lib/tools',
-		'SearchPatients' : 'views/SearchPatients'
+		'SearchPatients' : 'views/SearchPatients',
+		'jsrender' : 'lib/jsrender',
+		'text' : 'lib/text'
 
 
 
@@ -18,6 +20,10 @@ require.config({
 		jquery : {
 			deps : [],
 			exports: '$'
+		},
+		jsrender : {
+			deps : ['jquery'],
+			exports: 'jsrender'
 		},
 		underscore : {
 			deps: [],

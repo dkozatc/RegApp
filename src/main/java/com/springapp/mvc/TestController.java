@@ -24,9 +24,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @RequestMapping("/test")
 public class TestController {
 
-    @RequestMapping(method = RequestMethod.POST)
+    @RequestMapping(method = RequestMethod.GET)
     public String printWelcome(@RequestParam("requestString") String requestString ,ModelMap model) {
-        model.addAttribute("message", requestString);
+        model.addAttribute("message", "{'FirstName':'Dima', 'LastName':'Kozaryok'}");
         return "test";
     }
 }

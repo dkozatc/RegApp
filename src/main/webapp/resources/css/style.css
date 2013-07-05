@@ -1,13 +1,9 @@
 #inputSearch{
-	height:25px;
-
-
+	height:30px;
 }
 #addPatientForm{
   margin: 70px auto;
   padding-left:50px;
-
-
 }
 .autocompleteSearch{
    position:absolute;
@@ -18,25 +14,16 @@
 
    border:1px solid silver;
    background-color: white;
-
-
 }
-.formAdd{
-  padding-left: 30px;
-
-}
-select{
-height: 27px;
-
-}
+.formAdd{padding-left: 30px;}
+select{height: 27px;}
 body{
-    background-position: 790px  200px;
+ background-position: 790px  200px;
 }
 p label{
  font-size: 18px;
  padding-bottom: 10px;
  height: 20px;
-
 }
 p input[type="text"]{
   height: 20px;
@@ -51,56 +38,49 @@ p input[type="text"]{
   padding-left: 10px;
 }
 .gender{
-padding-left: 16px;
-
-}
+  padding-left: 16px
+  ;}
 .Marital{
-position:relative;
-left: -31px;
-
+  position:relative;
+  left: -31px;
 }
-.Race{
-padding-left: 45px;
+.Race{ 
+  padding-left: 45px; 
 }
-.Religion{
-padding-left: 24px;
-
+.Religion{ 
+  padding-left: 24px; 
 }
 .Language{
-padding-left: 9px;
-
+  padding-left: 9px; 
 }
-.Address{
-padding-left: 20px;
+.Address{ 
+  padding-left: 20px; 
 }
 .City{
-padding-left: 55px;
-
-}
+  padding-left: 55px;
+   }
 .State{
-padding-left: 45px;
-}
+ padding-left: 45px;
+  }
 .Phone{
 position: relative;
 left:-40px;
-
 }
 .Zip{
-padding-left: 60px;
-
-}
+ padding-left: 60px; }
 .EmpName{
 position: relative;
 left:-40px;  
 }
-#addPatientForm .btn{
-margin-left: 620px;
-
-
+#addPatientForm .btn{ 
+  margin-left: 620px;
 }
 .hederInfo{
 font-size: 20px;
 background-color: #f2f2f2;
 width: 700px;
 height: 25px;
+}
+.logo{
+
 }
