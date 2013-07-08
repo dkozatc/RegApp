@@ -1,7 +1,10 @@
 define([
+    'jquery',
+    'underscore',
     'backbone'
-], function(Backbone){
+], function( $, _, Backbone){
 
+    var Event = _.extend(Backbone.Events);
     var PatientModel = Backbone.Model.extend({
         default:{
         "FirstName":"s",
@@ -24,7 +27,14 @@ define([
         "EmployerState" :"ag",
         "EmployerZip" :"dsag",
         "EmployerPhone" :"dsag"
+        },
+        initialize: function (){
+
+
         }
+        
+
+
 
     });
 

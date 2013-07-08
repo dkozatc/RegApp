@@ -10,7 +10,8 @@ require.config({
 		'tools': 'lib/tools',
 		'SearchPatients' : 'views/SearchPatients',
 		'jsrender' : 'lib/jsrender',
-		'text' : 'lib/text'
+		'text' : 'lib/text',
+		'editPatient' : 'views/editPatient'
 
 
 
@@ -39,11 +40,6 @@ require.config({
 
 
 	}
-
-
-
-
-
 
 });
 

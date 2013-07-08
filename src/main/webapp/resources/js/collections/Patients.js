@@ -11,52 +11,27 @@ define([
 		model:PatientModel,
 
 		initialize: function (){
-		Event.on('SuccessSearch', this.addNew, this);
-
-
+			Event.on('SuccessSearch', this.addNew, this);
+			Event.on('AddNewPatient', this.sendDataToDB, this);
 		},
 		addNew: function (jsonObj) {
-			var a =JSON.parse(jsonObj);
-			console.log(a);
-			var model1 = new PatientModel({
+			var patientInfo =JSON.parse(jsonObj);
+			this.add(new PatientModel(patientInfo));
+		},
+		sendDataToDB: function(obj){
 
-				FirstName:"s",
-        		LastName :"a",
-        		SSN :"123",
-        		DateOfbirth :"00.00.0000",
-        		Gender :"-",
-        		MaritalStatus :"xc",
-        		Race :"asf",
-        		Religion :"asf",
-        		Language :"qw",
-        		PatientAddress :"ag",
-        		PatientCity :"asd",
-        		PatientState :"xcb",
-        		PatientZip :"e",
-        		PatientPhone :"cvz",
-        		EmployerName :"123",
-        		EmployerAddress :"abg",
-        		EmployerCity :"sdg",
-        		EmployerState :"ag",
-        		EmployerZip :"dsag",
-        		EmployerPhone :"dsag"
-			});
-			console.log(model1);
-			this.add(new PatientModel(a));
-			
-			
-
-
-
-
-		}
-
-
-
-
+            var data =JSON.stringify(obj);
+			$.ajax({
+            	type: "POST",
+            	url: "/addPatient",
+            	data:{requestString:data},
+            	success: function(msg){
+                	console.log(msg)
+            	}   
+        	});
+	    }
+    
 	});
-
-
 
 	return PatientsCollection;
 

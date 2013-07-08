@@ -5,6 +5,20 @@
   margin: 70px auto;
   padding-left:50px;
 }
+.resultBlock{
+
+}
+.resultBlock:hover{
+background-image: url('/resources/img/background.png');
+background-repeat: repeat-x;
+
+
+}
+#PatientsEditForm{
+  margin: 70px auto;
+  padding-left:50px;
+}
+
 .autocompleteSearch{
    position:absolute;
    top:35px;
@@ -83,4 +97,7 @@ height: 25px;
 }
 .logo{
 
+}
+#PatientsEditForm  .btn{
+  margin-left: 620px;
 }

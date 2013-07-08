@@ -21,12 +21,20 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 
 @Controller
-@RequestMapping("/test")
+@RequestMapping(method = RequestMethod.POST)
 public class TestController {
 
-    @RequestMapping(method = RequestMethod.GET)
+    @RequestMapping("/test")
     public String printWelcome(@RequestParam("requestString") String requestString ,ModelMap model) {
         model.addAttribute("message", "{'FirstName':'Dima', 'LastName':'Kozaryok'}");
         return "test";
     }
+
+    @RequestMapping("/addPatient")
+    public String addNewPatient(@RequestParam("requestString") String requestString ,ModelMap model){
+
+        return "addNew";
+    }
+
+
 }

@@ -26,7 +26,8 @@ define([
 		            'mouseover #inputSearch': 'showAutocomplete',
                 'mouseout #inputSearch ': 'hideAutocomplete',
                 'keyup #inputSearch':'searchSend',
-                'click #addPatient' : 'addNewPatient'
+                'click #addPatient' : 'addNewPatient',
+                'resize window': 'showAutocomplete'
 
 
 	           },
@@ -35,7 +36,6 @@ define([
                 
             },
             loadTemplate: function (template){
-                console.log(template);
                 this.$el.append(template);
                 this.$el.append("<div class='autocompleteSearch'></div>");
                 $('.autocompleteSearch').hide();
@@ -52,36 +52,37 @@ define([
 
             },
             showAutocomplete: function(){
-                console.log("showAutocomplite")
+
+                var position = $('#inputSearch').offset();
+                $('.autocompleteSearch').css('left', position.left);
                 $('.autocompleteSearch').show();
 
 
             },
             hideAutocomplete: function(){
-                setTimeout(function(){ $('.autocompleteSearch').hide();}, 2000);
 
-            },
+                setTimeout(function(){ $('.autocompleteSearch').hide();}, 2000);
+                 var position = $('#inputSearch').offset();
+                $('.autocompleteSearch').css('left', position.left);
+           },
             searchSend: function(){
                 $('.autocompleteSearch').show();
-                $('.autocompleteSearch').append("<p class='serchBars'>"+$('#inputSearch').val()+"</p>");
+                //$('.autocompleteSearch').append("<p class='serchBars'>"+$('#inputSearch').val()+"</p>");
                  var b = Tools.SearchRequest($("#inputSearch").val());
                  console.log(b);
 
             },
             addNewPatient: function(){
-              console.log($('#addPatientForm').length);
+                if ($('.editPatient').length !== 0) {
+                  $('.editPatient').remove();
+                 };
+
                 if($('#addPatientForm').length == 0){
                      var AddView = new AddPatientView;
-                      console.log(AddView.el);
+                     console.log(AddView.el);
                      this.$el.append(AddView.el);
                }
             }
-
-
-
-
-   
-
 
 	});
 

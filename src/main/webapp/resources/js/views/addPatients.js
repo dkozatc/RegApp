@@ -24,9 +24,14 @@ define(['underscore',
           this.render();
           Event.on('LoadTemplate', this.loadTemplate, this);
         },
+        events:{
+            'click .btn': 'sendData',
+
+
+
+        },
         render: function() {
             Tools.LoadTemplate("PatientAddForm");
-
 
 
          },
@@ -34,11 +39,22 @@ define(['underscore',
             this.$el.html(template);
             Event.off('LoadTemplate');
 
+       
 
 
+         },
+         sendData: function (){
+            var Patient = new Object();
+            $("form[name='addPatientForm']").find('input,select').not('[type="button"]').each(function(){
+              console.log(this);
+              Patient[$(this).attr('name')] = $(this).val();
 
 
-         }
+            });
+            console.log('execut')
+            Event.trigger('AddNewPatient', Patient);
+
+         },
 
 
 
