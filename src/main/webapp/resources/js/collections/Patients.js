@@ -20,11 +20,11 @@ define([
 		},
 		sendDataToDB: function(obj){
 
-            var data =JSON.stringify(obj);
+
 			$.ajax({
             	type: "POST",
             	url: "/addPatient",
-            	data:{requestString:data},
+            	data:{requestString:obj},
             	success: function(msg){
                 	console.log(msg)
             	}   

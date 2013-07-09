@@ -19,15 +19,18 @@ define(['underscore',
 					Event.on('LoadTemplate', this.loadTemplate, this);
 				},
 				events:{
-					'click' : 'PatientEdit',
-					'mouseout .resultBlock' : 'PatientEdit'
-
-
+					'click ' : 'PatientEdit'
+					
 				},
 				render: function () {
 					console.log(Tools)
-				 	Tools.LoadTemplate("SearchResult");
-					
+					if($('#SearchBlock').length == 0){
+				 		Tools.LoadTemplate("SearchResult");
+					}else{
+						var template = $.templates("#SearchBlock");
+						var htmlOutput = template.render(this.model.toJSON());
+	          			this.$el.html(htmlOutput);	
+					}
 
 				},
 				loadTemplate: function (inTemplate){
@@ -41,21 +44,22 @@ define(['underscore',
 
          		},
          		PatientEdit: function(model){
+         			console.log("click");
          			if($('#addPatientForm').length !== 0){
          				$('#addPatientForm').remove();
          			}
 
-         			if($('.editPatient').length == 0){
+         			if($('.editPatient').length == 0 && $('#PatientsEditForm').length == 0){
          				var EditPatientView = new EditPatient({model:this.model});
          				console.log(EditPatientView.el);
          				$(".container").append(EditPatientView.el);
 
          			}else{
          				console.log('change');
-         				$('.editPatient').remove();
+         				
          				var template = $.templates("#EditForm");
                 		var htmlOutput = template.render(this.model.toJSON());
-            		     $('.container').append(htmlOutput);
+            		     $('.editPatient').html(htmlOutput);
 
 	       			}
          		},

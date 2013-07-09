@@ -1,12 +1,12 @@
 package com.springapp.mvc;
 
 
+import com.springapp.mvc.models.PatientModel;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 
 /**
@@ -31,7 +31,7 @@ public class TestController {
     }
 
     @RequestMapping("/addPatient")
-    public String addNewPatient(@RequestParam("requestString") String requestString ,ModelMap model){
+    public String addNewPatient(PatientModel patientModel){
 
         return "addNew";
     }

@@ -13,7 +13,7 @@ define([
 	      var SearchPatientsView =  Backbone.View.extend({
 
 	          el:'.container',
-
+            activeBlock: 0,
 	          initialize: function(){
 
                 this.render();
@@ -23,8 +23,8 @@ define([
 
 	           },
             events:{
-		            'mouseover #inputSearch': 'showAutocomplete',
-                'mouseout #inputSearch ': 'hideAutocomplete',
+		        'focus #inputSearch': 'showAutocomplete',
+                'click .container': 'hideAutocomplete',
                 'keyup #inputSearch':'searchSend',
                 'click #addPatient' : 'addNewPatient',
                 'resize window': 'showAutocomplete'
@@ -43,12 +43,12 @@ define([
 
             },
             addOne: function (model){
-                  console.log(model);
-                  var findedPatientVeiew = new SearchResultView({model:model})
-                  console.log(findedPatientVeiew.$el);
-                  $(".autocompleteSearch").append(findedPatientVeiew.el);
-
-
+                if($('.resultBlock').length < 7 ){
+                     console.log($('.resultBlock').length);
+                     var findedPatientVeiew = new SearchResultView({model:model})
+                     console.log(findedPatientVeiew.$el);
+                     $(".autocompleteSearch").append(findedPatientVeiew.el);
+                }
 
             },
             showAutocomplete: function(){
@@ -61,16 +61,23 @@ define([
             },
             hideAutocomplete: function(){
 
-                setTimeout(function(){ $('.autocompleteSearch').hide();}, 2000);
-                 var position = $('#inputSearch').offset();
+                $('.autocompleteSearch').hide();
+                var position = $('#inputSearch').offset();
                 $('.autocompleteSearch').css('left', position.left);
            },
-            searchSend: function(){
-                $('.autocompleteSearch').show();
-                //$('.autocompleteSearch').append("<p class='serchBars'>"+$('#inputSearch').val()+"</p>");
-                 var b = Tools.SearchRequest($("#inputSearch").val());
-                 console.log(b);
+            searchSend: function(e){
+                console.log(e.keyCode);
+                if(e.keyCode >= 48 && e.keyCode <= 90 || e.keyCode == 8 ){
+                      $('.autocompleteSearch').show();
+                      var b = Tools.SearchRequest($("#inputSearch").val());
+                      console.log(b);
+                };
+                if(e.keyCode == 38){
+                  
 
+
+                }
+               
             },
             addNewPatient: function(){
                 if ($('.editPatient').length !== 0) {
@@ -86,8 +93,7 @@ define([
 
 	});
 
-
-   return SearchPatientsView;
+  return SearchPatientsView;
 
 
 

@@ -29,7 +29,15 @@
                this.render();
                },
               render: function () {
+                  if($('#EditForm').length == 0){
                   Tools.LoadTemplate("PatientEditForm");
+                  }else{
+                  var template = $.templates("#EditForm");
+                  var htmlOutput = template.render(this.model.toJSON());
+                  this.$el.html(htmlOutput);
+
+
+                  }
               },
               loadTemplate: function (inTemplate){
                   
