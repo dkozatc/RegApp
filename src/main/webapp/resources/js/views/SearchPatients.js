@@ -14,6 +14,8 @@ define([
 
 	          el:'.container',
             activeBlock: 0,
+            cursoreFocus:false,
+
 	          initialize: function(){
 
                 this.render();
@@ -24,10 +26,12 @@ define([
 	           },
             events:{
 		        'focus #inputSearch': 'showAutocomplete',
-                'click .container': 'hideAutocomplete',
-                'keyup #inputSearch':'searchSend',
-                'click #addPatient' : 'addNewPatient',
-                'resize window': 'showAutocomplete'
+            'mouseover .autocompleteSearch' : 'checkCursorPosition',
+            'mouseout .autocompleteSearch' : 'unchekCursorePosition',
+            'blur  #inputSearch': 'hideAutocomplete',
+            'keyup #inputSearch':'searchSend',
+             'click #addPatient' : 'addNewPatient',
+            'resize window': 'showAutocomplete'
 
 
 	           },
@@ -51,6 +55,16 @@ define([
                 }
 
             },
+            checkCursorPosition: function(){
+                this.cursoreFocus =true;
+
+
+            },
+            unchekCursorePosition: function(){
+                this.cursoreFocus =false;
+
+
+            },
             showAutocomplete: function(){
 
                 var position = $('#inputSearch').offset();
@@ -60,10 +74,12 @@ define([
 
             },
             hideAutocomplete: function(){
-
-                $('.autocompleteSearch').hide();
-                var position = $('#inputSearch').offset();
-                $('.autocompleteSearch').css('left', position.left);
+              console.log(this.cursoreFocus);
+                if(!this.cursoreFocus){
+                    $('.autocompleteSearch').hide();
+                    var position = $('#inputSearch').offset();
+                    $('.autocompleteSearch').css('left', position.left);
+                }
            },
             searchSend: function(e){
                 console.log(e.keyCode);
@@ -72,11 +88,36 @@ define([
                       var b = Tools.SearchRequest($("#inputSearch").val());
                       console.log(b);
                 };
-                if(e.keyCode == 38){
-                  
+                
+                if(e.keyCode == 38 || e.keyCode == 40 ){
+                        var coutResultBlocks = $('.autocompleteSearch').find('.resultBlock');
+                        console.log(coutResultBlocks.length);
+                        if(e.keyCode == 38){
+                                if(this.activeBlock >0 && this.activeBlock <= coutResultBlocks.length){
+                                    var coutResultBlocks = $('.autocompleteSearch').find('.resultBlock');
+                                    console.log(coutResultBlocks.length);
+                                    $(coutResultBlocks[this.activeBlock]).css('backgrount-color', 'white');
+                                    this.activeBlock--;
+                                    $(coutResultBlocks[this.activeBlock]).css('backgrount-color', 'red');
+                                }
+                            
 
 
-                }
+                        }
+                        if(e.keyCode == 40){
+
+
+                            if(this.activeBlock >=0 && this.activeBlock <= coutResultBlocks.length){
+                                console.log(this.activeBlock);
+                                    var coutResultBlocks = $('.autocompleteSearch').find('.resultBlock');
+                                    console.log(($(coutResultBlocks[this.activeBlock]).html());
+                                    $(coutResultBlocks[this.activeBlock]).css('backgrount-color', 'white');
+                                    this.activeBlock++;
+                                    $(coutResultBlocks[this.activeBlock]).css('backgrount-color', 'red');
+                                }
+                        }
+              }
+
                
             },
             addNewPatient: function(){

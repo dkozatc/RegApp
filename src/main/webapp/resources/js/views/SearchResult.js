@@ -62,6 +62,8 @@ define(['underscore',
             		     $('.editPatient').html(htmlOutput);
 
 	       			}
+	       			$('#inputSearch').val(this.model.get('FirstName')+" "+ this.model.get('LastName'));
+	       			$('.autocompleteSearch').hide();
          		},
          		alertSome: function(){
          				console.log("enit click1")
