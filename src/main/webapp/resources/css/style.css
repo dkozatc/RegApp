@@ -101,3 +101,8 @@ height: 25px;
 #PatientsEditForm  .btn{
   margin-left: 620px;
 }
+.selected{
+  background-image: url('/resources/img/background.png');
+  background-repeat: repeat-x;
+  
+}

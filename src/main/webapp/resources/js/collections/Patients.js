@@ -20,11 +20,13 @@ define([
 		},
 		sendDataToDB: function(obj){
 
+			var model = new PatientModel(obj);
 
 			$.ajax({
             	type: "POST",
+            	dataType:'json',
             	url: "/addPatient",
-            	data:{requestString:obj},
+            	data:model.toJSON(),
             	success: function(msg){
                 	console.log(msg)
             	}   

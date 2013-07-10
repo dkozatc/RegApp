@@ -2,11 +2,14 @@ package com.springapp.mvc;
 
 
 import com.springapp.mvc.models.PatientModel;
+import com.springapp.mvc.service.PatientAcoutns;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import java.sql.SQLException;
 
 
 /**
@@ -31,8 +34,10 @@ public class TestController {
     }
 
     @RequestMapping("/addPatient")
-    public String addNewPatient(PatientModel patientModel){
-
+    public String addNewPatient(PatientModel patientModel) throws SQLException {
+        PatientAcoutns newAcount = new PatientAcoutns(patientModel);
+        String a = newAcount.deletePersone();
+        System.out.print(a);
         return "addNew";
     }
 

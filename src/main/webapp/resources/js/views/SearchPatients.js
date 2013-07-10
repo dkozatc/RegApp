@@ -81,42 +81,65 @@ define([
                     $('.autocompleteSearch').css('left', position.left);
                 }
            },
-            searchSend: function(e){
+           searchSend: function(e){
                 console.log(e.keyCode);
                 if(e.keyCode >= 48 && e.keyCode <= 90 || e.keyCode == 8 ){
-                      $('.autocompleteSearch').show();
-                      var b = Tools.SearchRequest($("#inputSearch").val());
-                      console.log(b);
+                       $('.autocompleteSearch').show();
+                       var b = Tools.SearchRequest($("#inputSearch").val());
+                       console.log(b);
                 };
-                
+
+                //------cursor navigation ivents-------------
                 if(e.keyCode == 38 || e.keyCode == 40 ){
+                        $('.autocompleteSearch').show();
                         var coutResultBlocks = $('.autocompleteSearch').find('.resultBlock');
-                        console.log(coutResultBlocks.length);
+                        console.log("active block: " + this.activeBlock);
+                        console.log("cout element: " + coutResultBlocks.length);
                         if(e.keyCode == 38){
-                                if(this.activeBlock >0 && this.activeBlock <= coutResultBlocks.length){
-                                    var coutResultBlocks = $('.autocompleteSearch').find('.resultBlock');
-                                    console.log(coutResultBlocks.length);
-                                    $(coutResultBlocks[this.activeBlock]).css('backgrount-color', 'white');
-                                    this.activeBlock--;
-                                    $(coutResultBlocks[this.activeBlock]).css('backgrount-color', 'red');
+                                if(this.activeBlock >= 0 && this.activeBlock <= coutResultBlocks.length){
+                                       var coutResultBlocks = $('.autocompleteSearch').find('.resultBlock');
+                                       console.log();
+                                       if(coutResultBlocks.length>1 && this.activeBlock !=0){
+                                            $(coutResultBlocks[this.activeBlock]).removeClass('selected');
+                                            this.activeBlock--;
+                                            $(coutResultBlocks[this.activeBlock]).addClass('selected');
+                                        }else{
+                                            $(coutResultBlocks[this.activeBlock]).addClass('selected');
+                                        }
                                 }
-                            
-
-
-                        }
+                   }
                         if(e.keyCode == 40){
-
-
-                            if(this.activeBlock >=0 && this.activeBlock <= coutResultBlocks.length){
-                                console.log(this.activeBlock);
-                                    var coutResultBlocks = $('.autocompleteSearch').find('.resultBlock');
-                                    console.log(($(coutResultBlocks[this.activeBlock]).html());
-                                    $(coutResultBlocks[this.activeBlock]).css('backgrount-color', 'white');
-                                    this.activeBlock++;
-                                    $(coutResultBlocks[this.activeBlock]).css('backgrount-color', 'red');
+                          var coutResultBlocks = $('.autocompleteSearch').find('.resultBlock');
+                              if(this.activeBlock >=0 && this.activeBlock < coutResultBlocks.length){
+                                        
+                                        console.log($(coutResultBlocks[this.activeBlock]).addClass('selected'));
+                                        console.log(this.activeBlock);
+                                        if(coutResultBlocks.length>1 && this.activeBlock < coutResultBlocks.length-1){
+                                           $(coutResultBlocks[this.activeBlock]).removeClass('selected');
+                                           this.activeBlock++;
+                                           $(coutResultBlocks[this.activeBlock]).addClass('selected');
+                                        }else{
+                                          $(coutResultBlocks[this.activeBlock]).addClass('selected');
+                                        }
                                 }
                         }
+                }
+              //---------------------------------------------------------------------------------------------
+              //----Press enter Event for Cursor-------------------------------------------------------------
+              if(e.keyCode == 13){
+                   var coutResultBlocks = $('.autocompleteSearch').find('.resultBlock');
+                   console.log("Enter Press"+coutResultBlocks.length);
+                  if(coutResultBlocks.length>=1){
+                    $(coutResultBlocks[this.activeBlock]).click();
+
+                  }               
+
+
+
               }
+
+              //---------------------------------------------------------------------------------------------
+
 
                
             },
