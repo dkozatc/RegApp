@@ -7,49 +7,32 @@ package com.springapp.mvc.service;
  * Time: 1:18 PM
  * To change this template use File | Settings | File Templates.
  */
-import com.springapp.mvc.models.PatientModel;
-import com.mysql.jdbc.Connection;
 
-import java.beans.Statement;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import com.springapp.mvc.PatientDaoIMPL;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+@Component
 public class PatientAcoutns {
 
-            private PatientModel patient;
+    @Autowired
+    private PatientDaoIMPL patientDaoIMPL;
 
-            public PatientAcoutns(PatientModel patient){
-                this.patient = patient;
+    public String insertPatient() {
+        return "some";
+    }
 
+    public String updatePersone() {
+        return "update";
+    }
 
-            }
+    public String deletePersone() {
+        return "delete";
+    }
 
-
-            public String insertPatient() throws SQLException {
-
-
-              return "some";
-            }
-
-            public String updatePersone(){
-
-
-
-               return "update";
-            }
-
-            public String deletePersone(){
-
-
-
-                return "delete";
-            }
-            public String  searchPatient(){
-
-
-                return "result";
-
-
-            }
+    public String searchPatient() {
+        int a = patientDaoIMPL.getCountPatient();
+        System.out.print(a);
+        return "result";
+    }
 }
