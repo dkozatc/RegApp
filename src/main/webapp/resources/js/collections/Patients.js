@@ -15,13 +15,15 @@ define([
 			Event.on('AddNewPatient', this.sendDataToDB, this);
 		},
 		addNew: function (jsonObj) {
-			var patientInfo =JSON.parse(jsonObj);
-			this.add(new PatientModel(patientInfo));
+				this.reset();
+			console.log(jsonObj);
+			//var patientInfo =JSON.parse(jsonObj);
+			this.add(jsonObj);
 		},
 		sendDataToDB: function(obj){
-
+		
 			var model = new PatientModel(obj);
-
+			
 			$.ajax({
             	type: "POST",
             	dataType:'json',

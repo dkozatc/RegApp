@@ -1,16 +1,18 @@
 package com.springapp.mvc;
 
 
-import com.springapp.mvc.models.PatientModel;
-import com.springapp.mvc.service.PatientAcoutns;
+import com.google.gson.Gson;
+import com.springapp.models.PatientModel;
+import com.springapp.service.PatientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.sql.SQLException;
+import java.util.List;
 
 
 /**
@@ -25,20 +27,25 @@ import java.sql.SQLException;
 
 
 @Controller
-@RequestMapping(method = RequestMethod.POST)
 public class TestController {
-     @Autowired
-     private PatientAcoutns patientAcoutns;
-    @RequestMapping("/test")
-    public String printWelcome(@RequestParam("requestString") String requestString ,ModelMap model) {
-        model.addAttribute("message", "{'FirstName':'Dima', 'LastName':'Kozaryok'}");
-        return "test";
+    @Autowired
+    private PatientService patientService;
+    @RequestMapping(value="/test", method = RequestMethod.POST)
+    public @ResponseBody String printWelcome(@RequestParam("requestString") String requestString ,ModelMap model) {
+        //model.addAttribute("message", "{'FirstName':'Dima', 'LastName':'Kozaryok'}");
+        System.out.println(requestString + " string");
+        List<PatientModel> result = patientService.searchPatient(requestString);
+
+        String json = new Gson().toJson(result);
+
+
+        return json;
     }
 
-    @RequestMapping("/addPatient")
+    @RequestMapping(value="/addPatient", method = RequestMethod.POST)
     public String addNewPatient(PatientModel patientModel){
 
-        String a = patientAcoutns.searchPatient();
+        String a = patientService.createPatient(patientModel);
         System.out.print(a);
         return "addNew";
     }

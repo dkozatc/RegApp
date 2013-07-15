@@ -1,4 +1,4 @@
-package com.springapp.mvc.models;
+package com.springapp.models;
 
 /**
  * Created with IntelliJ IDEA.
@@ -10,7 +10,7 @@ package com.springapp.mvc.models;
 public class PatientModel {
 
     String FirstName;
-    String LestName;
+    String LastName;
     String SSN;
     String DateOfbirth;
     String Gender;
@@ -33,12 +33,12 @@ public class PatientModel {
 
 
 
-    public String getLestName() {
-        return LestName;
+    public String getLastName() {
+        return LastName;
     }
 
-    public void setLestName(String lestName) {
-        LestName = lestName;
+    public void setLastName(String lastName) {
+        LastName = lastName;
     }
 
     public String getFirstName() {

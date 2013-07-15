@@ -7,37 +7,28 @@ define([
     'views/SearchResult'
     
   ], function( _, $, Backbone, Tools, AddPatientView, SearchResultView){
-
         var Event = _.extend(Backbone.Events);
-
 	      var SearchPatientsView =  Backbone.View.extend({
-
 	          el:'.container',
             activeBlock: 0,
             cursoreFocus:false,
-
 	          initialize: function(){
 
                 this.render();
                 Event.on('LoadTemplate', this.loadTemplate, this);
                 this.collection.on('add', this.addOne, this);
-
-
 	           },
             events:{
-		        'focus #inputSearch': 'showAutocomplete',
-            'mouseover .autocompleteSearch' : 'checkCursorPosition',
-            'mouseout .autocompleteSearch' : 'unchekCursorePosition',
-            'blur  #inputSearch': 'hideAutocomplete',
-            'keyup #inputSearch':'searchSend',
-             'click #addPatient' : 'addNewPatient',
-            'resize window': 'showAutocomplete'
-
-
+	             'focus #inputSearch': 'showAutocomplete',
+               'mouseover .autocompleteSearch' : 'checkCursorPosition',
+               'mouseout .autocompleteSearch' : 'unchekCursorePosition',
+               'blur  #inputSearch': 'hideAutocomplete',
+               'keyup #inputSearch':'searchSend',
+               'click #addPatient' : 'addNewPatient',
+               'resize window': 'showAutocomplete'
 	           },
             render: function(){
-                  Tools.LoadTemplate("navTemplate");
-                
+                Tools.LoadTemplate("navTemplate");
             },
             loadTemplate: function (template){
                 this.$el.append(template);
@@ -47,7 +38,7 @@ define([
 
             },
             addOne: function (model){
-                if($('.resultBlock').length < 7 ){
+                   if($('.resultBlock').length < 7 ){
                      console.log($('.resultBlock').length);
                      var findedPatientVeiew = new SearchResultView({model:model})
                      console.log(findedPatientVeiew.$el);
@@ -57,21 +48,14 @@ define([
             },
             checkCursorPosition: function(){
                 this.cursoreFocus =true;
-
-
             },
             unchekCursorePosition: function(){
                 this.cursoreFocus =false;
-
-
             },
             showAutocomplete: function(){
-
                 var position = $('#inputSearch').offset();
                 $('.autocompleteSearch').css('left', position.left);
                 $('.autocompleteSearch').show();
-
-
             },
             hideAutocomplete: function(){
               console.log(this.cursoreFocus);
@@ -82,13 +66,14 @@ define([
                 }
            },
            searchSend: function(e){
+
                 console.log(e.keyCode);
                 if(e.keyCode >= 48 && e.keyCode <= 90 || e.keyCode == 8 ){
+                        $(".autocompleteSearch").html("");
                        $('.autocompleteSearch').show();
                        var b = Tools.SearchRequest($("#inputSearch").val());
                        console.log(b);
                 };
-
                 //------cursor navigation ivents-------------
                 if(e.keyCode == 38 || e.keyCode == 40 ){
                         $('.autocompleteSearch').show();
@@ -131,36 +116,24 @@ define([
                    console.log("Enter Press"+coutResultBlocks.length);
                   if(coutResultBlocks.length>=1){
                     $(coutResultBlocks[this.activeBlock]).click();
-
                   }               
-
-
-
               }
 
               //---------------------------------------------------------------------------------------------
-
-
-               
+            
             },
             addNewPatient: function(){
                 if ($('.editPatient').length !== 0) {
-                  $('.editPatient').remove();
-                 };
-
+                     $('.editPatient').remove();
+                };
                 if($('#addPatientForm').length == 0){
                      var AddView = new AddPatientView;
                      console.log(AddView.el);
                      this.$el.append(AddView.el);
                }
             }
-
 	});
 
   return SearchPatientsView;
-
-
-
-
 
 });

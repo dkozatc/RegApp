@@ -14,6 +14,7 @@ define(['underscore','jquery', 'backbone'], function( _, $, Backbone){
 
         $.ajax({
             type: "POST",
+            dataType:'json',
             url: "/test",
             data:{requestString:request},
             success: function(msg){
