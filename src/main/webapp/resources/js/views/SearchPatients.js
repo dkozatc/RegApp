@@ -70,6 +70,7 @@ define([
                 console.log(e.keyCode);
                 if(e.keyCode >= 48 && e.keyCode <= 90 || e.keyCode == 8 ){
                         $(".autocompleteSearch").html("");
+                        this.activeBlock=0;
                        $('.autocompleteSearch').show();
                        var b = Tools.SearchRequest($("#inputSearch").val());
                        console.log(b);

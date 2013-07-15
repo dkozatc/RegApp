@@ -14,7 +14,7 @@ import java.util.List;
  */
 public interface PatientDao {
     public String insertPatient(String query);
-    public String updatePatient(int id, String query);
+    public String updatePatient(PatientModel patient);
     public List<PatientModel> searchPatients(String query);
     public int getCountPatient();
 }

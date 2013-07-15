@@ -39,8 +39,33 @@ public class PatientDaoImpl implements PatientDao {
         this.jdbcTemplate.update(query);
           return "";
     }
-    public String updatePatient(int id, String query){
-          return "";
+    public String updatePatient(PatientModel patient){
+        String query = "UPDATE patients SET FirstName=? , LastName=?, SSN=?, Dateofbirth=?, Gender=?, Mtlstatus=?, Race=?,"
+                + "Religion=?, Language=?, Address=?, City=?, State=?, Zip=?, PhoneNumber=?, EmployerName=?, EmpAddress=?,"
+                +" EmpCity=?, EmpState=?, EmpZip=?, EmpPhoneNumber=? Where PersonID="+patient.getPatientID()+";";
+
+        this.jdbcTemplate.update(query, new Object[]{
+                patient.getFirstName(),
+                patient.getLastName(),
+                patient.getSSN(),
+                patient.getDateOfbirth(),
+                patient.getGender(),
+                patient.getMaritalStatus(),
+                patient.getRace(),
+                patient.getReligion(),
+                patient.getLanguage(),
+                patient.getPatientAddress(),
+                patient.getPatientCity(),
+                patient.getPatientState(),
+                patient.getPatientZip(),
+                patient.getPatientPhone(),
+                patient.getEmployerName(),
+                patient.getEmployerAddress(),
+                patient.getEmployerCity(),
+                patient.getEmployerState(),
+                patient.getEmployerZip(),
+                patient.getEmployerPhone()});
+        return "";
     }
     public @ResponseBody List<PatientModel> searchPatients(String inputString){
           List patients;
@@ -48,6 +73,7 @@ public class PatientDaoImpl implements PatientDao {
             @Override
             public PatientModel mapRow(ResultSet resultSet, int i) throws SQLException {
                 PatientModel patient = new PatientModel();
+                patient.setPatientID(resultSet.getInt("PersonID"));
                 patient.setFirstName(resultSet.getString("FirstName"));
                 patient.setLastName(resultSet.getString("LastName"));
                 patient.setSSN(resultSet.getString("SSN"));

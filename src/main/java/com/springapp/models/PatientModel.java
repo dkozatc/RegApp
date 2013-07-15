@@ -8,7 +8,7 @@ package com.springapp.models;
  * To change this template use File | Settings | File Templates.
  */
 public class PatientModel {
-
+    int PatientID;
     String FirstName;
     String LastName;
     String SSN;
@@ -31,7 +31,13 @@ public class PatientModel {
     String EmployerPhone;
 
 
+    public int getPatientID() {
+        return PatientID;
+    }
 
+    public void setPatientID(int patientID) {
+        PatientID = patientID;
+    }
 
     public String getLastName() {
         return LastName;

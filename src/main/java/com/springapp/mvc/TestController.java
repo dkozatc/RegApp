@@ -50,5 +50,14 @@ public class TestController {
         return "addNew";
     }
 
+    @RequestMapping(value="/updatePatient", method = RequestMethod.POST)
+    public String updatePatient(PatientModel patientModel){
+
+        String result = patientService.editPatient(patientModel);
+
+
+        return null;
+    }
+
 
 }

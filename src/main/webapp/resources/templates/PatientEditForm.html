@@ -1,7 +1,7 @@
 <script type="text/x-jsrender" id="EditForm">
     <div id="PatientsEditForm">
         <h3>Editing information of Patient<h3>
-        <form>
+        <form name="editPatientForm">
             <div class="formAdd">
                     <p class="hederInfo">Patient Information<p>
                     <p><label>First Name
@@ -28,7 +28,7 @@
                         </label>
                         <label class='Marital'>
                              Marital status  
-                                <select class="span2" name="Marital">
+                                <select class="span2" name="MaritalStatus">
                                     {{if MaritalStatus === 'single'}}
                                     <option selected value="single">Single</option>
                                     <option value="married">Married</option>
@@ -51,29 +51,29 @@
             <div class="formAdd">
                     <p class="hederInfo">Patient contacts</p>
                     <p><label class='Address'>Address
-                    <input type="text" name="Address" value={{:PatientAddress}}></label></p>
+                    <input type="text" name="PatientAddress" value={{:PatientAddress}}></label></p>
                     <p><label class="City">City
-                    <input type="text" name="City" value={{:PatientCity}}></label>
+                    <input type="text" name="PatientCity" value={{:PatientCity}}></label>
                     <label class="State">State
-                    <input type="text" name="state" value={{:PatientState}}></label>
+                    <input type="text" name="PatientState" value={{:PatientState}}></label>
                     </p>
                     <p><label class="Phone">Phone Number:
-                     <input type="text" name="Phone" value={{:PatientPhone}}></label>
+                     <input type="text" name="PatientPhone" value={{:PatientPhone}}></label>
                     <label class="Zip">Zip
-                     <input type="text" name="Zip" value={{:PatientZip}}></label></p>
+                     <input type="text" name="PatientZip" value={{:PatientZip}}></label></p>
             </div>
             <div class="formAdd">
                     <p class="hederInfo">Employer contacts</p>
                     <p class='EmpName'><label>Employer name
-                    <input type="text" name="EmplName" value={{:EmployerName}}></label></p>
+                    <input type="text" name="EmployerName" value={{:EmployerName}}></label></p>
                     <p class='Address'><label>Address
-                    <input type="text" name="EmplAddress" value={{:EmployerAddress}}></label></p>
-                    <p><label class="City">City <input type="text" name="EmplCity" value={{:EmployerCity}}></label>
-                    <label class="State">State <input type="text" name="EmplState" value={{:EmployerState}}></label>
+                    <input type="text" name="EmployerAddress" value={{:EmployerAddress}}></label></p>
+                    <p><label class="City">City <input type="text" name="EmployerCity" value={{:EmployerCity}}></label>
+                    <label class="State">State <input type="text" name="EmployerState" value={{:EmployerState}}></label>
                     </p>
                     <p><label class="Phone">Phone Number:
-                    <input type="text" name="EmplPhone"value={{:EmployerPhone}} ></label>
-                    <label class="Zip">Zip <input type="text" name="EmplZip" value={{:EmployerZip}}></label></p>
+                    <input type="text" name="EmployerPhone"value={{:EmployerPhone}} ></label>
+                    <label class="Zip">Zip <input type="text" name="EmployerZip" value={{:EmployerZip}}></label></p>
             </div>
 
                     <input class='btn btn-info' type="button" value='Save change'>

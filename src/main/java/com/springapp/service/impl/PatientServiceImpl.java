@@ -27,9 +27,10 @@ public class PatientServiceImpl implements PatientService {
     @Override
     public String editPatient(PatientModel patient) {
 
+        patientDao.updatePatient(patient);
 
 
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+        return null;
     }
 
     public String createPatient(PatientModel patient){

@@ -13,6 +13,7 @@ define([
 		initialize: function (){
 			Event.on('SuccessSearch', this.addNew, this);
 			Event.on('AddNewPatient', this.sendDataToDB, this);
+			Event.on('updatePatient', this.updatePatient, this);
 		},
 		addNew: function (jsonObj) {
 				this.reset();
@@ -33,7 +34,22 @@ define([
                 	console.log(msg)
             	}   
         	});
+	    },
+	    updatePatient: function(model){
+	    	$.ajax({
+            	type: "POST",
+            	dataType:'json',
+            	url: "/updatePatient",
+            	data:model,
+            	success: function(msg){
+                	console.log(msg)
+            	}   
+        	});
+
+
+
 	    }
+
     
 	});
 
