@@ -68,7 +68,7 @@ public class PatientDaoImpl implements PatientDao {
         return "";
     }
     public @ResponseBody List<PatientModel> searchPatients(String inputString){
-          List patients;
+        List patients;
         patients = this.jdbcTemplate.query(inputString, new RowMapper() {
             @Override
             public PatientModel mapRow(ResultSet resultSet, int i) throws SQLException {
@@ -103,7 +103,6 @@ public class PatientDaoImpl implements PatientDao {
     public int getCountPatient(){
         int rowCount;
         rowCount = this.jdbcTemplate.queryForInt("select count(*) from patients");
-
         return rowCount;
     }
 

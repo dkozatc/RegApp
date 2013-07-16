@@ -2,20 +2,36 @@
     <div id="PatientsEditForm">
         <h3>Editing information of Patient<h3>
         <form name="editPatientForm">
-            <div class="formAdd">
+            <div class="form-horizontal">
                     <p class="hederInfo">Patient Information<p>
-                    <p><label>First Name
-                       <input class="span8" type="text" name='FirstName' value={{:FirstName}}></label> 
-                       <label>Last Name  
-                       <input  class="span8" type="text" name="LastName" value={{:LastName}}></label></p>
-                    <p class="labelSSN"><label>SSN:
-                    <input class="span8" type="text" name="SSN" value={{:SSN}}></label></p>
-                    <p class= "birthData"><label>Date birth:
-                    <input class="span6" type="text" name="DateOfbirth" value={{:DateOfbirth}} > (dd/mm/year)</label></p>
-                    <p class= "bloc1">
-                        <label class="gender">
-                            Gender 
-                                <select class='span2' name="Gender">
+                    <div class="control-group">
+                        <label class="control-label" for='FirstName' >First Name </label> 
+                        <div class="controls">
+                            <input class="span7" type="text" name='FirstName' value={{:FirstName}}>
+                        </div>
+                    </div>
+                     <div class="control-group">
+                        <label class="control-label" for='LastName' >Last Name</label>
+                        <div class="controls">
+                            <input  class="span7" type="text" name="LastName" value={{:LastName}}>
+                        </div>
+                    </div>
+                        <div class="control-group">
+                        <label class="control-label" for="SSN">SSN:</label>
+                        <div class="controls">
+                            <input class="span7" type="text" name="SSN" value={{:SSN}}>
+                        </div>
+                    </div>
+                     <div class="control-group">
+                        <label class="control-label" for="DateOfbirth">Date birth:</label>
+                        <div class="controls">
+                            <input class="span7" type="text" name="DateOfbirth" value={{:DateOfbirth}} > 
+                        </div>
+                    </div>
+                    <div class="control-group">
+                    <label class="control-label">Gender </label>
+                        <div class="controls">
+                         <select class='span2' name="Gender">
                                     {{if Gender == 'man'}}
                                      <option selected value="man">Man</option>
                                     <option value="woman">Woman</option>
@@ -25,56 +41,119 @@
                                     <option selected value="woman">Woman</option>
                                     {{/if}}
                                  </select>
-                        </label>
-                        <label class='Marital'>
-                             Marital status  
-                                <select class="span2" name="MaritalStatus">
-                                    {{if MaritalStatus === 'single'}}
-                                    <option selected value="single">Single</option>
-                                    <option value="married">Married</option>
-                                    {{/if}}
-                                    {{if MaritalStatus === 'married'}}
-                                    <option  value="single">Single</option>
-                                    <option selected value="married">Married</option>
-                                    {{/if}}
-                                </select>
-                        </label>
-                    </p>
-                    <p class="Race"><label>Race
-                    <input class="span2" type="text" name="Race" value={{:Race}} ></label></p>
-                    <p class="bloc2"><label class="Religion">Religion
-                    <input class="span3" type="text" name="Religion" value={{:Religion}}></label>
-                    <label class='Language'>Language:
-                    <input class="span3" type="text" name="Language" value={{:Language}}></label></p>
+                        </div>
+                    </div>
+                     <div class="control-group">
+                        <label class='control-label'>Marital status </label>
+                        <div class="controls">
+                           <select class="span2" name="MaritalStatus">
+                                        {{if MaritalStatus === 'single'}}
+                                        <option selected value="single">Single</option>
+                                        <option value="married">Married</option>
+                                        {{/if}}
+                                        {{if MaritalStatus === 'married'}}
+                                        <option  value="single">Single</option>
+                                        <option selected value="married">Married</option>
+                                        {{/if}}
+                                    </select>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class='control-label' for="Race">Race</label>
+                        <div class='controls'>
+                             <input class="span7" type="text" name="Race" value={{:Race}} >
+                        </div>
+                    </div>
+                     <div class="control-group">    
+                        <label  class='control-label' for="Religion">Religion </label>
+                        <div class='controls'>
+                            <input class="span7" type="text" name="Religion" value={{:Religion}}>
+                        </div>
+                    </div>
+                    <div class="control-group">    
+                        <label class='control-label' for="Language">Language:</label>
+                        <div class="controls">
+                            <input class="span7" type="text" name="Language" value={{:Language}}>
+                        </div>
+                    </div>
             </div>
 
-            <div class="formAdd">
+            <div class="form-horizontal">
                     <p class="hederInfo">Patient contacts</p>
-                    <p><label class='Address'>Address
-                    <input type="text" name="PatientAddress" value={{:PatientAddress}}></label></p>
-                    <p><label class="City">City
-                    <input type="text" name="PatientCity" value={{:PatientCity}}></label>
-                    <label class="State">State
-                    <input type="text" name="PatientState" value={{:PatientState}}></label>
-                    </p>
-                    <p><label class="Phone">Phone Number:
-                     <input type="text" name="PatientPhone" value={{:PatientPhone}}></label>
-                    <label class="Zip">Zip
-                     <input type="text" name="PatientZip" value={{:PatientZip}}></label></p>
+                    <div class="control-group"> 
+                        <label class='control-label' for='PatientAddress'>Address </label>
+                        <div class='controls'>
+                            <input class="span7"  type="text" name="PatientAddress" value={{:PatientAddress}}>
+                        </div>
+                    </div>
+
+                    <div class="control-group"> 
+                        <label class='control-label' for='PatientCity'>City </label>
+                        <div class='controls'>
+                             <input  class="span7" type="text" name="PatientCity" value={{:PatientCity}}>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class='control-label' for="PatientState" >State </label>
+                        <div class="controls">
+                             <input  class="span7" type="text" name="PatientState" value={{:PatientState}}>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                         <label class='control-label' for="PatientPhone">Phone Number:</label>
+                         <div class='controls'>
+                              <input class="span7"  type="text" name="PatientPhone" value={{:PatientPhone}}>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                         <label class='control-label'>Zip </label>
+                         <div class='controls'>
+                             <input  class="span7" type="text" name="PatientZip" value={{:PatientZip}}>
+                         </div>
+                    </div>
+                                       
+                   
             </div>
-            <div class="formAdd">
+            <div class="form-horizontal">
                     <p class="hederInfo">Employer contacts</p>
-                    <p class='EmpName'><label>Employer name
-                    <input type="text" name="EmployerName" value={{:EmployerName}}></label></p>
-                    <p class='Address'><label>Address
-                    <input type="text" name="EmployerAddress" value={{:EmployerAddress}}></label></p>
-                    <p><label class="City">City <input type="text" name="EmployerCity" value={{:EmployerCity}}></label>
-                    <label class="State">State <input type="text" name="EmployerState" value={{:EmployerState}}></label>
-                    </p>
-                    <p><label class="Phone">Phone Number:
-                    <input type="text" name="EmployerPhone"value={{:EmployerPhone}} ></label>
-                    <label class="Zip">Zip <input type="text" name="EmployerZip" value={{:EmployerZip}}></label></p>
-            </div>
+                     <div class="control-group">
+                         <label  class='control-label'>Employer name </label>
+                         <div class='controls'>
+                             <input class="span7"  type="text" name="EmployerName" value={{:EmployerName}}>
+                         </div>
+                     </div>
+                     <div class="control-group">
+                          <label class='control-label'>Address </label>
+                          <div class="controls">
+                              <input class="span7"  type="text" name="EmployerAddress" value={{:EmployerAddress}}>
+                          </div>
+                     </div>
+                     <div class="control-group">
+                          <label class='control-label'>City </label>
+                          <div class='controls'>
+                              <input class="span7"  type="text" name="EmployerCity" value={{:EmployerCity}}>
+                          </div>
+                    </div>
+                    <div class="control-group">
+                          <label class='control-label'>State </label>
+                          <div class='controls'>
+                              <input class="span7"  type="text" name="EmployerState" value={{:EmployerState}}>
+                          </div>
+                    </div>
+                    <div class="control-group">
+                          <label class='control-label'>Phone Number: </label>
+                          <div class='controls'>
+                              <input class="span7"  type="text" name="EmployerPhone"value={{:EmployerPhone}} >
+                          </div>
+                    </div>
+                                     
+                    <div class="control-group">
+                          <label class='control-label' for="EmployerZip">Zip </label>
+                          <div class='controls'>
+                              <input class="span7"  type="text" name="EmployerZip" value={{:EmployerZip}}>
+                          </div>
+                    </div>
+           </div>
 
                     <input class='btn btn-info' type="button" value='Save change'>
 

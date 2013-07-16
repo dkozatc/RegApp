@@ -35,7 +35,9 @@
 
                },
               render: function () {
+                console.log('render editViews');
                   if($('#EditForm').length == 0){
+
                   Tools.LoadTemplate("PatientEditForm");
                   }else{
                   var template = $.templates("#EditForm");

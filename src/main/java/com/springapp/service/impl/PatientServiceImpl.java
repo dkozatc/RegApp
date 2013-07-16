@@ -21,18 +21,11 @@ public class PatientServiceImpl implements PatientService {
 
     @Autowired
     private PatientDao patientDao;
-
-
-
     @Override
     public String editPatient(PatientModel patient) {
-
         patientDao.updatePatient(patient);
-
-
         return null;
     }
-
     public String createPatient(PatientModel patient){
         String query = "insert into patients (PersonID, FirstName, LastName, SSN, Dateofbirth, Gender, Mtlstatus, Race," +
                 " Religion, Language, Address, City, State, Zip, PhoneNumber, EmployerName, EmpAddress, EmpCity, EmpState, "+
@@ -47,15 +40,12 @@ public class PatientServiceImpl implements PatientService {
         patientDao.insertPatient(query);
         return "dg";
     }
-
     public List<PatientModel> searchPatient(String request) {
         String  query = "Select * from patients where FirstName LIKE '%"+request+"%' OR "+
                 " LastName LIKE '%"+request+"%' OR SSN LIKE '%"+request+"%' OR PhoneNumber LIKE '%"+request+"%';";
         System.out.println(query);
-        List<PatientModel> a = patientDao.searchPatients(query);
-
-
-        return a;
+        List<PatientModel> patientList = patientDao.searchPatients(query);
+        return patientList;
 
     }
 }

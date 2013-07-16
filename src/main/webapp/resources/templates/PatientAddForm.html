@@ -1,51 +1,142 @@
 <div id="PatientsForm">
-    <h3>Registration New Patient<h3>
+    <h3>Registration New Patient</h3>
     <form name='addPatientForm'>
-        <div class="formAdd">
+        <div class="form-horizontal">
                 <p class="hederInfo">Patient Information<p>
-                <p><label>First Name <input class="span8" type="text" name='FirstName'></label> 
-                   <label>Last Name  <input  class="span8" type="text" name="LastName"></label></p>
-                <p class="labelSSN"><label>SSN:       <input class="span8" type="text" name="SSN"></label></p>
-                <p class= "birthData"><label>Date birth:<input class="span6" type="text" name="DateOfbirth"> (dd/mm/year)</label></p>
-                <p class= "bloc1">
-                    <label class="gender">
-                        Gender 
-                            <select class='span2' name="Gender">
-                                <option value="man">Man</option>
-                                <option value="woman">Woman</option>
-                            </select>
-                    </label>
-                    <label class='Marital'>
-                         Marital status  
-                            <select class="span2" name="MaritalStatus">
-                                <option value="single">Single</option>
-                                <option value="married">Married</option>
-                            </select>
-                    </label>
-                </p>
-                <p class="Race"><label>Race <input class="span2" type="text" name="Race" ></label></p>
-                <p class="bloc2"><label class="Religion">Religion <input class="span3" type="text" name="Religion"></label>
-                   <label class='Language'>Language:<input class="span3" type="text" name="Language"></label></p>
+                <div class="control-group">
+                    <label class="control-label" for='FirstName' >First Name </label> 
+                    <div class="controls">
+                    <input class="span7" type="text" name='FirstName'>
+                    </div>
+                </div>
+                 <div class="control-group">
+                    <label class="control-label" for='LastName' >Last Name</label>
+                    <div class="controls">
+                       <input  class="span7" type="text" name="LastName">
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="SSN">SSN:</label>
+                    <div class="controls">
+                        <input class="span7" type="text" name="SSN">
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="DateOfbirth">Date birth:</label>
+                    <div class="controls">
+                        <input class="span7" type="text" name="DateOfbirth">
+                    </div>
+                </div>
+                 <div class="control-group">
+                    <label class="control-label">Gender </label>
+                        <div class="controls">
+                         <select class='span2' name="Gender">
+                                    <option value="man">Man</option>
+                                    <option value="woman">Woman</option>
+                        </select>
+                        </div>
+                </div>
+                <div class="control-group">
+                    <label class='control-label'>Marital status </label>
+                    <div class="controls">
+                        <select class="span2" name="MaritalStatus">
+                                    <option value="single">Single</option>
+                                    <option value="married">Married</option>
+                        </select>
+                    </div>
+                </div>
+                  <div class="control-group">
+                    <label class='control-label' for="Race">Race</label>
+                    <div class='controls'>
+                        <input class="span7" type="text" name="Race" >
+                    </div>
+                </div>
+                <div class="control-group">    
+                    <label  class='control-label' for="Religion">Religion </label>
+                    <div class='controls'>
+                        <input class="span7" type="text" name="Religion">
+                    </div>
+                </div>
+                <div class="control-group">    
+                    <label class='control-label' for="Language">Language:</label>
+                    <div class="controls">
+                        <input class="span7" type="text" name="Language">
+                    </div>
+                </div>
+               
         </div>
-
-        <div class="formAdd">
+        <div class="form-horizontal">
             <p class="hederInfo">Patient contacts</p>
-            <p><label class='Address'>Address <input type="text" name="PatientAddress"></label></p>
-            <p><label class="City">City <input type="text" name="PatientCity"></label>
-               <label class="State">State <input type="text" name="PatientState"></label>
-             </p>
-             <p><label class="Phone">Phone Number: <input type="text" name="PatientPhone"></label>
-             <label class="Zip">Zip <input type="text" name="PatientZip"></label></p>
+
+             <div class="control-group"> 
+                <label class='control-label' for='PatientAddress'>Address </label>
+                <div class='controls'>
+                    <input class="span7" type="text" name="PatientAddress">
+                </div>
+            </div>
+            <div class="control-group"> 
+                <label class='control-label' for='PatientCity'>City </label>
+                    <div class='controls'>
+                        <input class="span7" type="text" name="PatientCity">
+                    </div>
+                </div>
+            <div class="control-group">
+                <label class='control-label' for="PatientState" >State </label>
+                <div class="controls">
+                    <input class="span7" type="text" name="PatientState">
+                </div>
+            </div>
+            <div class="control-group">
+                 <label class='control-label' for="PatientPhone">Phone Number:</label>
+                 <div class='controls'>
+                     <input class="span7" type="text" name="PatientPhone">
+                </div>
+            </div>
+            <div class="control-group">
+                 <label class='control-label'>Zip </label>
+                 <div class='controls'>
+                    <input class="span7" type="text" name="PatientZip">
+                 </div>
+            </div>
         </div>
-        <div class="formAdd">
+        <div class="form-horizontal">
             <p class="hederInfo">Employer contacts</p>
-            <p class='EmpName'><label>Employer name <input type="text" name="EmployerName"></label></p>
-            <p class='Address'><label>Address <input type="text" name="EmployerAddress"></label></p>
-            <p><label class="City">City <input type="text" name="EmployerCity"></label>
-               <label class="State">State <input type="text" name="EmployerState"></label>
-             </p>
-             <p><label class="Phone">Phone Number: <input type="text" name="EmployerPhone"></label>
-             <label class="Zip">Zip <input type="text" name="EmployerZip"></label></p>
+            <div class="control-group">
+                <label  class='control-label'>Employer name </label>
+                <div class='controls'>
+                    <input class="span7" type="text" name="EmployerName">
+                </div>
+            </div>
+            <div class="control-group">
+                <label class='control-label'>Address </label>
+                <div class="controls">
+                    <input class="span7" type="text" name="EmployerAddress">
+                </div>
+            </div>
+            <div class="control-group">
+                <label class='control-label'>City </label>
+                <div class='controls'>
+                    <input class="span7" type="text" name="EmployerCity">
+                </div>
+            </div>
+            <div class="control-group">
+                <label class='control-label'>State </label>
+                <div class='controls'>
+                    <input class="span7" type="text" name="EmployerState">
+                </div>
+            </div>
+            <div class="control-group">
+                <label class='control-label'>Phone Number: </label>
+                <div class='controls'>
+                    <input class="span7" type="text" name="EmployerPhone">
+                </div>
+            </div>
+           <div class="control-group">
+                <label class='control-label' for="EmployerZip">Zip </label>
+                <div class='controls'>
+                    <input class="span7" type="text" name="EmployerZip">
+                </div>
+            </div>
         </div>
 
 
