@@ -11,11 +11,9 @@ require.config({
 		'SearchPatients' : 'views/SearchPatients',
 		'jsrender' : 'lib/jsrender',
 		'text' : 'lib/text',
-		'editPatient' : 'views/editPatient'
-
-
-
-
+		'editPatient' : 'views/editPatient',
+		'MainRouter' : 'routers/MainRouter'
+		
 	},
 	shim:{
 		jquery : {
@@ -43,13 +41,12 @@ require.config({
 
 });
 
-require(['Patients', 'SearchPatients'], function(PatientsCollection, SearchPatientsView){
-
-	var Patients =  new PatientsCollection;
-	var SearchView = new SearchPatientsView({collection:Patients});
-	console.log("init require");
+require(['MainRouter', 'backbone'], function(Router, Backbone){
 
 
+	var MainRouter = new Router;
+	Backbone.history.start();
+	
 });
 
 

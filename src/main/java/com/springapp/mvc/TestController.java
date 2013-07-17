@@ -4,14 +4,14 @@ package com.springapp.mvc;
 import com.google.gson.Gson;
 import com.springapp.models.PatientModel;
 import com.springapp.service.PatientService;
+import org.codehaus.jackson.JsonParseException;
+import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
 import java.util.List;
 
 
@@ -30,15 +30,12 @@ import java.util.List;
 public class TestController {
     @Autowired
     private PatientService patientService;
-    @RequestMapping(value="/test", method = RequestMethod.POST)
+    @RequestMapping(value="/test", method = RequestMethod.GET)
     public @ResponseBody String printWelcome(@RequestParam("requestString") String requestString ,ModelMap model) {
         //model.addAttribute("message", "{'FirstName':'Dima', 'LastName':'Kozaryok'}");
         System.out.println(requestString + " string");
         List<PatientModel> result = patientService.searchPatient(requestString);
-
         String json = new Gson().toJson(result);
-
-
         return json;
     }
 
@@ -51,12 +48,12 @@ public class TestController {
     }
 
     @RequestMapping(value="/updatePatient", method = RequestMethod.POST)
-    public String updatePatient(PatientModel patientModel){
+    public @ResponseBody String updatePatient(PatientModel patientModel){
 
         String result = patientService.editPatient(patientModel);
 
 
-        return null;
+        return "Dane!";
     }
 
 

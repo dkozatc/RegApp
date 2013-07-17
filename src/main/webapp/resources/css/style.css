@@ -1,8 +1,6 @@
 
 h3{
  padding-left: 20px;
-
-
 }
 #inputSearch{
 	height:30px;
@@ -24,7 +22,7 @@ font-style: italic;
 .resultBlock:hover{
 background-image: url('/resources/img/background.png');
 background-repeat: repeat-x;
-border:1px solid blue;
+
 }
 .resultRow{
 line-height: 10px;
@@ -123,8 +121,9 @@ height: 30px;
 }
  .form-horizontal div.control-group{
 margin-bottom: 5px;
-
-
-
-
+}
+.alertMessage{
+position:fixed;
+top:0px;
+right:0px;
 }

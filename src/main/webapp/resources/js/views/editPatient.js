@@ -14,8 +14,6 @@
 
  ], function(_, $, Backbone, Tools, jsrende){
 
-
-
            var Event = _.extend(Backbone.Events);
            var EditPatientView = Backbone.View.extend({
                tagName:'div',
@@ -26,6 +24,7 @@
 
 
                Event.on('LoadTemplate', this.loadTemplate, this);
+               Event.on('AlertUpdateTrue', this.alertUpdateTrue, this);
                this.render();
                },
                events:{
@@ -57,17 +56,19 @@
 
              },
              updatePatient: function (){
-
                   var Patient = new Object();
                   $("form[name='editPatientForm']").find('input,select').not('[type="button"]').each(function(){
                    console.log(this);
                    Patient[$(this).attr('name')] = $(this).val();
-
-
                    });
 
                   Patient['PatientID'] = this.model.get('PatientID');
                   Event.trigger('updatePatient', Patient);
+             },
+             alertUpdateTrue: function (){
+                      alert("same");
+                     $('.container').append("<div class='alert alert-success alertMessage'><button type='button' class='close' data-dismiss='alert'>&times;</button><h4>Success!</h4>Update Patient informaton success!!</div>");
+                     setTimeout(function(){ $('.alert').remove();}, 3000);
              }
            });
 

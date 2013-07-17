@@ -66,14 +66,14 @@ define([
                 }
            },
            searchSend: function(e){
-
                 console.log(e.keyCode);
                 if(e.keyCode >= 48 && e.keyCode <= 90 || e.keyCode == 8 ){
                         $(".autocompleteSearch").html("");
                         this.activeBlock=0;
                        $('.autocompleteSearch').show();
-                       var b = Tools.SearchRequest($("#inputSearch").val());
-                       console.log(b);
+                       Event.trigger('SuccessSearch', $("#inputSearch").val());
+                       //var b = Tools.SearchRequest($("#inputSearch").val());
+                       //console.log(b);
                 };
                 //------cursor navigation ivents-------------
                 if(e.keyCode == 38 || e.keyCode == 40 ){
@@ -112,16 +112,15 @@ define([
                 }
               //---------------------------------------------------------------------------------------------
               //----Press enter Event for Cursor-------------------------------------------------------------
-              if(e.keyCode == 13){
-                   var coutResultBlocks = $('.autocompleteSearch').find('.resultBlock');
-                   console.log("Enter Press"+coutResultBlocks.length);
+            if(e.keyCode == 13){
+                  var coutResultBlocks = $('.autocompleteSearch').find('.resultBlock');
+                  console.log("Enter Press"+coutResultBlocks.length);
                   if(coutResultBlocks.length>=1){
                     $(coutResultBlocks[this.activeBlock]).click();
                   }               
               }
 
               //---------------------------------------------------------------------------------------------
-            
             },
             addNewPatient: function(){
                 if ($('.editPatient').length !== 0) {
