@@ -20,9 +20,6 @@
                className:'editPatient',
 
                initialize: function(){
-
-
-
                Event.on('LoadTemplate', this.loadTemplate, this);
                Event.on('AlertUpdateTrue', this.alertUpdateTrue, this);
                this.render();
@@ -35,11 +32,11 @@
                },
               render: function () {
                 console.log('render editViews');
-                  if($('#EditForm').length == 0){
+                  if($('#PatientForm').length == 0){
 
-                  Tools.LoadTemplate("PatientEditForm");
+                  Tools.LoadTemplate("PatientForm");
                   }else{
-                  var template = $.templates("#EditForm");
+                  var template = $.templates("#PatientForm");
                   var htmlOutput = template.render(this.model.toJSON());
                   this.$el.html(htmlOutput);
 
@@ -47,26 +44,25 @@
                   }
               },
               loadTemplate: function (inTemplate){
-                  
                   $('body').append(inTemplate);
-                  var template = $.templates("#EditForm");
+                  var template = $.templates("#PatientForm");
                   var htmlOutput = template.render(this.model.toJSON());
                   this.$el.html(htmlOutput);
                   Event.off('LoadTemplate');
-
              },
              updatePatient: function (){
                   var Patient = new Object();
-                  $("form[name='editPatientForm']").find('input,select').not('[type="button"]').each(function(){
+                  $("form[name='PatientForm']").find('input,select').not('[type="button"]').each(function(){
                    console.log(this);
                    Patient[$(this).attr('name')] = $(this).val();
                    });
 
                   Patient['PatientID'] = this.model.get('PatientID');
+
                   Event.trigger('updatePatient', Patient);
+                  
              },
              alertUpdateTrue: function (){
-                      alert("same");
                      $('.container').append("<div class='alert alert-success alertMessage'><button type='button' class='close' data-dismiss='alert'>&times;</button><h4>Success!</h4>Update Patient informaton success!!</div>");
                      setTimeout(function(){ $('.alert').remove();}, 3000);
              }

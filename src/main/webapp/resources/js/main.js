@@ -6,14 +6,15 @@ require.config({
 		'backbone' : 'lib/backbone',
 		'bootstrap' : 'lib/bootstrap',
 		'Patients' : 'collections/Patients',
+		'PatientsAll': 'collections/PatientsAll',
 		'Patient':  'models/Patient',
 		'tools': 'lib/tools',
 		'SearchPatients' : 'views/SearchPatients',
 		'jsrender' : 'lib/jsrender',
 		'text' : 'lib/text',
 		'editPatient' : 'views/editPatient',
+		'SinglePatient' : 'views/PatientView',
 		'MainRouter' : 'routers/MainRouter'
-		
 	},
 	shim:{
 		jquery : {
@@ -35,8 +36,6 @@ require.config({
 		bootstrap : {
 			deps: ['jquery']
 		}
-
-
 	}
 
 });

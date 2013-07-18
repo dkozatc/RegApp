@@ -8,9 +8,11 @@
 define(['underscore',
         'jquery',
         'backbone',
-        'tools'],
+        'tools',
+        'Patient',
+        'jsrender'],
         
-        function( _, $, Backbone, Tools){
+        function( _, $, Backbone, Tools, PatientModel, JsRender){
 
     var Event = _.extend(Backbone.Events);
     var AddPatientsView =  Backbone.View.extend({
@@ -29,37 +31,34 @@ define(['underscore',
             'click .btn': 'sendData',
         },
         render: function() {
-            Tools.LoadTemplate("PatientAddForm");
+            Tools.LoadTemplate("PatientForm");
          },
-         loadTemplate: function (template){
-            this.$el.html(template);
+         loadTemplate: function (inTemplate){
+                  $('body').append(inTemplate);
+                  var template = $.templates("#PatientForm");
+                  var model = new PatientModel();
+                  var htmlOutput = template.render(model.toJSON());
+                  this.$el.html(htmlOutput);
+                    $('h3').html("Add New Patient");
             Event.off('LoadTemplate');
             },
          sendData: function (){
+
             var Patient = new Object();
-            $("form[name='addPatientForm']").find('input,select').not('[type="button"]').each(function(){
+            $("form[name='PatientForm']").find('input,select').not('[type="button"]').each(function(){
               console.log(this);
               Patient[$(this).attr('name')] = $(this).val();
             });
-            console.log('execut');
+            console.log(Patient);
             Event.trigger('AddNewPatient', Patient);
 
-            $("form[name='addPatientForm']")[0].reset();
+            $("form[name='PatientForm']")[0].reset();
          },
+
          alerAddTrue: function (){
               $('.container').append("<div class='alert alert-success alertMessage'><button type='button' class='close' data-dismiss='alert'>&times;</button><h4>Success!</h4>Added Patient success!!</div>");
               setTimeout(function(){ $('.alert').remove();}, 3000);
          }
-
-
-
-
-
-
-
-
-
-
     });
 
 

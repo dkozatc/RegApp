@@ -4,9 +4,11 @@ define([
     'backbone',
     'tools',
     'views/addPatients',
-    'views/SearchResult'
+    'views/SearchResult',
+    'views/PatientAllView',
+    'PatientsAll'
     
-  ], function( _, $, Backbone, Tools, AddPatientView, SearchResultView){
+  ], function( _, $, Backbone, Tools, AddPatientView, SearchResultView, AllPatientView, PatientAllCollection){
         var Event = _.extend(Backbone.Events);
 	      var SearchPatientsView =  Backbone.View.extend({
 	          el:'.container',
@@ -14,9 +16,11 @@ define([
             cursoreFocus:false,
 	          initialize: function(){
 
+                this.PatientAll = new AllPatientView({collection:new PatientAllCollection()});
                 this.render();
                 Event.on('LoadTemplate', this.loadTemplate, this);
                 this.collection.on('add', this.addOne, this);
+
 	           },
             events:{
 	             'focus #inputSearch': 'showAutocomplete',
@@ -25,7 +29,8 @@ define([
                'blur  #inputSearch': 'hideAutocomplete',
                'keyup #inputSearch':'searchSend',
                'click #addPatient' : 'addNewPatient',
-               'resize window': 'showAutocomplete'
+               'click #searchBtn' : 'SearchPatients'
+
 	           },
             render: function(){
                 Tools.LoadTemplate("navTemplate");
@@ -39,9 +44,7 @@ define([
             },
             addOne: function (model){
                    if($('.resultBlock').length < 7 ){
-                     console.log($('.resultBlock').length);
                      var findedPatientVeiew = new SearchResultView({model:model})
-                     console.log(findedPatientVeiew.$el);
                      $(".autocompleteSearch").append(findedPatientVeiew.el);
                 }
 
@@ -58,7 +61,7 @@ define([
                 $('.autocompleteSearch').show();
             },
             hideAutocomplete: function(){
-              console.log(this.cursoreFocus);
+              
                 if(!this.cursoreFocus){
                     $('.autocompleteSearch').hide();
                     var position = $('#inputSearch').offset();
@@ -66,14 +69,13 @@ define([
                 }
            },
            searchSend: function(e){
-                console.log(e.keyCode);
+                
                 if(e.keyCode >= 48 && e.keyCode <= 90 || e.keyCode == 8 ){
                         $(".autocompleteSearch").html("");
                         this.activeBlock=0;
                        $('.autocompleteSearch').show();
                        Event.trigger('SuccessSearch', $("#inputSearch").val());
-                       //var b = Tools.SearchRequest($("#inputSearch").val());
-                       //console.log(b);
+                       
                 };
                 //------cursor navigation ivents-------------
                 if(e.keyCode == 38 || e.keyCode == 40 ){
@@ -84,7 +86,6 @@ define([
                         if(e.keyCode == 38){
                                 if(this.activeBlock >= 0 && this.activeBlock <= coutResultBlocks.length){
                                        var coutResultBlocks = $('.autocompleteSearch').find('.resultBlock');
-                                       console.log();
                                        if(coutResultBlocks.length>1 && this.activeBlock !=0){
                                             $(coutResultBlocks[this.activeBlock]).removeClass('selected');
                                             this.activeBlock--;
@@ -98,8 +99,6 @@ define([
                           var coutResultBlocks = $('.autocompleteSearch').find('.resultBlock');
                               if(this.activeBlock >=0 && this.activeBlock < coutResultBlocks.length){
                                         
-                                        console.log($(coutResultBlocks[this.activeBlock]).addClass('selected'));
-                                        console.log(this.activeBlock);
                                         if(coutResultBlocks.length>1 && this.activeBlock < coutResultBlocks.length-1){
                                            $(coutResultBlocks[this.activeBlock]).removeClass('selected');
                                            this.activeBlock++;
@@ -114,7 +113,6 @@ define([
               //----Press enter Event for Cursor-------------------------------------------------------------
             if(e.keyCode == 13){
                   var coutResultBlocks = $('.autocompleteSearch').find('.resultBlock');
-                  console.log("Enter Press"+coutResultBlocks.length);
                   if(coutResultBlocks.length>=1){
                     $(coutResultBlocks[this.activeBlock]).click();
                   }               
@@ -128,10 +126,20 @@ define([
                 };
                 if($('#addPatientForm').length == 0){
                      var AddView = new AddPatientView;
-                     console.log(AddView.el);
                      this.$el.append(AddView.el);
                }
+            },
+            SearchPatients: function(){
+                $('#addPatientForm').remove();
+                $('.editPatient').remove();
+                $('.PatientAll').html("");
+                Event.trigger("SuccessALL", $("#inputSearch").val());
+
+                this.$el.append(this.PatientAll.el);
+                
             }
+
+
 	});
 
   return SearchPatientsView;

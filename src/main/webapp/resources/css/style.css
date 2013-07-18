@@ -27,10 +27,9 @@ background-repeat: repeat-x;
 .resultRow{
 line-height: 10px;
 }
-#PatientsEditForm{
+#PatientsForm{
   margin: 70px auto;
 }
-
 .autocompleteSearch{
    position:absolute;
    top:35px;
@@ -111,7 +110,7 @@ height: 30px;
 .logo{
 
 }
-#PatientsEditForm  .btn{
+#PatientsForm  .btn{
   margin-left: 620px;
 }
 .selected{
@@ -126,4 +125,10 @@ margin-bottom: 5px;
 position:fixed;
 top:0px;
 right:0px;
+}
+.PatientAll{
+  margin-top: 100px;
+
+
+
 }
