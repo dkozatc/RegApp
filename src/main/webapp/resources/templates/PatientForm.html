@@ -40,6 +40,10 @@
                                      <option value="man">Man</option>
                                     <option selected value="woman">Woman</option>
                                     {{/if}}
+                                     {{if Gender === ''}}
+                                      <option value="man">Man</option>
+                                      <option  value="woman">Woman</option>
+                                    {{/if}}
                                  </select>
                         </div>
                     </div>
@@ -54,6 +58,10 @@
                                         {{if MaritalStatus === 'married'}}
                                         <option  value="single">Single</option>
                                         <option selected value="married">Married</option>
+                                        {{/if}}
+                                        {{if MaritalStatus === ''}}
+                                        <option  value="single">Single</option>
+                                        <option  value="married">Married</option>
                                         {{/if}}
                                     </select>
                         </div>

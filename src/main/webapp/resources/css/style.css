@@ -128,7 +128,22 @@ right:0px;
 }
 .PatientAll{
   margin-top: 100px;
-
-
-
+}
+.Names{
+font-size: 18px;
+color:#00ADCF;
+}
+.patientBlock{
+font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+margin:1px 90px;
+width: 600px;
+padding: 3px;
+border:1px solid #AAB6B6;
+-webkit-border-radius: 10px;
+-moz-border-radius: 10px;
+border-radius: 10px;
+background-color: #FBFBFB; 
+}
+.boxValue{
+color:#00ADCF;
 }

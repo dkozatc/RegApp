@@ -9,6 +9,7 @@ define(['jquery',
  	var Event = _.extend(Backbone.Events);
  	var SinglePatientView =  Backbone.View.extend({
  		tagName:'div',
+ 		className:'patientBlock',
  		initialize: function(){
 
  			Event.on('LoadTemplate', this.loadTemplate, this);
