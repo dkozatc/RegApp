@@ -14,7 +14,9 @@ require.config({
 		'text' : 'lib/text',
 		'editPatient' : 'views/editPatient',
 		'SinglePatient' : 'views/PatientView',
-		'MainRouter' : 'routers/MainRouter'
+		'MainRouter' : 'routers/MainRouter',
+		'Validate' : 'lib/validation',
+		'Datapicker' : 'lib/jquery-ui'
 	},
 	shim:{
 		jquery : {

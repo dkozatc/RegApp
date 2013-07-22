@@ -13,8 +13,9 @@ define(['underscore',
 				className: 'resultBlock',
 
 				initialize: function () {
-		
+					
 					this.render();
+					Event.off('LoadTemplate');
 					Event.on('LoadTemplate', this.loadTemplate, this);
 				},
 				events:{
@@ -38,6 +39,7 @@ define(['underscore',
             		Event.off('LoadTemplate');
          		},
          		PatientEdit: function(model){
+         	
         			if($('#addPatientForm').length !== 0){
          				$('#addPatientForm').remove();
          			}

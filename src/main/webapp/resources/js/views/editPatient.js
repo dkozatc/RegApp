@@ -9,10 +9,11 @@
          'jquery',
          'backbone',
          'tools',
-         'jsrender'
+         'jsrender',
+         'Validate'
 
 
- ], function(_, $, Backbone, Tools, jsrende){
+ ], function(_, $, Backbone, Tools, jsrende, Validate){
 
            var Event = _.extend(Backbone.Events);
            var EditPatientView = Backbone.View.extend({
@@ -26,9 +27,6 @@
                },
                events:{
                   'click .btn-info': 'updatePatient'
-
-
-
                },
               render: function () {
                 console.log('render editViews');
@@ -51,24 +49,26 @@
                   Event.off('LoadTemplate');
              },
              updatePatient: function (){
-                  var Patient = new Object();
-                  $("form[name='PatientForm']").find('input,select').not('[type="button"]').each(function(){
-                   console.log(this);
-                   Patient[$(this).attr('name')] = $(this).val();
+                   var valideteErrors = 0;
+                   var Patient = new Object();
+                   $("form[name='PatientForm']").find('input,select').not('[type="button"]').each(function(){
+                         if(Validate.checkForm($(this).attr('name'), $(this).val())){
+                             Patient[$(this).attr('name')] = $(this).val();
+                         }else{
+                             valideteErrors++;
+                         }
                    });
-
-                  Patient['PatientID'] = this.model.get('PatientID');
-
-                  Event.trigger('updatePatient', Patient);
-                  
+                   if(valideteErrors==0){
+                         Patient['PatientID'] = this.model.get('PatientID');
+                         Event.trigger('updatePatient', Patient);
+                         $('.errorMessage').hide();
+                    }       
              },
              alertUpdateTrue: function (){
                      $('.container').append("<div class='alert alert-success alertMessage'><button type='button' class='close' data-dismiss='alert'>&times;</button><h4>Success!</h4>Update Patient informaton success!!</div>");
                      setTimeout(function(){ $('.alert').remove();}, 3000);
              }
            });
-
-
            return EditPatientView;
 
  });

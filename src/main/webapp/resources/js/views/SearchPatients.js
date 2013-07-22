@@ -16,7 +16,7 @@ define([
             cursoreFocus:false,
 	          initialize: function(){
 
-                this.PatientAll = new AllPatientView({collection:new PatientAllCollection()});
+               
                 this.render();
                 Event.on('LoadTemplate', this.loadTemplate, this);
                 this.collection.on('add', this.addOne, this);
@@ -69,13 +69,12 @@ define([
                 }
            },
            searchSend: function(e){
-                
+                console.log("press event");
                 if(e.keyCode >= 48 && e.keyCode <= 90 || e.keyCode == 8 ){
                         $(".autocompleteSearch").html("");
                         this.activeBlock=0;
                        $('.autocompleteSearch').show();
                        Event.trigger('SuccessSearch', $("#inputSearch").val());
-                       
                 };
                 //------cursor navigation ivents-------------
                 if(e.keyCode == 38 || e.keyCode == 40 ){
@@ -117,25 +116,13 @@ define([
                     $(coutResultBlocks[this.activeBlock]).click();
                   }               
               }
-
-              //---------------------------------------------------------------------------------------------
+             //---------------------------------------------------------------------------------------------
             },
             addNewPatient: function(){
-                if ($('.editPatient').length !== 0) {
-                     $('.editPatient').remove();
-                };
-                if($('#addPatientForm').length == 0){
-                     var AddView = new AddPatientView;
-                     this.$el.append(AddView.el);
-               }
+              // window.location.href="http://localhost:8080/#AddPatient";
             },
             SearchPatients: function(){
-                $('#addPatientForm').remove();
-                $('.editPatient').remove();
-                $('.PatientAll').html("");
-                Event.trigger("SuccessALL", $("#inputSearch").val());
-
-                this.$el.append(this.PatientAll.el);
+                window.location.href="http://localhost:8080/#SearchPatients/"+ $("#inputSearch").val();
                 
             }
 

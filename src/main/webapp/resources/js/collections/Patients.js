@@ -23,7 +23,21 @@ define([
 			var model = new PatientModel(obj);
 			model.url = "/addPatient";
 			model.set('PatientID', 0);
-			model.save(model.toJSON(), {data:model.toJSON(), processData:true});
+			model.save(model.toJSON(), {data:model.toJSON(), processData:true,
+				success:function(model, response){
+				console.log("good response");
+					console.log(model);
+					console.log(response);	
+
+				},
+				error: function(model, response){
+
+					console.log("error hendler");
+					console.log("")
+					console.log("SAme model "+model);
+					console.log(response);
+				}
+			});
 			Event.trigger('AlertAddTrue');
    		},
 	    updatePatient: function(object){

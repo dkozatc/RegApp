@@ -52,50 +52,7 @@ p label{
 p input[type="text"]{
   height: 20px;
 }
-.labelSSN{
-  margin-left: 45px;
-}
-.birthData{
-  padding-left: 10px;
-}
-.bloc1{
-  padding-left: 10px;
-}
-.gender{
-  padding-left: 16px
-  ;}
-.Marital{
-  position:relative;
-  left: -31px;
-}
-.Race{ 
-  padding-left: 45px; 
-}
-.Religion{ 
-  padding-left: 24px; 
-}
-.Language{
-  padding-left: 9px; 
-}
-.Address{ 
-  padding-left: 20px; 
-}
-.City{
-  padding-left: 55px;
-   }
-.State{
- padding-left: 45px;
-  }
-.Phone{
-position: relative;
-left:-40px;
-}
-.Zip{
- padding-left: 60px; }
-.EmpName{
-position: relative;
-left:-40px;  
-}
+
 #addPatientForm .btn{ 
   margin-left: 620px;
 }
@@ -107,16 +64,12 @@ background-color: #f2f2f2;
 width: 610px;
 height: 30px;
 }
-.logo{
-
-}
 #PatientsForm  .btn{
   margin-left: 620px;
 }
 .selected{
   background-image: url('/resources/img/background.png');
   background-repeat: repeat-x;
-  
 }
  .form-horizontal div.control-group{
 margin-bottom: 5px;
@@ -146,4 +99,8 @@ background-color: #FBFBFB;
 }
 .boxValue{
 color:#00ADCF;
+}
+.errorMessage{
+color: red;
+font-size: 15px;
 }

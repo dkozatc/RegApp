@@ -42,15 +42,15 @@ public class TestController {
     @RequestMapping(value="/addPatient", method = RequestMethod.POST)
     public String addNewPatient(PatientModel patientModel){
 
-        String a = patientService.createPatient(patientModel);
-        System.out.print(a);
+       // String a = patientService.createPatient(patientModel);
+        //System.out.print(a);
         return "addNew";
     }
 
     @RequestMapping(value="/updatePatient", method = RequestMethod.POST)
     public @ResponseBody String updatePatient(PatientModel patientModel){
 
-        String result = patientService.editPatient(patientModel);
+        //String result = patientService.editPatient(patientModel);
 
 
         return "Dane!";

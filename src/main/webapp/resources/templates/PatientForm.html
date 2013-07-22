@@ -1,6 +1,7 @@
 <script type="text/x-jsrender" id="PatientForm">
     <div id="PatientsForm">
         <h3>Editing information of Patient</h3>
+        <div class='errorMessage'></div>
         <form name="PatientForm">
             <div class="form-horizontal">
                     <p class="hederInfo">Patient Information<p>
@@ -8,24 +9,28 @@
                         <label class="control-label" for='FirstName' >First Name </label> 
                         <div class="controls">
                             <input class="span7" type="text" name='FirstName' value={{:FirstName}}>
+                            <div class='validateMessage'></div>
                         </div>
                     </div>
                      <div class="control-group">
                         <label class="control-label" for='LastName' >Last Name</label>
                         <div class="controls">
                             <input  class="span7" type="text" name="LastName" value={{:LastName}}>
+                            <div class='validateMessage'></div>
                         </div>
                     </div>
                         <div class="control-group">
                         <label class="control-label" for="SSN">SSN:</label>
                         <div class="controls">
                             <input class="span7" type="text" name="SSN" value={{:SSN}}>
+                            <div class='validateMessage'></div>
                         </div>
                     </div>
                      <div class="control-group">
                         <label class="control-label" for="DateOfbirth">Date birth:</label>
                         <div class="controls">
-                            <input class="span7" type="text" name="DateOfbirth" value={{:DateOfbirth}} > 
+                            <input id='dataofbirth' class="span7" type="text" name="DateOfbirth" value={{:DateOfbirth}} > 
+                            <div class='validateMessage'></div>
                         </div>
                     </div>
                     <div class="control-group">
@@ -45,6 +50,7 @@
                                       <option  value="woman">Woman</option>
                                     {{/if}}
                                  </select>
+                          <div class='validateMessage'></div>
                         </div>
                     </div>
                      <div class="control-group">
@@ -64,24 +70,28 @@
                                         <option  value="married">Married</option>
                                         {{/if}}
                                     </select>
+                            <div class='validateMessage'></div>
                         </div>
                     </div>
                     <div class="control-group">
                         <label class='control-label' for="Race">Race</label>
                         <div class='controls'>
                              <input class="span7" type="text" name="Race" value={{:Race}} >
+                             <div class='validateMessage'></div>
                         </div>
                     </div>
                      <div class="control-group">    
                         <label  class='control-label' for="Religion">Religion </label>
                         <div class='controls'>
                             <input class="span7" type="text" name="Religion" value={{:Religion}}>
+                            <div class='validateMessage'></div>
                         </div>
                     </div>
                     <div class="control-group">    
                         <label class='control-label' for="Language">Language:</label>
                         <div class="controls">
                             <input class="span7" type="text" name="Language" value={{:Language}}>
+                            <div class='validateMessage'></div>
                         </div>
                     </div>
             </div>
@@ -92,6 +102,7 @@
                         <label class='control-label' for='PatientAddress'>Address </label>
                         <div class='controls'>
                             <input class="span7"  type="text" name="PatientAddress" value={{:PatientAddress}}>
+                            <div class='validateMessage'></div>
                         </div>
                     </div>
 
@@ -99,28 +110,31 @@
                         <label class='control-label' for='PatientCity'>City </label>
                         <div class='controls'>
                              <input  class="span7" type="text" name="PatientCity" value={{:PatientCity}}>
+                             <div class='validateMessage'></div>
                         </div>
                     </div>
                     <div class="control-group">
                         <label class='control-label' for="PatientState" >State </label>
                         <div class="controls">
                              <input  class="span7" type="text" name="PatientState" value={{:PatientState}}>
+                             <div class='validateMessage'></div>
                         </div>
                     </div>
                     <div class="control-group">
                          <label class='control-label' for="PatientPhone">Phone Number:</label>
                          <div class='controls'>
                               <input class="span7"  type="text" name="PatientPhone" value={{:PatientPhone}}>
+                              <div class='validateMessage'></div>
                         </div>
                     </div>
                     <div class="control-group">
                          <label class='control-label'>Zip </label>
                          <div class='controls'>
                              <input  class="span7" type="text" name="PatientZip" value={{:PatientZip}}>
+                             <div class='validateMessage'></div>
                          </div>
                     </div>
-                                       
-                   
+            
             </div>
             <div class="form-horizontal">
                     <p class="hederInfo">Employer contacts</p>
@@ -128,30 +142,35 @@
                          <label  class='control-label'>Employer name </label>
                          <div class='controls'>
                              <input class="span7"  type="text" name="EmployerName" value={{:EmployerName}}>
+                             <div class='validateMessage'></div>
                          </div>
                      </div>
                      <div class="control-group">
                           <label class='control-label'>Address </label>
                           <div class="controls">
                               <input class="span7"  type="text" name="EmployerAddress" value={{:EmployerAddress}}>
+                              <div class='validateMessage'></div>
                           </div>
                      </div>
                      <div class="control-group">
                           <label class='control-label'>City </label>
                           <div class='controls'>
                               <input class="span7"  type="text" name="EmployerCity" value={{:EmployerCity}}>
+                              <div class='validateMessage'></div>
                           </div>
                     </div>
                     <div class="control-group">
                           <label class='control-label'>State </label>
                           <div class='controls'>
                               <input class="span7"  type="text" name="EmployerState" value={{:EmployerState}}>
+                              <div class='validateMessage'></div>
                           </div>
                     </div>
                     <div class="control-group">
                           <label class='control-label'>Phone Number: </label>
                           <div class='controls'>
                               <input class="span7"  type="text" name="EmployerPhone"value={{:EmployerPhone}} >
+                              <div class='validateMessage'></div>
                           </div>
                     </div>
                                      
@@ -159,6 +178,7 @@
                           <label class='control-label' for="EmployerZip">Zip </label>
                           <div class='controls'>
                               <input class="span7"  type="text" name="EmployerZip" value={{:EmployerZip}}>
+                              <div class='validateMessage'></div>
                           </div>
                     </div>
            </div>

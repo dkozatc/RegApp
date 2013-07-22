@@ -30,12 +30,8 @@ define([
         },
         initialize: function (){
 
-        
         }
-        
-
-
-
+    
     });
 
     return PatientModel;

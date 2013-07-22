@@ -25,7 +25,6 @@ define(['jquery',
 			var htmlOutput = template.render(this.model.toJSON());
           	this.$el.html(htmlOutput);
             Event.off('LoadTemplate');
- 			
  		}
 
 

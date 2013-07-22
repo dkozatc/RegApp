@@ -15,22 +15,7 @@ define(['jquery', 'underscore', 'backbone', 'SinglePatient'], function($, _, Bac
 			var SinglePatient = new PatientView({model:model});
 			this.$el.append(SinglePatient.el);
 			console.log(this.collection);
-
 		}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 	});
 	return PatientAllView;
 

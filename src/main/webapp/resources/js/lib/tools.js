@@ -10,7 +10,6 @@ define(['underscore','jquery', 'backbone'], function( _, $, Backbone){
      var Event = _.extend(Backbone.Events);
      var Tools = {};
         Tools.SearchRequest  = function(request){
-        
 
         $.ajax({
             type: "POST",
@@ -21,8 +20,6 @@ define(['underscore','jquery', 'backbone'], function( _, $, Backbone){
                 Event.trigger('SuccessSearch', msg);      
             }   
         });
-
-        
 
         };
 
