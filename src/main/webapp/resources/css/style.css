@@ -104,3 +104,13 @@ color:#00ADCF;
 color: red;
 font-size: 15px;
 }
+.addEncounter{
+ margin: 70px auto;
+
+
+}
+.addEncounter input.btn {
+margin-left:600px;
+
+
+}

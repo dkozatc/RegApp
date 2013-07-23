@@ -17,7 +17,7 @@ require.config({
 		'MainRouter' : 'routers/MainRouter',
 		'Validate' : 'lib/validation',
 		'Datapicker' : 'lib/jquery-ui'
-	},
+		},
 	shim:{
 		jquery : {
 			deps : [],

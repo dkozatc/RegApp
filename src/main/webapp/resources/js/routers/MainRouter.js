@@ -5,8 +5,18 @@ define(['jquery',
 		'SearchPatients',
 		'views/addPatients',
 		'PatientsAll',
-		'views/PatientAllView'
-		 ], function($, _, Backbone, PatientsCollection, SearchPatientsView, AddPatientView, PatientAllCollection, AllPatientView){
+		'views/PatientAllView',
+		 'jsrender',
+		 'editPatient',
+		 'views/addEncounter'
+		 ], function($, _, Backbone, PatientsCollection, SearchPatientsView, 
+		 			AddPatientView,
+		 			PatientAllCollection,
+		 			AllPatientView,
+		 			jsrender,
+		 			EditPatient,
+		 			EncounterView
+		 ){
 
 		 var Event = _.extend(Backbone.Events);
 		 var MainRouter = Backbone.Router.extend({
@@ -16,9 +26,12 @@ define(['jquery',
 		 	},
 		 	routes:{
 
-		 		'' : 'indexPage',
-		 		'AddPatient': 'addNewPatient',
-		 		'SearchPatients/:query' : 'SearchPatients'
+		 		                     '' : 'indexPage',
+		 		            'AddPatient': 'addNewPatient',
+		 		'SearchPatients/:query' : 'SearchPatients',
+		 		      'EditPatient/:id' : 'editPatient',
+		 		      'addEncounter/:id'  : 'addEncounter'
+
 		 	},
 		 	indexPage: function(){
 		 		$('.container').html("");
@@ -42,7 +55,40 @@ define(['jquery',
                 $('.PatientAll').html("");
                 Event.trigger("SuccessALL", query);
                 $('.container').append(this.PatientAll.el);
-		 	}
+		 	},
+		 	editPatient: function(id){
+		 			var model = this.Patients.get(id);
+		 			console.log(model);
+		 			if(model){
+				 		if($('#addPatientForm').length !== 0){
+	         				$('#addPatientForm').remove();
+	         			}
+	         			if($('.editPatient').length == 0 && $('#PatientsEditForm').length == 0){
+	         				var EditPatientView = new EditPatient({model:model});
+	        				$(".container").append(EditPatientView.el);
+	         			}else{
+	         				var template = $.templates("#PatientForm");
+	                		var htmlOutput = template.render(model.toJSON());
+	            		     $('.editPatient').html(htmlOutput);
+		       			}
+		       			$('#inputSearch').val(model.get('FirstName')+" "+ model.get('LastName'));
+	 	      			$('.autocompleteSearch').hide();
+ 	      			}else{
+ 	      				window.location.href = "http://localhost:8080/";
+ 	      			}
+
+    	 	},
+    	 	addEncounter: function(id){
+    	 			var model = this.Patients.get(id);
+		 			console.log(model);
+		 			if(model){
+		 				console.log("2")
+		 				var AddEncounterView = new EncounterView({model:model});
+		 				console.log(AddEncounterView.el);
+		 				$('.container').append(AddEncounterView.el);
+		 			}
+    	 		
+    	 	}
 		 });
 
 		 return MainRouter;

@@ -21,6 +21,7 @@ define(['underscore',
           this.render();
           Event.on('LoadTemplate', this.loadTemplate, this);
           Event.on('AlertAddTrue', this.alerAddTrue, this);
+          Event.on('addPatientSuccess_addPatients', this.addEncounter, this);
         },
         events:{
             'click .btn': 'sendData',
@@ -41,26 +42,37 @@ define(['underscore',
          sendData: function (){
             var valideteErrors = 0;
             var Patient = new Object();
+            var  firstErrorElement;
             $("form[name='PatientForm']").find('input,select').not('[type="button"]').each(function(){
                   if(Validate.checkForm($(this).attr('name'), $(this).val())){
                       Patient[$(this).attr('name')] = $(this).val();
                       $(this).parents('.control-group').removeClass('error');
                   }else{
                       valideteErrors++;
+                      if(valideteErrors==1){
+                        firstErrorElement =  this;
+                      }
                       $(this).parents('.control-group').addClass('error');
                   }
             });
+
             if(valideteErrors==0){
                    Event.trigger('AddNewPatient', Patient);
-
-                   //$("form[name='PatientForm']")[0].reset();
                    $('.errorMessage').hide();
+                   $('#addPatientForm').remove();
+            }else{
+              $(firstErrorElement).focus();
             }
         },
          alerAddTrue: function (){
               $('.container').append("<div class='alert alert-success alertMessage'><button type='button' class='close' data-dismiss='alert'>&times;</button><h4>Success!</h4>Added Patient success!!</div>");
               setTimeout(function(){ $('.alert').remove();}, 3000);
+         },
+         addEncounter: function(model){
+            window.location.href = "/#addEncounter/"+model.cid;
+
          }
+
     });
 
     return AddPatientsView;

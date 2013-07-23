@@ -13,6 +13,6 @@ import java.util.List;
  */
 public interface PatientService {
     public String editPatient(PatientModel patient);
-    public String createPatient(PatientModel patient);
+    public int createPatient(PatientModel patient);
     public List<PatientModel> searchPatient(String query);
 }

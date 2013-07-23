@@ -35,9 +35,9 @@ public class PatientDaoImpl implements PatientDao {
         this.jdbcTemplate = new JdbcTemplate(this.dataSource);
         System.out.print("set");
     }
-    public String insertPatient(String query){
+    public int insertPatient(String query){
         this.jdbcTemplate.update(query);
-          return "";
+          return this.jdbcTemplate.queryForInt("select last_insert_id()");
     }
     public String updatePatient(PatientModel patient){
         String query = "UPDATE patients SET FirstName=? , LastName=?, SSN=?, Dateofbirth=?, Gender=?, Mtlstatus=?, Race=?,"
@@ -73,7 +73,7 @@ public class PatientDaoImpl implements PatientDao {
             @Override
             public PatientModel mapRow(ResultSet resultSet, int i) throws SQLException {
                 PatientModel patient = new PatientModel();
-                patient.setPatientID(resultSet.getInt("PersonID"));
+                patient.setPatientID(resultSet.getInt("PatientID"));
                 patient.setFirstName(resultSet.getString("FirstName"));
                 patient.setLastName(resultSet.getString("LastName"));
                 patient.setSSN(resultSet.getString("SSN"));
@@ -100,9 +100,14 @@ public class PatientDaoImpl implements PatientDao {
         System.out.print(patients);
         return patients;
     }
-    public int getCountPatient(){
+    public int getPatientID(PatientModel patient){
         int rowCount;
-        rowCount = this.jdbcTemplate.queryForInt("select count(*) from patients");
+
+        rowCount = this.jdbcTemplate.queryForInt("select PatientID from patients where FirstName='"+patient.getFirstName()+
+        "' AND LastName='"+patient.getLastName()+"' AND SSN='"+patient.getSSN()+"';"
+
+        );
+
         return rowCount;
     }
 

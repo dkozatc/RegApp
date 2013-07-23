@@ -13,8 +13,8 @@ import java.util.List;
  * To change this template use File | Settings | File Templates.
  */
 public interface PatientDao {
-    public String insertPatient(String query);
+    public int insertPatient(String query);
     public String updatePatient(PatientModel patient);
     public List<PatientModel> searchPatients(String query);
-    public int getCountPatient();
+    public int getPatientID(PatientModel patient);
 }

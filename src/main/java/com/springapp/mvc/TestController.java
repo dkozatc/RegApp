@@ -40,11 +40,11 @@ public class TestController {
     }
 
     @RequestMapping(value="/addPatient", method = RequestMethod.POST)
-    public String addNewPatient(PatientModel patientModel){
+    public @ResponseBody String addNewPatient(PatientModel patientModel){
 
-       // String a = patientService.createPatient(patientModel);
-        //System.out.print(a);
-        return "addNew";
+        int a = patientService.createPatient(patientModel);
+
+        return "{\"PatientID\":"+a+"}";
     }
 
     @RequestMapping(value="/updatePatient", method = RequestMethod.POST)

@@ -26,8 +26,8 @@ public class PatientServiceImpl implements PatientService {
         patientDao.updatePatient(patient);
         return null;
     }
-    public String createPatient(PatientModel patient){
-        String query = "insert into patients (PersonID, FirstName, LastName, SSN, Dateofbirth, Gender, Mtlstatus, Race," +
+    public int createPatient(PatientModel patient){
+        String query = "insert into patients (PatientID, FirstName, LastName, SSN, Dateofbirth, Gender, Mtlstatus, Race," +
                 " Religion, Language, Address, City, State, Zip, PhoneNumber, EmployerName, EmpAddress, EmpCity, EmpState, "+
                 "EmpZip, EmpPhoneNumber) value (NULL, '"+patient.getFirstName()+"','"+patient.getLastName()+"', '"
                 +patient.getSSN()+"', '"+patient.getDateOfbirth()+"', '"+patient.getGender()+"', '"
@@ -38,7 +38,9 @@ public class PatientServiceImpl implements PatientService {
                 +"','"+patient.getEmployerState()+"','"+patient.getEmployerZip()+"', '"+patient.getEmployerPhone()+"');";
         System.out.print(query);
         patientDao.insertPatient(query);
-        return "dg";
+        int id = patientDao.getPatientID(patient);
+        System.out.print(id);
+        return id;
     }
     public List<PatientModel> searchPatient(String request) {
         String  query = "Select * from patients where FirstName LIKE '%"+request+"%' OR "+
