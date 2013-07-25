@@ -21,7 +21,7 @@
                className:'editPatient',
 
                initialize: function(){
-               Event.on('LoadTemplate', this.loadTemplate, this);
+               Event.on('PatientForm', this.loadTemplate, this);
                Event.on('AlertUpdateTrue', this.alertUpdateTrue, this);
                this.render();
                },
@@ -46,7 +46,7 @@
                   var template = $.templates("#PatientForm");
                   var htmlOutput = template.render(this.model.toJSON());
                   this.$el.html(htmlOutput);
-                  Event.off('LoadTemplate');
+                  Event.off('PatientForm');
              },
              updatePatient: function (){
                    var valideteErrors = 0;

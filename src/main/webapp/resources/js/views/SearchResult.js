@@ -8,19 +8,14 @@ define(['underscore',
 
 		var Event = _.extend(Backbone.Events);
 		var SerchResultView = Backbone.View.extend({
-
 				tagName: 'div',
 				className: 'resultBlock',
-
 				initialize: function () {
-					Event.off('LoadTemplate');
+					Event.on('SearchResult', this.loadTemplate, this);
 					this.render();
-					Event.off('LoadTemplate');
-					Event.on('LoadTemplate', this.loadTemplate, this);
 				},
 				events:{
-					'click ' : 'PatientEdit'
-					
+					'click ' : 'PatientEdit'	
 				},
 				render: function () {
 					if($('#SearchBlock').length == 0){
@@ -31,22 +26,18 @@ define(['underscore',
 	          			this.$el.html(htmlOutput);	
 					}
 				},
-				loadTemplate: function (inTemplate){
-				 	$('body').append(inTemplate);
+				loadTemplate: function (intemplate){
+				 	$('body').append(intemplate);
 				 	var template = $.templates("#SearchBlock");
 					var htmlOutput = template.render(this.model.toJSON());
           			this.$el.html(htmlOutput);
-            		Event.off('LoadTemplate');
+            		Event.off('SearchResult');
          		},
          		PatientEdit: function(){
          			console.log(this.model.cid);
          			window.location.href = "http://localhost:8080/#EditPatient/"+this.model.cid;
          		}
-        			
         });
 		return SerchResultView ;
-
-
-
 
 });

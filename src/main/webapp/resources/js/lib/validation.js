@@ -274,7 +274,51 @@ define(['jquery'], function($){
 					return false;					
 				}
 				break;
-		}
+			case "Diagnose":
+					if(Validate.checkText(fieldValue)){
+					$('input[name="Diagnose"]').parents('.controls').find('p').remove();
+					return true;
+					}else{
+					$('.errorMessage').show();
+					$('input[name="Diagnose"]').parents('.controls').find('.validateMessage').html("<p class='label label-important'>Wrong Diagnosis!</p>");
+					$('input[name="Diagnose"]').focus();
+					return false;					
+					}
+					break;
+			case "Status":
+					if(Validate.checkText(fieldValue)){
+					$('input[name="Status"]').parents('.controls').find('p').remove();
+					return true;
+					}else{
+					$('.errorMessage').show();
+					$('input[name="Status"]').parents('.controls').find('.validateMessage').html("<p class='label label-important'>Wrong Status!</p>");
+					$('input[name="Status"]').focus();
+					return false;					
+					}
+					break;
+			case "TimeIn":
+					if(Validate.checkDate(fieldValue)){
+					$('input[name="TimeIn"]').parents('.controls').find('p').remove();
+					return true;
+					}else{
+					$('.errorMessage').show();
+					$('input[name="TimeIn"]').parents('.controls').find('.validateMessage').html("<p class='label label-important'>Wrong Time in!</p>");
+					$('input[name="TimeIn"]').focus();
+					return false;					
+					}
+					break;
+			case "TimeOut":
+					if(Validate.checkDate(fieldValue)){
+					$('input[name="TimeOut"]').parents('.controls').find('p').remove();
+					return true;
+					}else{
+					$('.errorMessage').show();
+					$('input[name="TimeOut"]').parents('.controls').find('.validateMessage').html("<p class='label label-important'>Wrong Time out!</p>");
+					$('input[name="TimeOut"]').focus();
+					return false;					
+					}
+					break;
+		}	
 		return false;
 		
 	}

@@ -17,16 +17,17 @@ define(['underscore',
 
         initialize: function (){
 
-         Event.off('LoadTemplate');
-          this.render();
-          Event.on('LoadTemplate', this.loadTemplate, this);
-          Event.on('AlertAddTrue', this.alerAddTrue, this);
-          Event.on('addPatientSuccess_addPatients', this.addEncounter, this);
+         Event.on('PatientForm', this.loadTemplate, this);
+         Event.on('AlertAddTrue', this.alerAddTrue, this);
+         Event.on('addPatientSuccess_addPatients', this.addEncounter, this);
+         this.render();
+       
         },
         events:{
             'click .btn': 'sendData',
         },
         render: function() {
+          console.log("render Add patient");
             Tools.LoadTemplate("PatientForm");
          },
          loadTemplate: function (inTemplate){
@@ -36,7 +37,7 @@ define(['underscore',
                   var htmlOutput = template.render(model.toJSON());
                   this.$el.html(htmlOutput);
                   $('h3').html("Add New Patient");
-                  Event.off('LoadTemplate');
+                  Event.off('PatientForm');
                  // $('#dataofbirth').datepicker();
             },
          sendData: function (){
@@ -55,13 +56,12 @@ define(['underscore',
                       $(this).parents('.control-group').addClass('error');
                   }
             });
-
             if(valideteErrors==0){
                    Event.trigger('AddNewPatient', Patient);
                    $('.errorMessage').hide();
                    $('#addPatientForm').remove();
             }else{
-              $(firstErrorElement).focus();
+                   $(firstErrorElement).focus();
             }
         },
          alerAddTrue: function (){

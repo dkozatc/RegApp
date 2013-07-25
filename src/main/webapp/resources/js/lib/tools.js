@@ -23,14 +23,17 @@ define(['underscore','jquery', 'backbone'], function( _, $, Backbone){
 
         };
 
+        
+
         Tools.LoadTemplate = function(name){
 
             $.ajax({
             type: "GET",
             url: "/resources/templates/"+name+".html",
             data:{},
-            success: function(msg){
-                Event.trigger('LoadTemplate', msg);      
+            success: function(Data){
+                Event.trigger(name, Data);   
+
             }   
             });
 

@@ -3,9 +3,10 @@ define([
 	'underscore',
 	'backbone',
 	'tools',
-	'jsrender'
+	'jsrender',
+  'Validate'
 ],
-function($, _, Backbone, Tools, Jsrender){
+function($, _, Backbone, Tools, Jsrender, Validate){
 
 	var Event = _.extend(Backbone.Events);
 	var AddEncouter = Backbone.View.extend({
@@ -13,28 +14,28 @@ function($, _, Backbone, Tools, Jsrender){
     		tagName:'div',
     		className:'addEncounter',
     		initialize: function() {
-    		
+    		Event.on('EncounterForm', this.loadTemplate, this);
     		this.render();
-        Event.on('LoadTemplate', this.loadTemplate, this);
+        
 
 
     		},
     		events:{
     			'click .btn' : 'addEncounterInformation'
 
-
     		},
     		render: function() {
+                console.log('render AddEncounter');
               	Tools.LoadTemplate("EncounterForm");
-             },
+        },
         loadTemplate: function(inTemplate){
           console.log(inTemplate);
           $('body').append(inTemplate);
           var template = $.templates("#EncounterForm");
           var htmlOutput = template.render(this.model.toJSON());
           this.$el.html(htmlOutput);
-          Event.off('LoadTemplate');
-                     // $('#dataofbirth').datepicker();
+          Event.off('EncounterForm');
+          // $('#dataofbirth').datepicker();
         },
         addEncounterInformation: function(){
              	 var valideteErrors = 0;
@@ -51,27 +52,9 @@ function($, _, Backbone, Tools, Jsrender){
                 Encounter['PatientID'] = this.model.get("PatientID");
                 if(valideteErrors==0){
                        Event.trigger('AddNewEncouter', Encounter);
-                       $('.errorMessage').hide();
-                       $('.addEncounter').remove();
+                       $('.errorMessage').hide(); 
                 }
-
-              }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        }
 	});
 	return AddEncouter;
 

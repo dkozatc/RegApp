@@ -12,9 +12,11 @@ define([
     	 	"PatientID" : 0,
     	 	"TimeIn"    : "00/00/0000",
     	 	"TimeOut"   : "00/00/0001"
-    	 }
-    	 
-
+    	 },
+         initialize: function(){
+           
+         }
+        
 
     });
 

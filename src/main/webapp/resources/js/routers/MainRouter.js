@@ -8,19 +8,22 @@ define(['jquery',
 		'views/PatientAllView',
 		 'jsrender',
 		 'editPatient',
-		 'views/addEncounter'
+		 'views/addEncounter',
+		 'collections/Encounts'
 		 ], function($, _, Backbone, PatientsCollection, SearchPatientsView, 
 		 			AddPatientView,
 		 			PatientAllCollection,
 		 			AllPatientView,
 		 			jsrender,
 		 			EditPatient,
-		 			EncounterView
+		 			EncounterView,
+		 			EncoutersCollection
 		 ){
 
 		 var Event = _.extend(Backbone.Events);
 		 var MainRouter = Backbone.Router.extend({
 		 	initialize:function() {
+		 	this.Encouners = new EncoutersCollection;
 		 	this.Patients =  new PatientsCollection;
 		 	this.PatientAll = new AllPatientView({collection:new PatientAllCollection()});
 		 	},

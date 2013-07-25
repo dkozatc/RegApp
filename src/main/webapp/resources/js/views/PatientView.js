@@ -12,7 +12,7 @@ define(['jquery',
  		className:'patientBlock',
  		initialize: function(){
 
- 			Event.on('LoadTemplate', this.loadTemplate, this);
+ 			Event.on('SinglePatientTmpl', this.loadTemplate, this);
  			this.render();
 
  		},
@@ -24,7 +24,7 @@ define(['jquery',
 			var template = $.templates("#SinglePatientBlock");
 			var htmlOutput = template.render(this.model.toJSON());
           	this.$el.html(htmlOutput);
-            Event.off('LoadTemplate');
+            Event.off('SinglePatientTmpl');
  		}
 
 

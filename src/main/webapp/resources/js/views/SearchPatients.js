@@ -18,7 +18,7 @@ define([
 
                
                 this.render();
-                Event.on('LoadTemplate', this.loadTemplate, this);
+                Event.on('navTemplate', this.loadTemplate, this);
                 this.collection.on('add', this.addOne, this);
 
 	           },
@@ -39,7 +39,7 @@ define([
                 this.$el.append(template);
                 this.$el.append("<div class='autocompleteSearch'></div>");
                 $('.autocompleteSearch').hide();
-                Event.off('LoadTemplate');
+                Event.off('navTemplate');
 
             },
             addOne: function (model){
