@@ -1,0 +1,63 @@
+<script type='text/template' id='showPatient'>
+<div class="PatientInfo">
+<h3> INFORMATION ABOUT PATIENT </h3>
+
+<div class="tabbable"> 
+  <ul class="nav nav-tabs">
+    <li class="active"><a href="#tab1" data-toggle="tab">Patient information</a></li>
+    <li><a href="#tab2" data-toggle="tab">Encounters information</a></li>
+  </ul>
+  <div class="tab-content">
+    <div class="tab-pane active" id="tab1">
+        <div class="row">
+            <div class="span9">
+            <p>INFORMATION ABOUT PATIENT.</p>
+                          <div class="span4">
+                              <dl class="dl-horizontal">
+                                <dt>Patinet name:</dt> <dd>{{:FirstName}} {{:LastName}}</dd>
+                                <dt>SSN: </dt><dd>{{:SSN}}</dd>
+                                <dt>Data Of birth: </dt><dd>{{:DateOfbirth}}</dd>
+                                <dt>Gender: </dt><dd>{{:Gender}}</dd>
+                                <dt>Marital Status: </dt><dd>{{:MaritalStatus}}</dd>
+                                <dt>Race: </dt><dd>{{:Race}}</dd>
+                                <dt>Peligion:</dt><dd>{{:Religion}}</dd>
+                                <dt>Language</dt><dd>{{:Language}}</dd>
+                                <dt>Patient Phone</dt><dd>{{:PatientPhone}}</dd>
+                              </dl>
+                          </div>
+                          <div class="span4">
+                              <dl class="dl-horizontal">
+                            <dt>Patient Address:</dt><dd>{{:PatientAddress}}</dd>
+                            <dt>Patient City:</dt><dd>{{:PatientCity}}</dd>
+                            <dt>Patient State:</dt><dd>{{:PatientState}}</dd>
+                            <dt>Patient Zip:</dt><dd>{{:PatientZip}}</dd>
+                            <dt>Employer Name:</dt><dd>{{:EmployerName}}</dd>
+                            <dt>Employer Address:</dt><dd>{{:EmployerAddress}}</dd>
+                            <dt>Employer City:</dt><dd>{{:EmployerCity}}</dd>
+                            <dt>Employer State:</dt><dd>{{:EmployerState}}</dd>
+                            <dt>Employer Zip:</dt><dd>{{:EmployerZip}}</dd>
+                            <dt>Employer Phone:</dt><dd>{{:EmployerPhone}}</dd>
+                            </dl>
+                          </div>
+            </div>
+      </div>
+    </div>
+        <div class="tab-pane" id="tab2">
+          <div class="row">
+              <div class="span9">
+                <p>PATIENT ECNOUTERS</p>
+                <dl class="dl-horizontal">
+                  	<dt>Diagnosis:</dt><dd>{{:Diagnose}}</dd>
+                	  <dt>Status:</dt><dd>{{:Status}}</dd>
+                	 	<dt>TimeIn:</dt><dd>{{:TimeIn}}</dd>
+                	 	<dt>TimeIn:</dt><dd>{{:TimeOut}}</dd>
+                </dl>
+              </div>
+        </div>
+      </div>
+    </div>
+</div>
+
+
+
+</script>

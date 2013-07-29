@@ -1,16 +1,18 @@
 <html>
 <head>
-    
     <link rel="stylesheet" type="text/css" href="/resources/css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="/resources/css/style.css">
-    <link rel="stylesheet" type="text/css" href="/resources/css/jquery-ui.css">
+
 
 </head>
 <body>
-<div class="container">
+<div id="navElements" class="container">
 
 </div>
+<div id="content" class="container">
 
+
+</div>
 
 
 

@@ -10,10 +10,11 @@
          'backbone',
          'tools',
          'jsrender',
-         'Validate'
+         'Validate',
+         'inputMask'
 
 
- ], function(_, $, Backbone, Tools, jsrende, Validate){
+ ], function(_, $, Backbone, Tools, jsrende, Validate, Mask){
 
            var Event = _.extend(Backbone.Events);
            var EditPatientView = Backbone.View.extend({
@@ -46,6 +47,8 @@
                   var template = $.templates("#PatientForm");
                   var htmlOutput = template.render(this.model.toJSON());
                   this.$el.html(htmlOutput);
+                  $('#SSN').inputmask("999-99-9999");
+                  $('#dataofbirth').inputmask("99/99/9999");
                   Event.off('PatientForm');
              },
              updatePatient: function (){

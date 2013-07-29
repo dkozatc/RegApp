@@ -1,7 +1,7 @@
 define([
 		'underscore',
 		'backbone',
-		'models/Encount'
+		'models/Encounter'
 	], function( _, Backbone, EncountModel){
 	
 	var Event = _.extend(Backbone.Events);

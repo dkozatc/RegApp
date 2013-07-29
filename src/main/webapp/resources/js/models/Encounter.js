@@ -7,7 +7,7 @@ define([
     var Event = _.extend(Backbone.Events);
     var Encount = Backbone.Model.extend({
     	 defaults:{
-    	 	"Diagnosis" : "none",
+    	 	"Diagnose" : "none",
     	 	"Status"    : "checkout",
     	 	"PatientID" : 0,
     	 	"TimeIn"    : "00/00/0000",

@@ -102,7 +102,6 @@ public class PatientDaoImpl implements PatientDao {
     }
     public int getPatientID(PatientModel patient){
         int rowCount;
-
         rowCount = this.jdbcTemplate.queryForInt("select PatientID from patients where FirstName='"+patient.getFirstName()+
         "' AND LastName='"+patient.getLastName()+"' AND SSN='"+patient.getSSN()+"';"
 
@@ -110,6 +109,39 @@ public class PatientDaoImpl implements PatientDao {
 
         return rowCount;
     }
+     public PatientModel getPatientById(String id){
+
+         String query = "SELECT * from patients where PatientID="+id;
+         PatientModel patient = (PatientModel) this.jdbcTemplate.queryForObject(query, new RowMapper() {
+             @Override
+             public PatientModel mapRow(ResultSet resultSet, int i) throws SQLException {
+                 PatientModel patient = new PatientModel();
+                 patient.setPatientID(resultSet.getInt("PatientID"));
+                 patient.setFirstName(resultSet.getString("FirstName"));
+                 patient.setLastName(resultSet.getString("LastName"));
+                 patient.setSSN(resultSet.getString("SSN"));
+                 patient.setDateOfbirth(resultSet.getString("Dateofbirth"));
+                 patient.setGender(resultSet.getString("Gender"));
+                 patient.setMaritalStatus(resultSet.getString("Mtlstatus"));
+                 patient.setRace(resultSet.getString("Race"));
+                 patient.setReligion(resultSet.getString("Religion"));
+                 patient.setLanguage(resultSet.getString("Language"));
+                 patient.setPatientAddress(resultSet.getString("Address"));
+                 patient.setPatientCity(resultSet.getString("City"));
+                 patient.setPatientState(resultSet.getString("State"));
+                 patient.setPatientZip(resultSet.getString("Zip"));
+                 patient.setPatientPhone(resultSet.getString("PhoneNumber"));
+                 patient.setEmployerName(resultSet.getString("EmployerName"));
+                 patient.setEmployerAddress(resultSet.getString("EmpAddress"));
+                 patient.setEmployerCity(resultSet.getString("EmpCity"));
+                 patient.setEmployerState(resultSet.getString("EmpState"));
+                 patient.setEmployerZip(resultSet.getString("EmpZip"));
+                 patient.setEmployerPhone(resultSet.getString("EmpPhoneNumber"));
+                 return patient;
+             }
+         });
+         return patient;
+     }
 
 
 

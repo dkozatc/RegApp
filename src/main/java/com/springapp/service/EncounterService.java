@@ -1,6 +1,6 @@
 package com.springapp.service;
 
-import com.springapp.models.Encount;
+import com.springapp.models.Encounter;
 
 import java.util.List;
 
@@ -13,9 +13,9 @@ import java.util.List;
  */
 public interface EncounterService {
 
-    public String editEncounter(Encount encount);
-    public int createEncounter(Encount encount);
-    public List<Encount> searchPatient(String query);
+    public String editEncounter(Encounter encounter);
+    public int createEncounter(Encounter encounter);
+    public List<Encounter> searchEncounters(String query);
 
 
 

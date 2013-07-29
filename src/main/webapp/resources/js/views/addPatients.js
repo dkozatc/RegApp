@@ -5,9 +5,12 @@ define(['underscore',
         'Patient',
         'jsrender',
         'Validate',
+        'inputMask'
+        
+        
         ],
         
-        function( _, $, Backbone, Tools, PatientModel, JsRender, Validate){
+        function( _, $, Backbone, Tools, PatientModel, JsRender, Validate, Mask){
 
     var Event = _.extend(Backbone.Events);
     var AddPatientsView =  Backbone.View.extend({
@@ -37,8 +40,10 @@ define(['underscore',
                   var htmlOutput = template.render(model.toJSON());
                   this.$el.html(htmlOutput);
                   $('h3').html("Add New Patient");
+                  $('#SSN').inputmask("999-99-9999");
+                  $('#dataofbirth').inputmask("99/99/9999");
                   Event.off('PatientForm');
-                 // $('#dataofbirth').datepicker();
+                
             },
          sendData: function (){
             var valideteErrors = 0;

@@ -20,7 +20,9 @@ define(['jquery',
  			Tools.LoadTemplate("SinglePatientTmpl");
  		},
  		loadTemplate: function(inTemplate) {
- 			$('body').append(inTemplate);
+ 			if($('#SinglePatientBlock').length == 0){
+ 				$('body').append(inTemplate);
+ 			}
 			var template = $.templates("#SinglePatientBlock");
 			var htmlOutput = template.render(this.model.toJSON());
           	this.$el.html(htmlOutput);

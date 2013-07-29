@@ -11,16 +11,13 @@ define([
   ], function( _, $, Backbone, Tools, AddPatientView, SearchResultView, AllPatientView, PatientAllCollection){
         var Event = _.extend(Backbone.Events);
 	      var SearchPatientsView =  Backbone.View.extend({
-	          el:'.container',
+	          el:'#navElements',
             activeBlock: 0,
             cursoreFocus:false,
 	          initialize: function(){
-
-               
                 this.render();
                 Event.on('navTemplate', this.loadTemplate, this);
                 this.collection.on('add', this.addOne, this);
-
 	           },
             events:{
 	             'focus #inputSearch': 'showAutocomplete',
@@ -47,7 +44,6 @@ define([
                      var findedPatientVeiew = new SearchResultView({model:model})
                      $(".autocompleteSearch").append(findedPatientVeiew.el);
                 }
-
             },
             checkCursorPosition: function(){
                 this.cursoreFocus =true;
@@ -61,7 +57,6 @@ define([
                 $('.autocompleteSearch').show();
             },
             hideAutocomplete: function(){
-              
                 if(!this.cursoreFocus){
                     $('.autocompleteSearch').hide();
                     var position = $('#inputSearch').offset();

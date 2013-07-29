@@ -15,11 +15,10 @@ define([
 		addNew: function (jsonObj) {
 			this.url= '/test?requestString='+jsonObj;
 			this.fetch();
+			this.reset();
 		},
 		
    });
 	return PatientsCollection;
-
-
 
 });

@@ -1,6 +1,6 @@
 package com.springapp.dao;
 
-import com.springapp.models.Encount;
+import com.springapp.models.Encounter;
 
 import java.util.List;
 
@@ -12,8 +12,8 @@ import java.util.List;
  * To change this template use File | Settings | File Templates.
  */
 public interface EncountDao {
-    public int insertEncounter(Encount encount);
-    public String updateEncouter(Encount encount);
-    public List<Encount> searchEncounters(String query);
-    public int getEncounterID(Encount encount);
+    public int insertEncounter(Encounter encounter);
+    public String updateEncouter(Encounter encounter);
+    public List<Encounter> getEncounters(String query);
+    public int getEncounterID(Encounter encounter);
 }

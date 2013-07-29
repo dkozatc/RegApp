@@ -1,5 +1,7 @@
 package com.springapp.models;
 
+import org.codehaus.jackson.annotate.JsonProperty;
+
 /**
  * Created with IntelliJ IDEA.
  * User: dkozar
@@ -7,7 +9,7 @@ package com.springapp.models;
  * Time: 12:52 PM
  * To change this template use File | Settings | File Templates.
  */
-public class Encount {
+public class Encounter {
     int id=0;
     String Diagnose;
     String Status;
@@ -15,6 +17,7 @@ public class Encount {
     String TimeIn;
     String TimeOut;
 
+    @JsonProperty("id")
     public int getId() {
         return id;
     }
@@ -22,7 +25,7 @@ public class Encount {
     public void setId(int id) {
         this.id = id;
     }
-
+    @JsonProperty("Diagnose")
     public String getDiagnose() {
         return Diagnose;
     }
@@ -30,7 +33,7 @@ public class Encount {
     public void setDiagnose(String diagnose) {
         Diagnose = diagnose;
     }
-
+    @JsonProperty("Status")
     public String getStatus() {
         return Status;
     }
@@ -38,7 +41,7 @@ public class Encount {
     public void setStatus(String status) {
         Status = status;
     }
-
+    @JsonProperty("PatientID")
     public int getPatientID() {
         return PatientID;
     }
@@ -46,7 +49,7 @@ public class Encount {
     public void setPatientID(int patientID) {
         PatientID = patientID;
     }
-
+    @JsonProperty("TimeIn")
     public String getTimeIn() {
         return TimeIn;
     }
@@ -54,7 +57,7 @@ public class Encount {
     public void setTimeIn(String timeIn) {
         TimeIn = timeIn;
     }
-
+    @JsonProperty("TimeOut")
     public String getTimeOut() {
         return TimeOut;
     }

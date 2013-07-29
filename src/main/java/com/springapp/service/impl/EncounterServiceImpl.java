@@ -1,7 +1,7 @@
 package com.springapp.service.impl;
 
 import com.springapp.dao.EncountDao;
-import com.springapp.models.Encount;
+import com.springapp.models.Encounter;
 import com.springapp.service.EncounterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -21,18 +21,24 @@ public class EncounterServiceImpl implements EncounterService {
     private EncountDao encountDao;
 
     @Override
-    public String editEncounter(Encount encount) {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+    public String editEncounter(Encounter encounter) {
+
+        encountDao.updateEncouter(encounter);
+
+        return null;
     }
 
 
-    public int createEncounter(Encount encount) {
-        encountDao.insertEncounter(encount);
+    public int createEncounter(Encounter encounter) {
+        encountDao.insertEncounter(encounter);
         return 0;
     }
 
     @Override
-    public List<Encount> searchPatient(String query) {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+    public List<Encounter> searchEncounters(String query) {
+
+       List<Encounter> encounters = encountDao.getEncounters(query);
+
+       return encounters;
     }
 }

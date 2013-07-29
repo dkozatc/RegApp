@@ -50,4 +50,12 @@ public class PatientServiceImpl implements PatientService {
         return patientList;
 
     }
+    @Override
+    public PatientModel getPatient(String id) {
+
+        PatientModel patient = patientDao.getPatientById(id);
+
+        return patient;
+
+    }
 }

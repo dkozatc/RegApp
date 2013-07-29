@@ -16,7 +16,9 @@ require.config({
 		'SinglePatient' : 'views/PatientView',
 		'MainRouter' : 'routers/MainRouter',
 		'Validate' : 'lib/validation',
-		'Datapicker' : 'lib/jquery-ui'
+		'inputMask' : 'lib/jquery.inputmask',
+		'text' :'lib/text'
+		
 		},
 	shim:{
 		jquery : {
@@ -37,17 +39,19 @@ require.config({
 		},
 		bootstrap : {
 			deps: ['jquery']
+		},
+		inputMask :{
+			deps: ['jquery']
+
 		}
 	}
 
 });
 
-require(['MainRouter', 'backbone'], function(Router, Backbone){
-
-
+require(['MainRouter', 'backbone' ], function(Router, Backbone){
 	var MainRouter = new Router;
 	Backbone.history.start();
-	
+
 });
 
 

@@ -1,5 +1,7 @@
 package com.springapp.models;
 
+import org.codehaus.jackson.annotate.JsonProperty;
+
 /**
  * Created with IntelliJ IDEA.
  * User: dkozar
@@ -30,7 +32,7 @@ public class PatientModel {
     String EmployerZip;
     String EmployerPhone;
 
-
+    @JsonProperty("PatientID")
     public int getPatientID() {
         return PatientID;
     }
@@ -39,6 +41,7 @@ public class PatientModel {
         PatientID = patientID;
     }
 
+    @JsonProperty("LastName")
     public String getLastName() {
         return LastName;
     }
@@ -46,7 +49,7 @@ public class PatientModel {
     public void setLastName(String lastName) {
         LastName = lastName;
     }
-
+    @JsonProperty("FirstName")
     public String getFirstName() {
         return FirstName;
     }
@@ -54,7 +57,7 @@ public class PatientModel {
     public void setFirstName(String firstName) {
         FirstName = firstName;
     }
-
+    @JsonProperty("SSN")
     public String getSSN() {
         return SSN;
     }
@@ -62,7 +65,7 @@ public class PatientModel {
     public void setSSN(String SSN) {
         this.SSN = SSN;
     }
-
+    @JsonProperty("DateOfbirth")
     public String getDateOfbirth() {
         return DateOfbirth;
     }
@@ -70,7 +73,7 @@ public class PatientModel {
     public void setDateOfbirth(String dateOfbirth) {
         DateOfbirth = dateOfbirth;
     }
-
+    @JsonProperty("Gender")
     public String getGender() {
         return Gender;
     }
@@ -78,7 +81,7 @@ public class PatientModel {
     public void setGender(String gender) {
         Gender = gender;
     }
-
+    @JsonProperty("MaritalStatus")
     public String getMaritalStatus() {
         return MaritalStatus;
     }
@@ -86,7 +89,7 @@ public class PatientModel {
     public void setMaritalStatus(String maritalStatus) {
         MaritalStatus = maritalStatus;
     }
-
+    @JsonProperty("Race")
     public String getRace() {
         return Race;
     }
@@ -94,7 +97,7 @@ public class PatientModel {
     public void setRace(String race) {
         Race = race;
     }
-
+    @JsonProperty("Religion")
     public String getReligion() {
         return Religion;
     }
@@ -102,7 +105,7 @@ public class PatientModel {
     public void setReligion(String religion) {
         Religion = religion;
     }
-
+    @JsonProperty("Language")
     public String getLanguage() {
         return Language;
     }
@@ -110,7 +113,7 @@ public class PatientModel {
     public void setLanguage(String language) {
         Language = language;
     }
-
+    @JsonProperty("PatientAddress")
     public String getPatientAddress() {
         return PatientAddress;
     }
@@ -118,7 +121,7 @@ public class PatientModel {
     public void setPatientAddress(String patientAddress) {
         PatientAddress = patientAddress;
     }
-
+    @JsonProperty("PatientCity")
     public String getPatientCity() {
         return PatientCity;
     }
@@ -126,7 +129,7 @@ public class PatientModel {
     public void setPatientCity(String patientCity) {
         PatientCity = patientCity;
     }
-
+    @JsonProperty("PatientState")
     public String getPatientState() {
         return PatientState;
     }
@@ -134,7 +137,7 @@ public class PatientModel {
     public void setPatientState(String patientState) {
         PatientState = patientState;
     }
-
+    @JsonProperty("PatientZip")
     public String getPatientZip() {
         return PatientZip;
     }
@@ -142,7 +145,7 @@ public class PatientModel {
     public void setPatientZip(String patientZip) {
         PatientZip = patientZip;
     }
-
+    @JsonProperty("PatientPhone")
     public String getPatientPhone() {
         return PatientPhone;
     }
@@ -150,7 +153,7 @@ public class PatientModel {
     public void setPatientPhone(String patientPhone) {
         PatientPhone = patientPhone;
     }
-
+    @JsonProperty("EmployerName")
     public String getEmployerName() {
         return EmployerName;
     }
@@ -158,7 +161,7 @@ public class PatientModel {
     public void setEmployerName(String employerName) {
         EmployerName = employerName;
     }
-
+    @JsonProperty("EmployerAddress")
     public String getEmployerAddress() {
         return EmployerAddress;
     }
@@ -166,7 +169,7 @@ public class PatientModel {
     public void setEmployerAddress(String employerAddress) {
         EmployerAddress = employerAddress;
     }
-
+    @JsonProperty("EmployerCity")
     public String getEmployerCity() {
         return EmployerCity;
     }
@@ -174,7 +177,7 @@ public class PatientModel {
     public void setEmployerCity(String employerCity) {
         EmployerCity = employerCity;
     }
-
+    @JsonProperty("EmployerState")
     public String getEmployerState() {
         return EmployerState;
     }
@@ -182,7 +185,7 @@ public class PatientModel {
     public void setEmployerState(String employerState) {
         EmployerState = employerState;
     }
-
+    @JsonProperty("EmployerZip")
     public String getEmployerZip() {
         return EmployerZip;
     }
@@ -190,7 +193,7 @@ public class PatientModel {
     public void setEmployerZip(String employerZip) {
         EmployerZip = employerZip;
     }
-
+    @JsonProperty("EmployerPhone")
     public String getEmployerPhone() {
         return EmployerPhone;
     }
