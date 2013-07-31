@@ -2,6 +2,7 @@
 <head>
     <link rel="stylesheet" type="text/css" href="/resources/css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="/resources/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/resources/css/fullcalendar.css">
 
 
 </head>
@@ -14,7 +15,10 @@
 
 </div>
 
+<div id="modelContent">
 
+
+</div>
 
 
 

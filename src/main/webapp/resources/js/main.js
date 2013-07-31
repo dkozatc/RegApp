@@ -17,7 +17,10 @@ require.config({
 		'MainRouter' : 'routers/MainRouter',
 		'Validate' : 'lib/validation',
 		'inputMask' : 'lib/jquery.inputmask',
-		'text' :'lib/text'
+		'text' :'lib/text',
+		'PatientEncounter' : 'views/PatientEncounter',
+		'PatientEncounters': 'views/PatientEncounters',
+		'Fullcalender':'lib/fullcalendar.min'
 		
 		},
 	shim:{
@@ -43,6 +46,9 @@ require.config({
 		inputMask :{
 			deps: ['jquery']
 
+		},
+		Fullcalender:{
+			deps:['jquery']
 		}
 	}
 

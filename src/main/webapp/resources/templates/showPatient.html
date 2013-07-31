@@ -1,18 +1,11 @@
 <script type='text/template' id='showPatient'>
 <div class="PatientInfo">
-<h3> INFORMATION ABOUT PATIENT </h3>
-
-<div class="tabbable"> 
-  <ul class="nav nav-tabs">
-    <li class="active"><a href="#tab1" data-toggle="tab">Patient information</a></li>
-    <li><a href="#tab2" data-toggle="tab">Encounters information</a></li>
-  </ul>
-  <div class="tab-content">
-    <div class="tab-pane active" id="tab1">
         <div class="row">
             <div class="span9">
-            <p>INFORMATION ABOUT PATIENT.</p>
-                          <div class="span4">
+             <h3 class="headerBlock"><img  class="imgButton"src="/resources/img/PatientData.png"/> Patient:  {{:FirstName}} {{:LastName}} 
+             </h3>
+              <div class='row headerBodred'>
+                          <div class="span4 ">
                               <dl class="dl-horizontal">
                                 <dt>Patinet name:</dt> <dd>{{:FirstName}} {{:LastName}}</dd>
                                 <dt>SSN: </dt><dd>{{:SSN}}</dd>
@@ -39,23 +32,60 @@
                             <dt>Employer Phone:</dt><dd>{{:EmployerPhone}}</dd>
                             </dl>
                           </div>
+              </div>
             </div>
       </div>
-    </div>
-        <div class="tab-pane" id="tab2">
-          <div class="row">
-              <div class="span9">
-                <p>PATIENT ECNOUTERS</p>
-                <dl class="dl-horizontal">
-                  	<dt>Diagnosis:</dt><dd>{{:Diagnose}}</dd>
-                	  <dt>Status:</dt><dd>{{:Status}}</dd>
-                	 	<dt>TimeIn:</dt><dd>{{:TimeIn}}</dd>
-                	 	<dt>TimeIn:</dt><dd>{{:TimeOut}}</dd>
-                </dl>
+           <div class="row">
+              <div  class="span9">
+                <h3 class="headerBlock"><img  class="imgButton"src="/resources/img/ChronologicalReview.png"/> Encounters </h3>
+                  <div class="pull-right addButton"><button id="addEncountersBtn" class="btn"><i class='icon-plus'></i></button></div>
+                  <div class=" headerBodred">
+                      <div class="addEncouters">
+                          <h4 class="formHeader">Encoun Add</h4>
+                              <form name="EncounterForm">
+                                <div class="form-horizontal">
+                                        <div class="control-group">
+                                          <label for="Diagnose" class="control-label">Diagnosis</label>
+                                          <div class="controls">
+                                            <input type="text" name="Diagnose" class="span6">
+                                            <div class='validateMessage'></div>
+                                          </div>
+                                        </div>
+                                        <div class="control-group">
+                                          <label for="Status" class="control-label">Status</label>
+                                          <div class="controls">
+                                            <input type="text" name="Status" class="span6">
+                                            <div class='validateMessage'></div>
+                                          </div>
+                                        </div>
+                                        <div class="control-group">
+                                          <label for="TimeIn" class="control-label">Time IN</label>
+                                          <div class="controls">
+                                            <input id="TimeIn" type="text" name="TimeIn" class="span6">
+                                            <div class='validateMessage'></div>
+                                          </div>
+                                        </div>
+                                        <div class="control-group">
+                                          <label for="TimeOut" class="control-label">Time Out</label>
+                                          <div class="controls">
+                                          <input id="TimeOut" type="text" name="TimeOut" class="span6">
+                                            <div class='validateMessage'></div>
+                                          </div>
+                                        </div>
+                                  <input id="sendEncounters" class='btn btn-info buttons' type="button" value='Add Encoutner'/>
+                              </div>
+                           </form>
+                      </div>
+                      <table id="encountersTab" class="table table-striped">
+                      <tr><th>Diagnosis</th><th>Status:</th><th>TimeIn:</th><th>TimeOut</th><th class="appImg">Appointments</th></tr>
+
+                      </table>
+                  </div>
               </div>
-        </div>
-      </div>
-    </div>
+          </div>
+      
+        
+   
 </div>
 
 

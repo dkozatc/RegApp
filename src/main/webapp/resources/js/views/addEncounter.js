@@ -16,10 +16,7 @@ function($, _, Backbone, Tools, Jsrender, Validate){
     		initialize: function() {
     		Event.on('EncounterForm', this.loadTemplate, this);
     		this.render();
-        
-
-
-    		},
+       	},
     		events:{
     			'click .btn' : 'addEncounterInformation'
 
@@ -35,7 +32,6 @@ function($, _, Backbone, Tools, Jsrender, Validate){
           var htmlOutput = template.render(this.model.toJSON());
           this.$el.html(htmlOutput);
           Event.off('EncounterForm');
-          // $('#dataofbirth').datepicker();
         },
         addEncounterInformation: function(){
              	 var valideteErrors = 0;

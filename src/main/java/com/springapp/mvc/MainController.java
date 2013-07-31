@@ -64,7 +64,7 @@ public class MainController {
     @RequestMapping(value="/addEncounter", method = RequestMethod.POST)
     public @ResponseBody String addNewEncounter(Encounter encounter){
        encounterService.createEncounter(encounter);
-       return "Dane!!!";
+       return "{\"id\":0}";
     }
     @RequestMapping(value="/updateEncouter", method = RequestMethod.POST)
     public @ResponseBody String updateEncounter(Encounter encounter){

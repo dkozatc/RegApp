@@ -12,6 +12,7 @@ import javax.sql.DataSource;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.ResourceBundle;
 
 
 /**
@@ -106,7 +107,7 @@ public class PatientDaoImpl implements PatientDao {
         "' AND LastName='"+patient.getLastName()+"' AND SSN='"+patient.getSSN()+"';"
 
         );
-
+        ResourceBundle rb = ResourceBundle.getBundle("patient");
         return rowCount;
     }
      public PatientModel getPatientById(String id){
