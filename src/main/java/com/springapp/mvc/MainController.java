@@ -2,8 +2,10 @@ package com.springapp.mvc;
 
 
 import com.google.gson.Gson;
+import com.springapp.models.Appointment;
 import com.springapp.models.Encounter;
 import com.springapp.models.PatientModel;
+import com.springapp.service.AppointmentService;
 import com.springapp.service.EncounterService;
 import com.springapp.service.PatientService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +33,9 @@ public class MainController {
     private PatientService patientService;
     @Autowired
     private EncounterService encounterService;
+    @Autowired
+    private AppointmentService appointmentService;
+
     @RequestMapping(value="/test", method = RequestMethod.GET)
     public @ResponseBody List<PatientModel> printWelcome(@RequestParam("requestString") String requestString ,ModelMap model) {
         System.out.println(requestString + " string");
@@ -71,5 +76,13 @@ public class MainController {
         encounterService.editEncounter(encounter);
         return "Update Dane";
     }
+    @RequestMapping(value="/addAppointment", method = RequestMethod.POST)
+    public @ResponseBody String addNewAppointment(Appointment appointment){
+       System.out.print(appointment);
+              appointmentService.createAppointmen(appointment);
+        return "{\"id\":0}";
+    }
+
+
 
 }

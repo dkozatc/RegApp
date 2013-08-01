@@ -11,6 +11,7 @@ import javax.sql.DataSource;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.ResourceBundle;
 
 /**
  * Created with IntelliJ IDEA.
@@ -34,13 +35,14 @@ public class AppointmentDaoImpl implements AppointmentDao {
     }
     @Override
     public int insertAppointment(Appointment appointment) {
-
+        ResourceBundle myResources = ResourceBundle.getBundle("com.springapp.properties.AppointmentDao");
+        System.out.print(myResources.getString("insertQuery"));
         String query = "INSERT INTO appointments (id, StartDateTime, EndDateTime, Resourceid, CommentsText)" +
                 "VALUES (null,?, ?, ?, ?)";
        this.jdbcTemplate.update(query, new Object[]{
                 appointment.getStartDateTime(),
                 appointment.getEndDateTime(),
-                appointment.getResourceId(),
+                appointment.getEncounterId(),
                 appointment.getCommentsText()
         });
         return 0;
@@ -48,12 +50,13 @@ public class AppointmentDaoImpl implements AppointmentDao {
     @Override
     public String updateAppointment(Appointment appointment) {
 
+
         String query = "UPDATE appointments SET StartDateTime=?, EndDateTime=?, Resourceid=?, CommentsText=? WHERE" +
                 "id="+appointment.getId();
         this.jdbcTemplate.update(query, new Object[]{
                 appointment.getStartDateTime(),
                 appointment.getEndDateTime(),
-                appointment.getResourceId(),
+                appointment.getEncounterId(),
                 appointment.getCommentsText()
         });
 
@@ -71,7 +74,7 @@ public class AppointmentDaoImpl implements AppointmentDao {
                 appointment.setId(resultSet.getInt("id"));
                 appointment.setStartDateTime(resultSet.getString("StartDateTime"));
                 appointment.setEndDateTime(resultSet.getString("EndDateTime"));
-                appointment.setResourceId(resultSet.getInt("Resourceid"));
+                appointment.setEncounterId(resultSet.getInt("Resourceid"));
                 appointment.setCommentsText(resultSet.getString("CommentsText"));
                 return appointment;
             }

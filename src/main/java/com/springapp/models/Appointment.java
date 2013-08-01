@@ -12,10 +12,10 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class Appointment {
-    private int id;
+    private int id=0;
     private String StartDateTime;
     private String EndDateTime;
-    private int ResourceId;
+    private int EncounterId;
     private String CommentsText;
 
     @JsonProperty("id")
@@ -39,12 +39,12 @@ public class Appointment {
     public void setEndDateTime(String endDateTime) {
         EndDateTime = endDateTime;
     }
-    @JsonProperty("ResourceId")
-    public int getResourceId() {
-        return ResourceId;
+    @JsonProperty("EncounterId")
+    public int getEncounterId() {
+        return EncounterId;
     }
-    public void setResourceId(int resourceId) {
-        ResourceId = resourceId;
+    public void setEncounterId(int encounterId) {
+        EncounterId = encounterId;
     }
     @JsonProperty("CommentsText")
     public String getCommentsText() {

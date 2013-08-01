@@ -190,4 +190,39 @@ text-decoration: none;
   border: 1px solid silver;
 
 }
+.blue{
+  width:99%;
+  color: white;
+  background-color: #3a87ad;
+  border: 1px solid #3a87ad;
+  border-left-width: 1px;
+  border-radius: 3px;
+  
+}
+.yellow{
+  width:99%;
+  color: white;
+  background-color: #FFB000;
+  border: 1px solid #FFB000;
+  border-left-width: 1px;
+  border-radius: 3px;
+}
+.green{
 
+  width:99%;
+  color: white;
+  background-color: #41DB00;
+  border: 1px solid #41DB00;
+  border-left-width: 1px;
+  border-radius: 3px;
+
+
+
+}
+
+.d{
+width:100%;
+
+
+
+}

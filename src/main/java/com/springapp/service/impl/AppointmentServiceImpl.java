@@ -4,6 +4,7 @@ import com.springapp.dao.AppointmentDao;
 import com.springapp.models.Appointment;
 import com.springapp.service.AppointmentService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
@@ -14,6 +15,7 @@ import java.util.List;
  * Time: 1:11 PM
  * To change this template use File | Settings | File Templates.
  */
+@Component
 public class AppointmentServiceImpl implements AppointmentService {
     @Autowired
     private AppointmentDao appointmentDao;
