@@ -16,7 +16,10 @@ public class Appointment {
     private String StartDateTime;
     private String EndDateTime;
     private int EncounterId;
+    private int ResourcesId;
     private String CommentsText;
+
+
 
     @JsonProperty("id")
     public int getId() {
@@ -46,6 +49,15 @@ public class Appointment {
     public void setEncounterId(int encounterId) {
         EncounterId = encounterId;
     }
+    @JsonProperty("ResourcesId")
+    public int getResourcesId(){
+        return ResourcesId;
+    }
+
+    public void setResourcesId(int resourcesId) {
+        ResourcesId = resourcesId;
+    }
+
     @JsonProperty("CommentsText")
     public String getCommentsText() {
         return CommentsText;

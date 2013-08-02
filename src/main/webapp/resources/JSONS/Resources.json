@@ -1,0 +1,4 @@
+[{"resourceId":1, "name": "reabilitation", "color" : "#FFB700"},
+ {"resourceId":2, "name" : "Rendgen", "color" : "#6A0AAB" },
+ {"resourceId" : 3, "name" : "Dr. Freeman", "color" : "#41DB00"},
+ {"resourceId" : 4, "name" : "bonus", "color" : "#3a87ad" }]

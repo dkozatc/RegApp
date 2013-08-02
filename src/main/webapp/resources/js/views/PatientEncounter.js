@@ -6,8 +6,12 @@ define(['jquery',
 		'Fullcalender',
 		'lib/jquery-ui',
 		'models/Appointment',
-		'tools'
-		], function($, _, Backbone, jsReder, inTemplate, Callendar, ui, AppointmentModel,  Tools){
+		'tools',
+		'collections/Resources',
+		'collections/Appointments',
+		'views/ResourcesView',
+		'views/AppointmentsView'
+		], function($, _, Backbone, jsReder, inTemplate, Callendar, ui, AppointmentModel,  Tools, ResourcesCollection, AppointmentsCollections, ResourcesView, AppointmentsView){
 
 	var Event = _.extend(Backbone.Events);
 	var PatientEncouterView = Backbone.View.extend({
@@ -35,8 +39,23 @@ define(['jquery',
 			$('#modelContent').html(htmlOutput);
 			$('.modal').css( "width", "+=300");
 			$('.modal-body').css( "max-height", "+=200");
-			console.log(this.model);
-			Tools.Calendar(this.model);
+
+			var that = this;
+			var Resources = new ResourcesCollection();
+			Resources.fetch({
+				success:function(){
+					console.log(Resources);
+					var Appointments = new AppointmentsCollections();
+					Event.trigger('fetchAppointments', {model:that.model, resources:Resources});
+
+					var ResourcesViews = new ResourcesView({collection:Resources});
+					var Calender = new AppointmentsView({model:that.model, collection: new AppointmentsCollections()});
+				},
+				error: function(){
+					console.log("error execut");
+				}
+			});
+			
 		},
 	});
 	return PatientEncouterView;

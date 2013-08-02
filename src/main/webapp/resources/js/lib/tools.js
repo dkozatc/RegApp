@@ -52,9 +52,7 @@ define(['underscore','jquery', 'backbone', 'models/Appointment'], function( _, $
                                 start:date,
                                 allDay:true,
                                 backgroundColor:$(this).find('div').css('background-color')
-
-                            }
-                           
+                            }  
                          $('#calendar').fullCalendar('renderEvent',  obj, true);
                          var appointment = new AppointmentModel({StartDateTime:date, EndDateTime:date, EncounterId:model.get('id'), CommentsText:$(this).text()});
                          appointment.save(appointment.toJSON(), {data:appointment.toJSON(), processData:true});
@@ -64,9 +62,7 @@ define(['underscore','jquery', 'backbone', 'models/Appointment'], function( _, $
                         console.log(dayDelta);
                         console.log(minuteDelta);
                         console.log(allDay);
-                        
                     }
-
                 });
             });
             $('.d').each(function() {

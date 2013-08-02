@@ -30,8 +30,8 @@ public class EncounterServiceImpl implements EncounterService {
 
 
     public int createEncounter(Encounter encounter) {
-        encountDao.insertEncounter(encounter);
-        return 0;
+       int id = encountDao.insertEncounter(encounter);
+        return id;
     }
 
     @Override

@@ -27,35 +27,18 @@ public class PatientServiceImpl implements PatientService {
         return null;
     }
     public int createPatient(PatientModel patient){
-        String query = "insert into patients (PatientID, FirstName, LastName, SSN, Dateofbirth, Gender, Mtlstatus, Race," +
-                " Religion, Language, Address, City, State, Zip, PhoneNumber, EmployerName, EmpAddress, EmpCity, EmpState, "+
-                "EmpZip, EmpPhoneNumber) value (NULL, '"+patient.getFirstName()+"','"+patient.getLastName()+"', '"
-                +patient.getSSN()+"', '"+patient.getDateOfbirth()+"', '"+patient.getGender()+"', '"
-                +patient.getMaritalStatus()+"', '"+patient.getRace()+"', '"+patient.getReligion()+"', '"
-                +patient.getLanguage()+"', '"+patient.getPatientAddress()+"', '"+patient.getPatientCity()+
-                "', '"+patient.getPatientState()+"', '"+patient.getPatientZip()+"', '"+patient.getPatientPhone()
-                +"','"+patient.getEmployerName()+"',' "+patient.getEmployerAddress()+ "', '"+patient.getEmployerCity()
-                +"','"+patient.getEmployerState()+"','"+patient.getEmployerZip()+"', '"+patient.getEmployerPhone()+"');";
-        System.out.print(query);
-        patientDao.insertPatient(query);
+        patientDao.insertPatient(patient);
         int id = patientDao.getPatientID(patient);
         System.out.print(id);
         return id;
     }
     public List<PatientModel> searchPatient(String request) {
-        String  query = "Select * from patients where FirstName LIKE '%"+request+"%' OR "+
-                " LastName LIKE '%"+request+"%' OR SSN LIKE '%"+request+"%' OR PhoneNumber LIKE '%"+request+"%';";
-        System.out.println(query);
-        List<PatientModel> patientList = patientDao.searchPatients(query);
+        List<PatientModel> patientList = patientDao.searchPatients(request);
         return patientList;
-
     }
     @Override
     public PatientModel getPatient(String id) {
-
         PatientModel patient = patientDao.getPatientById(id);
-
         return patient;
-
     }
 }

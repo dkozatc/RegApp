@@ -41,7 +41,7 @@ public class AppointmentServiceImpl implements AppointmentService {
     public int createAppointmen(Appointment appointment) {
         int id = appointmentDao.insertAppointment(appointment);
 
-        return 0;
+        return id;
     }
 
     @Override

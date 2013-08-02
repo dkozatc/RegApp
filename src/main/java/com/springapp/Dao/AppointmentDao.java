@@ -16,4 +16,5 @@ public interface AppointmentDao {
     public String updateAppointment(Appointment appointment);
     public List<Appointment> getAppointments(String query);
 
+
 }

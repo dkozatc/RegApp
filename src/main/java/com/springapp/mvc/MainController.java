@@ -68,20 +68,32 @@ public class MainController {
     }
     @RequestMapping(value="/addEncounter", method = RequestMethod.POST)
     public @ResponseBody String addNewEncounter(Encounter encounter){
-       encounterService.createEncounter(encounter);
-       return "{\"id\":0}";
+      int id = encounterService.createEncounter(encounter);
+       return "{\"id\":"+id+"}";
     }
     @RequestMapping(value="/updateEncouter", method = RequestMethod.POST)
     public @ResponseBody String updateEncounter(Encounter encounter){
         encounterService.editEncounter(encounter);
         return "Update Dane";
     }
+
+    @RequestMapping(value="/getAppointmentList", method = RequestMethod.GET)
+    public @ResponseBody List<Appointment> getAppointmentList(@RequestParam("id") String id){
+        System.out.print(id);
+        List<Appointment> appointments = appointmentService.searchAppointment(id);
+
+        return  appointments;
+    }
+
+
     @RequestMapping(value="/addAppointment", method = RequestMethod.POST)
     public @ResponseBody String addNewAppointment(Appointment appointment){
        System.out.print(appointment);
               appointmentService.createAppointmen(appointment);
         return "{\"id\":0}";
     }
+
+
 
 
 

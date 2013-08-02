@@ -5,6 +5,10 @@ import com.springapp.models.PatientModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
+import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
+import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
+import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -25,7 +29,8 @@ import java.util.ResourceBundle;
 @Component
 public class PatientDaoImpl implements PatientDao {
     private DataSource dataSource;
-    private JdbcTemplate jdbcTemplate;
+    private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
+    private ResourceBundle myResources = ResourceBundle.getBundle("com.springapp.properties.PatientDao");
 
     public DataSource getDataSource() {
         return dataSource;
@@ -33,44 +38,31 @@ public class PatientDaoImpl implements PatientDao {
        @Autowired
     public void setDataSource(DataSource dataSource) {
         this.dataSource = dataSource;
-        this.jdbcTemplate = new JdbcTemplate(this.dataSource);
+           this.namedParameterJdbcTemplate = new  NamedParameterJdbcTemplate(this.dataSource);
         System.out.print("set");
     }
-    public int insertPatient(String query){
-        this.jdbcTemplate.update(query);
-          return this.jdbcTemplate.queryForInt("select last_insert_id()");
+    public int insertPatient(PatientModel patient){
+        String query =  myResources.getString("insertPatient");
+        SqlParameterSource namedParameters = new BeanPropertySqlParameterSource(patient);
+        this.namedParameterJdbcTemplate.update(query, namedParameters);
+        return  0;
     }
     public String updatePatient(PatientModel patient){
-        String query = "UPDATE patients SET FirstName=? , LastName=?, SSN=?, Dateofbirth=?, Gender=?, Mtlstatus=?, Race=?,"
-                + "Religion=?, Language=?, Address=?, City=?, State=?, Zip=?, PhoneNumber=?, EmployerName=?, EmpAddress=?,"
-                +" EmpCity=?, EmpState=?, EmpZip=?, EmpPhoneNumber=? Where PersonID="+patient.getPatientID()+";";
+        String query = myResources.getString("updatePatient");
+        SqlParameterSource namedParameters = new BeanPropertySqlParameterSource(patient);
+        this.namedParameterJdbcTemplate.update(query, namedParameters);
 
-        this.jdbcTemplate.update(query, new Object[]{
-                patient.getFirstName(),
-                patient.getLastName(),
-                patient.getSSN(),
-                patient.getDateOfbirth(),
-                patient.getGender(),
-                patient.getMaritalStatus(),
-                patient.getRace(),
-                patient.getReligion(),
-                patient.getLanguage(),
-                patient.getPatientAddress(),
-                patient.getPatientCity(),
-                patient.getPatientState(),
-                patient.getPatientZip(),
-                patient.getPatientPhone(),
-                patient.getEmployerName(),
-                patient.getEmployerAddress(),
-                patient.getEmployerCity(),
-                patient.getEmployerState(),
-                patient.getEmployerZip(),
-                patient.getEmployerPhone()});
         return "";
     }
     public @ResponseBody List<PatientModel> searchPatients(String inputString){
-        List patients;
-        patients = this.jdbcTemplate.query(inputString, new RowMapper() {
+        System.out.print(inputString);
+        String msqlQuery = myResources.getString("getPatientList");
+        String param = "%"+inputString+ "%";
+        MapSqlParameterSource paramSource = new MapSqlParameterSource("searchInput", param);
+        System.out.print(msqlQuery);
+
+
+       List<PatientModel> patients = this.namedParameterJdbcTemplate.query(msqlQuery, paramSource, new RowMapper() {
             @Override
             public PatientModel mapRow(ResultSet resultSet, int i) throws SQLException {
                 PatientModel patient = new PatientModel();
@@ -102,18 +94,19 @@ public class PatientDaoImpl implements PatientDao {
         return patients;
     }
     public int getPatientID(PatientModel patient){
-        int rowCount;
-        rowCount = this.jdbcTemplate.queryForInt("select PatientID from patients where FirstName='"+patient.getFirstName()+
-        "' AND LastName='"+patient.getLastName()+"' AND SSN='"+patient.getSSN()+"';"
 
-        );
-        ResourceBundle rb = ResourceBundle.getBundle("patient");
+       String query = myResources.getString("getPatientId");
+        SqlParameterSource namedParameters = new BeanPropertySqlParameterSource(patient);
+        int rowCount;
+        rowCount = this.namedParameterJdbcTemplate.queryForInt(query, namedParameters);
+
         return rowCount;
     }
      public PatientModel getPatientById(String id){
 
-         String query = "SELECT * from patients where PatientID="+id;
-         PatientModel patient = (PatientModel) this.jdbcTemplate.queryForObject(query, new RowMapper() {
+         String query = myResources.getString("getPatientById");
+         MapSqlParameterSource paramSource = new MapSqlParameterSource("PatientID", id);
+        PatientModel patient = (PatientModel) this.namedParameterJdbcTemplate.queryForObject(query,paramSource ,new RowMapper() {
              @Override
              public PatientModel mapRow(ResultSet resultSet, int i) throws SQLException {
                  PatientModel patient = new PatientModel();
