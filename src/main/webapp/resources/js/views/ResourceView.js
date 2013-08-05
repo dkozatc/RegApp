@@ -19,7 +19,7 @@ define(['jquery',
                         });
 			this.$el.data('ResourcesId', this.model.get('resourceId'));
 		
-		
+			console.log(this.$el.data());
 			this.$el.css('background-color', this.model.get('color'));
 			this.$el.html(this.model.get('name'));
 

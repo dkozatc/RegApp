@@ -77,6 +77,7 @@ public class MainController {
         return "Update Dane";
     }
 
+
     @RequestMapping(value="/getAppointmentList", method = RequestMethod.GET)
     public @ResponseBody List<Appointment> getAppointmentList(@RequestParam("id") String id){
         System.out.print(id);
@@ -84,14 +85,19 @@ public class MainController {
 
         return  appointments;
     }
-
-
-    @RequestMapping(value="/addAppointment", method = RequestMethod.POST)
-    public @ResponseBody String addNewAppointment(Appointment appointment){
-       System.out.print(appointment);
-              appointmentService.createAppointmen(appointment);
+    @RequestMapping(value="/updateAppointment", method = RequestMethod.PUT)
+    public @ResponseBody String updateAppointment(@RequestBody Appointment appointment){
+        System.out.print(appointment);
+        appointmentService.editAppointment(appointment);
         return "{\"id\":0}";
     }
+     @RequestMapping(value="/addAppointment", method = RequestMethod.POST)
+     public @ResponseBody String addNewAppointment(@RequestBody  Appointment appointment){
+        System.out.print(appointment);
+              appointmentService.createAppointmen(appointment);
+         return "{\"id\":0}";
+     }
+
 
 
 

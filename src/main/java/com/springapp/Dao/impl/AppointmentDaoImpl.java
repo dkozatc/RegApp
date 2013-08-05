@@ -3,7 +3,6 @@ package com.springapp.dao.impl;
 import com.springapp.dao.AppointmentDao;
 import com.springapp.models.Appointment;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
@@ -14,6 +13,7 @@ import org.springframework.stereotype.Component;
 import javax.sql.DataSource;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -48,8 +48,9 @@ public class AppointmentDaoImpl implements AppointmentDao {
     }
     @Override
     public String updateAppointment(Appointment appointment) {
-        String query = "UPDATE appointments SET StartDateTime=?, EndDateTime=?, Resourceid=?, CommentsText=? WHERE" +
-                "id="+appointment.getId();
+        String sqlQuery = this.myResources.getString("updateAppointment");
+        SqlParameterSource namedParameters = new BeanPropertySqlParameterSource(appointment);
+        this.namedParameterJdbcTemplate.update(sqlQuery, namedParameters);
         return null;
     }
     @Override
@@ -62,8 +63,8 @@ public class AppointmentDaoImpl implements AppointmentDao {
             public Appointment mapRow(ResultSet resultSet, int i) throws SQLException {
                 Appointment appointment = new Appointment();
                 appointment.setId(resultSet.getInt("id"));
-                appointment.setStartDateTime(resultSet.getString("StartDateTime"));
-                appointment.setEndDateTime(resultSet.getString("EndDateTime"));
+                appointment.setStartDateTime(resultSet.getTimestamp("StartDateTime"));
+                appointment.setEndDateTime(resultSet.getTimestamp("EndDateTime"));
                 appointment.setEncounterId(resultSet.getInt("EncounterId"));
                 appointment.setResourcesId(resultSet.getInt("ResourcesId"));
                 appointment.setCommentsText(resultSet.getString("CommentsText"));

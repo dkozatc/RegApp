@@ -19,14 +19,25 @@ define([
 					console.log(collection);
 					var fullCalendarEvents = Array();
 					collection.each(function(model){
-
-						fullCalendarEvents.push({title:model.get("CommentsText"), start:model.get("StartDateTime"), end:model.get("EndDateTime"), allDay:true, })
-
-
-
+						var resourceModel = object.resources.where({resourceId:model.get("ResourcesId")})
+						if(resourceModel.length != 0){
+			
+					
+						fullCalendarEvents.push({id:model.get("id"), title:model.get("CommentsText"), start:new Date(model.get("StartDateTime")), end:new Date(model.get("EndDateTime")), allDay:false, backgroundColor:resourceModel[0].get("color"),
+						ResourcesId:model.get("ResourcesId")});
+						}else{
+							fullCalendarEvents.push({});
+						}
 					});
 
+					console.log(fullCalendarEvents);
+					Event.trigger("bildedFullCalendarEvents"+object.model.get("id"), fullCalendarEvents);	
+
+				},
+				error: function(){
+					console.log("error");
 				}
+
 			});
 			console.log(this);
 		}

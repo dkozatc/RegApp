@@ -3,6 +3,8 @@ package com.springapp.models;
 import org.codehaus.jackson.annotate.JsonProperty;
 import org.springframework.stereotype.Component;
 
+import java.util.Date;
+
 /**
  * Created with IntelliJ IDEA.
  * User: dkozar
@@ -12,9 +14,9 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class Appointment {
-    private int id=0;
-    private String StartDateTime;
-    private String EndDateTime;
+    private int id;
+    private Date StartDateTime;
+    private Date EndDateTime;
     private int EncounterId;
     private int ResourcesId;
     private String CommentsText;
@@ -29,17 +31,17 @@ public class Appointment {
         this.id = id;
     }
     @JsonProperty("StartDateTime")
-    public String getStartDateTime() {
+    public Date getStartDateTime() {
         return StartDateTime;
     }
-    public void setStartDateTime(String startDateTime) {
+    public void setStartDateTime(Date startDateTime) {
         StartDateTime = startDateTime;
     }
     @JsonProperty("EndDateTime")
-    public String getEndDateTime() {
+    public Date getEndDateTime() {
         return EndDateTime;
     }
-    public void setEndDateTime(String endDateTime) {
+    public void setEndDateTime(Date endDateTime) {
         EndDateTime = endDateTime;
     }
     @JsonProperty("EncounterId")
