@@ -26,11 +26,19 @@ import java.util.ResourceBundle;
  */
 @Component
 public class AppointmentDaoImpl implements AppointmentDao {
+
+
     @Autowired
     private DataSource dataSource;
 
     private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
     private  ResourceBundle myResources = ResourceBundle.getBundle("com.springapp.properties.AppointmentDao");
+    private  final String INSERT_APPOINTMENT = myResources.getString("insertAppointment");
+    private final  String UPDATE_APPOINTMENT =  this.myResources.getString("updateAppointment");
+    private final String GET_APPOINTMENT_LIST = this.myResources.getString("getAppointmentList");
+
+
+
     @Autowired
     public void setDataSource(DataSource dataSource) {
         this.dataSource = dataSource;
@@ -40,25 +48,21 @@ public class AppointmentDaoImpl implements AppointmentDao {
     @Override
     public int insertAppointment(Appointment appointment) {
         SqlParameterSource namedParameters = new BeanPropertySqlParameterSource(appointment);
-        String query =this.myResources.getString("insertAppointment");
-        this.namedParameterJdbcTemplate.update(query, namedParameters);
+        this.namedParameterJdbcTemplate.update(this.INSERT_APPOINTMENT, namedParameters);
         String selectQuery = this.myResources.getString("selectAppointmentId");
         int id = this.namedParameterJdbcTemplate.queryForInt(selectQuery, namedParameters);
         return id;
     }
     @Override
     public String updateAppointment(Appointment appointment) {
-        String sqlQuery = this.myResources.getString("updateAppointment");
         SqlParameterSource namedParameters = new BeanPropertySqlParameterSource(appointment);
-        this.namedParameterJdbcTemplate.update(sqlQuery, namedParameters);
+        this.namedParameterJdbcTemplate.update(this.UPDATE_APPOINTMENT, namedParameters);
         return null;
     }
     @Override
     public List<Appointment> getAppointments(String query) {
-
-        String sqlQuery = this.myResources.getString("getAppointmentList");
         MapSqlParameterSource paramSource = new MapSqlParameterSource("EncounterId", query);
-        List<Appointment> appointments = this.namedParameterJdbcTemplate.query(sqlQuery, paramSource, new RowMapper() {
+        List<Appointment> appointments = this.namedParameterJdbcTemplate.query(this.GET_APPOINTMENT_LIST, paramSource, new RowMapper() {
             @Override
             public Appointment mapRow(ResultSet resultSet, int i) throws SQLException {
                 Appointment appointment = new Appointment();
@@ -71,7 +75,6 @@ public class AppointmentDaoImpl implements AppointmentDao {
                 return appointment;
             }
         });
-
         return appointments;
     }
 }

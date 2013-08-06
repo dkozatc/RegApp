@@ -29,19 +29,15 @@ define([
 							fullCalendarEvents.push({});
 						}
 					});
-
 					console.log(fullCalendarEvents);
 					Event.trigger("bildedFullCalendarEvents"+object.model.get("id"), fullCalendarEvents);	
-
 				},
 				error: function(){
 					console.log("error");
 				}
-
 			});
 			console.log(this);
 		}
-
 	});
 	return AppointmentsCollection;
 });

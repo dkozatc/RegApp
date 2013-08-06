@@ -21,8 +21,6 @@ public class Appointment {
     private int ResourcesId;
     private String CommentsText;
 
-
-
     @JsonProperty("id")
     public int getId() {
         return id;
@@ -55,11 +53,9 @@ public class Appointment {
     public int getResourcesId(){
         return ResourcesId;
     }
-
     public void setResourcesId(int resourcesId) {
         ResourcesId = resourcesId;
     }
-
     @JsonProperty("CommentsText")
     public String getCommentsText() {
         return CommentsText;
