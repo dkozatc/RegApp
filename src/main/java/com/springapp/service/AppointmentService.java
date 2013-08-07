@@ -16,5 +16,6 @@ public interface AppointmentService {
     public String editAppointment(Appointment appointment);
     public int createAppointmen(Appointment appointment);
     public List<Appointment> searchAppointment(String query);
+    public String deleteAppointment(String id);
 
 }

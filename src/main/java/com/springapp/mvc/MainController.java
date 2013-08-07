@@ -98,6 +98,12 @@ public class MainController {
          return "{\"id\":0}";
      }
 
+    @RequestMapping(value="/deleteAppointment", method = RequestMethod.DELETE)
+    public @ResponseBody String deleteAppointment(@RequestParam("id") String id){
+        System.out.print(id);
+        appointmentService.deleteAppointment(id);
+        return "{\"id\":0}";
+    }
 
 
 

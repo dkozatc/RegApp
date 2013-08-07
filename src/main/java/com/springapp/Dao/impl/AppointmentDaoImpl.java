@@ -36,6 +36,7 @@ public class AppointmentDaoImpl implements AppointmentDao {
     private  final String INSERT_APPOINTMENT = myResources.getString("insertAppointment");
     private final  String UPDATE_APPOINTMENT =  this.myResources.getString("updateAppointment");
     private final String GET_APPOINTMENT_LIST = this.myResources.getString("getAppointmentList");
+    private final String DELETE_APPOINTMENT = this.myResources.getString("deleteAppointment");
 
 
 
@@ -76,5 +77,12 @@ public class AppointmentDaoImpl implements AppointmentDao {
             }
         });
         return appointments;
+    }
+
+    @Override
+    public String removeAppointments(String query) {
+        MapSqlParameterSource parameterSource = new MapSqlParameterSource("id", query);
+        this.namedParameterJdbcTemplate.update(this.DELETE_APPOINTMENT, parameterSource);
+        return null;
     }
 }

@@ -28,10 +28,11 @@ import java.util.ResourceBundle;
 public class  EncountDaoImpl implements EncountDao {
     @Autowired
     private DataSource dataSource;
-
-
     private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
     private ResourceBundle myResources = ResourceBundle.getBundle("com.springapp.properties.EncounterDao");
+    private final String INSERT_ENCOUNTER = myResources.getString("insertEncounter");
+    private final String UPDATE_ENCOUNTER =  myResources.getString("updateEncounter");
+    private final String GET_ENCOUNTER = myResources.getString("getEncounterList");
 
     public DataSource getDataSource() {
         return dataSource;
@@ -43,27 +44,21 @@ public class  EncountDaoImpl implements EncountDao {
         System.out.print("set");
     }
     public int insertEncounter(Encounter encounter){
-
-        String query = myResources.getString("insertEncounter");
         SqlParameterSource namedParameters = new BeanPropertySqlParameterSource(encounter);
-        this.namedParameterJdbcTemplate.update(query, namedParameters);
+        this.namedParameterJdbcTemplate.update(this.INSERT_ENCOUNTER, namedParameters);
         String sqlQuery = myResources.getString("getEncounterId");
         int id = this.namedParameterJdbcTemplate.queryForInt(sqlQuery, namedParameters);
         return id;
     }
     public String updateEncouter(Encounter encounter){
-
-        String query = myResources.getString("updateEncounter");
         SqlParameterSource namedParameters = new BeanPropertySqlParameterSource(encounter);
-        this.namedParameterJdbcTemplate.update(query, namedParameters);
-
+        this.namedParameterJdbcTemplate.update(this.UPDATE_ENCOUNTER, namedParameters);
         return null;
     }
     @Override
     public List<Encounter> getEncounters(String query) {
-        String slqQuery = myResources.getString("getEncounterList");
-        MapSqlParameterSource paramSource = new MapSqlParameterSource("PatientID", query);
-          List<Encounter> encounters = this.namedParameterJdbcTemplate.query(slqQuery, paramSource, new RowMapper() {
+      MapSqlParameterSource paramSource = new MapSqlParameterSource("PatientID", query);
+          List<Encounter> encounters = this.namedParameterJdbcTemplate.query(this.GET_ENCOUNTER, paramSource, new RowMapper() {
               @Override
               public Encounter mapRow(ResultSet resultSet, int i) throws SQLException {
                   Encounter encounter = new Encounter();

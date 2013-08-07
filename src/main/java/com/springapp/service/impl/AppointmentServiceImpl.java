@@ -50,4 +50,13 @@ public class AppointmentServiceImpl implements AppointmentService {
 
         return appointments;
     }
+
+    @Override
+    public String deleteAppointment(String id) {
+
+        appointmentDao.removeAppointments(id);
+        return null;
+    }
+
+
 }

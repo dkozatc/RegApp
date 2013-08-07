@@ -10,6 +10,7 @@ define([
 		model:AppointmentModel,
 		initialize: function() {
 			Event.on('fetchAppointments', this.fetchAppointments, this);
+			Event.on("removeAppointment", this.removeApppointment, this);
 		},
 		fetchAppointments: function(object){
 			this.url ="/getAppointmentList?id="+object.model.get("id");
@@ -37,6 +38,12 @@ define([
 				}
 			});
 			console.log(this);
+		},
+		removeApppointment: function(id) {
+				console.log(id);
+				var model =  new AppointmentModel({id:id});
+				model.url = "/deleteAppointment?id="+id;
+				model.destroy();
 		}
 	});
 	return AppointmentsCollection;
