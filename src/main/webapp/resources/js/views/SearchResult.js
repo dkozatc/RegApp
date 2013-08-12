@@ -35,7 +35,7 @@ define(['underscore',
          		},
          		PatientEdit: function(){
          			console.log(this.model.cid);
-         			window.location.href = "http://localhost:8080/#EditPatient/"+this.model.cid;
+         			window.location.href = "#EditPatient/"+this.model.cid;
          		}
         });
 		return SerchResultView ;

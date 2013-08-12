@@ -16,7 +16,7 @@ define(['jquery',
 			this.collection.each(this.addOne, this);
 		},
 		addOne: function(model){
-				var tabEncoutersView = new PatientEncounterView({model:model});
+				var tabEncoutersView = new PatientEncounterView({model:model, editable:this.options.editable});
 				console.log(tabEncoutersView.el);
 				this.$el.append(tabEncoutersView.el);
 		}

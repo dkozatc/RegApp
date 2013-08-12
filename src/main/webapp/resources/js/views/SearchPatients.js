@@ -117,7 +117,7 @@ define([
               // window.location.href="http://localhost:8080/#AddPatient";
             },
             SearchPatients: function(){
-                window.location.href="http://localhost:8080/#SearchPatients/"+ $("#inputSearch").val();
+                window.location.href="#SearchPatients/"+ $("#inputSearch").val();
                 
             }
 

@@ -34,6 +34,8 @@ public class PatientDaoImpl implements PatientDao {
     private final String INSERT_PATIENT = myResources.getString("insertPatient");
     private final String UPDATE_PATIENT = myResources.getString("updatePatient");
     private final String GET_PATIENT_LIST = myResources.getString("getPatientList");
+    private final String GET_PATIENT_BY_SSN = myResources.getString("getPatientBySSN");
+    private final String GET_PATIENT_BY_ID = myResources.getString("getPatientById");
 
     public DataSource getDataSource() {
         return dataSource;
@@ -73,12 +75,20 @@ public class PatientDaoImpl implements PatientDao {
     }
      public PatientModel getPatientById(String id){
 
-         String query = myResources.getString("getPatientById");
+
          MapSqlParameterSource paramSource = new MapSqlParameterSource("PatientID", id);
-         PatientModel patient = (PatientModel) this.namedParameterJdbcTemplate.queryForObject(query,paramSource ,new PatientRowMapper());
+         PatientModel patient = (PatientModel) this.namedParameterJdbcTemplate.queryForObject(GET_PATIENT_BY_ID, paramSource ,new PatientRowMapper());
          return patient;
      }
 
+    @Override
+    public PatientModel getPatientBySSN(String SSN) {
+
+        MapSqlParameterSource paramSource = new MapSqlParameterSource("SSN", SSN);
+        PatientModel patient = (PatientModel) this.namedParameterJdbcTemplate.queryForObject(GET_PATIENT_BY_SSN, paramSource ,new PatientRowMapper());
+        return patient;
+
+    }
 
 
 }

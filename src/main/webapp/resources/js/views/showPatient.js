@@ -38,10 +38,17 @@ define(['jquery', 'underscore',
 				console.log($('#encountersTab').html());
 				var that =this;
 				setTimeout(function(){
-				var PatientEncoutersView = new PatientEcounters({collection:that.collection});
+				var PatientEncoutersView = new PatientEcounters({collection:that.collection, editable:that.options.editable});
 				$('#TimeIn').inputmask("99/99/9999");
 				$('#TimeOut').inputmask("99/99/9999");
+                    if(!that.options.editable){
+                        console.log( $("#addEncountersBtn").length);
+                        $("#addEncountersBtn").hide();
+                        $("#addEncountersBtn").remove();
+                    }
 		 		}, 0);
+                 console.log(this.options.editable);
+
 				console.log($('#encountersTab').html());
 
 			},

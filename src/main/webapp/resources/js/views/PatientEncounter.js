@@ -49,7 +49,7 @@ define(['jquery',
 					Event.trigger('fetchAppointments', {model:that.model, resources:Resources});
 
 					var ResourcesViews = new ResourcesView({collection:Resources});
-					var Calender = new AppointmentsView({model:that.model, collection: new AppointmentsCollections()});
+					var Calender = new AppointmentsView({model:that.model, collection: new AppointmentsCollections(), editable:that.options.editable});
 				},
 				error: function(){
 					console.log("error execut");

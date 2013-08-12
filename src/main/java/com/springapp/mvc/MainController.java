@@ -13,6 +13,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+import java.security.Principal;
 import java.util.List;
 
 
@@ -36,76 +38,69 @@ public class MainController {
     @Autowired
     private AppointmentService appointmentService;
 
-    @RequestMapping(value="/test", method = RequestMethod.GET)
+    @RequestMapping(value="Registrator/test", method = RequestMethod.GET)
     public @ResponseBody List<PatientModel> printWelcome(@RequestParam("requestString") String requestString ,ModelMap model) {
         System.out.println(requestString + " string");
         List<PatientModel> result = patientService.searchPatient(requestString);
         return  result;
     }
-
-    @RequestMapping(value="/showPatient", method = RequestMethod.GET)
+    @RequestMapping(value="Registrator/showPatient", method = RequestMethod.GET)
     public @ResponseBody PatientModel getPatient(@RequestParam("id") String id ,ModelMap model) {
 
         System.out.println(id + " string");
         PatientModel result = patientService.getPatient(id);
         return result;
     }
-    @RequestMapping(value="/patientEncounts", method = RequestMethod.GET)
+    @RequestMapping(value="Registrator/patientEncounts", method = RequestMethod.GET)
     public @ResponseBody List<Encounter> getPatientEncounts(@RequestParam("id") String id ,ModelMap model) {
         System.out.println(id + " string");
         List<Encounter> result = encounterService.searchEncounters(id);
         return result;
     }
-    @RequestMapping(value="/addPatient", method = RequestMethod.POST)
+    @RequestMapping(value="Registrator/addPatient", method = RequestMethod.POST)
     public @ResponseBody String addNewPatient(PatientModel patientModel){
         int a = patientService.createPatient(patientModel);
         return "{\"PatientID\":"+a+"}";
     }
-    @RequestMapping(value="/updatePatient", method = RequestMethod.POST)
+    @RequestMapping(value="Registrator/updatePatient", method = RequestMethod.POST)
     public @ResponseBody String updatePatient(PatientModel patientModel){
         String result = patientService.editPatient(patientModel);
         return "Dane!";
     }
-    @RequestMapping(value="/addEncounter", method = RequestMethod.POST)
+    @RequestMapping(value="Registrator/addEncounter", method = RequestMethod.POST)
     public @ResponseBody String addNewEncounter(Encounter encounter){
       int id = encounterService.createEncounter(encounter);
        return "{\"id\":"+id+"}";
     }
-    @RequestMapping(value="/updateEncouter", method = RequestMethod.POST)
+    @RequestMapping(value="Registrator/updateEncouter", method = RequestMethod.POST)
     public @ResponseBody String updateEncounter(Encounter encounter){
         encounterService.editEncounter(encounter);
         return "Update Dane";
     }
-
-
-    @RequestMapping(value="/getAppointmentList", method = RequestMethod.GET)
+    @RequestMapping(value="Registrator/getAppointmentList", method = RequestMethod.GET)
     public @ResponseBody List<Appointment> getAppointmentList(@RequestParam("id") String id){
         System.out.print(id);
         List<Appointment> appointments = appointmentService.searchAppointment(id);
-
         return  appointments;
     }
-    @RequestMapping(value="/updateAppointment", method = RequestMethod.PUT)
+    @RequestMapping(value="Registrator/updateAppointment", method = RequestMethod.PUT)
     public @ResponseBody String updateAppointment(@RequestBody Appointment appointment){
         System.out.print(appointment);
         appointmentService.editAppointment(appointment);
         return "{\"id\":0}";
     }
-     @RequestMapping(value="/addAppointment", method = RequestMethod.POST)
-     public @ResponseBody String addNewAppointment(@RequestBody  Appointment appointment){
-        System.out.print(appointment);
-              appointmentService.createAppointmen(appointment);
-         return "{\"id\":0}";
-     }
-
-    @RequestMapping(value="/deleteAppointment", method = RequestMethod.DELETE)
+    @RequestMapping(value="Registrator/addAppointment", method = RequestMethod.POST)
+    public @ResponseBody String addNewAppointment(@RequestBody  Appointment appointment){
+       System.out.print(appointment);
+             appointmentService.createAppointmen(appointment);
+       return "{\"id\":0}";
+    }
+    @RequestMapping(value="Registrator/deleteAppointment", method = RequestMethod.DELETE)
     public @ResponseBody String deleteAppointment(@RequestParam("id") String id){
         System.out.print(id);
         appointmentService.deleteAppointment(id);
         return "{\"id\":0}";
     }
-
-
 
 
 

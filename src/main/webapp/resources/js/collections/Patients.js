@@ -7,7 +7,7 @@ define([
 	var Event = _.extend(Backbone.Events);
 
 	var PatientsCollection = Backbone.Collection.extend({
-		url:'/test',
+		url:'test',
 		model:PatientModel,
 
 		initialize: function (){
@@ -16,12 +16,12 @@ define([
 			Event.on('updatePatient', this.updatePatient, this);
 		},
 		addNew: function (jsonObj) {
-			this.url= '/test?requestString='+jsonObj;
+			this.url= 'test?requestString='+jsonObj;
 			this.fetch();
 		},
 		sendDataToDB: function(obj){
 			var model = new PatientModel(obj);
-			model.url = "/addPatient";
+			model.url = "addPatient";
 			model.set('PatientID', 0);
 			var that = this;
 			model.save(model.toJSON(), {data:model.toJSON(), processData:true,
@@ -41,7 +41,7 @@ define([
    		},
 	    updatePatient: function(object){
 	    	var model = new PatientModel(object);
-	    	model.url='/updatePatient';
+	    	model.url='updatePatient';
 	    	model.save(model.toJSON(), {data:model.toJSON(), processData:true});
 			Event.trigger('AlertUpdateTrue');
 	    }

@@ -16,4 +16,5 @@ public interface PatientService {
     public int createPatient(PatientModel patient);
     public List<PatientModel> searchPatient(String query);
     public PatientModel getPatient(String id);
+    public PatientModel getPatientBySSN(String SSN);
 }

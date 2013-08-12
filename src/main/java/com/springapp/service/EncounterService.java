@@ -12,11 +12,7 @@ import java.util.List;
  * To change this template use File | Settings | File Templates.
  */
 public interface EncounterService {
-
     public String editEncounter(Encounter encounter);
     public int createEncounter(Encounter encounter);
     public List<Encounter> searchEncounters(String query);
-
-
-
 }

@@ -10,42 +10,40 @@ import org.codehaus.jackson.annotate.JsonProperty;
  * To change this template use File | Settings | File Templates.
  */
 public class PatientModel {
-    int PatientID;
-    String FirstName;
-    String LastName;
-    String SSN;
-    String DateOfbirth;
-    String Gender;
-    String MaritalStatus;
-    String Race;
-    String Religion;
-    String Language;
-    String PatientAddress;
-    String PatientCity;
-    String PatientState;
-    String PatientZip;
-    String PatientPhone;
-    String EmployerName;
-    String EmployerAddress;
-    String EmployerCity;
-    String EmployerState;
-    String EmployerZip;
-    String EmployerPhone;
+   private int PatientID;
+   private  String FirstName;
+   private  String LastName;
+   private  String SSN;
+   private String DateOfbirth;
+   private String Gender;
+   private String MaritalStatus;
+   private  String Race;
+   private  String Religion;
+   private  String Language;
+   private  String PatientAddress;
+   private  String PatientCity;
+   private  String PatientState;
+   private  String PatientZip;
+   private  String PatientPhone;
+   private  String EmployerName;
+   private  String EmployerAddress;
+   private  String EmployerCity;
+   private  String EmployerState;
+   private  String EmployerZip;
+   private  String EmployerPhone;
+   private  String Password="qwerty";
 
     @JsonProperty("PatientID")
     public int getPatientID() {
         return PatientID;
     }
-
     public void setPatientID(int patientID) {
         PatientID = patientID;
     }
-
     @JsonProperty("LastName")
     public String getLastName() {
         return LastName;
     }
-
     public void setLastName(String lastName) {
         LastName = lastName;
     }
@@ -53,7 +51,6 @@ public class PatientModel {
     public String getFirstName() {
         return FirstName;
     }
-
     public void setFirstName(String firstName) {
         FirstName = firstName;
     }
@@ -61,7 +58,6 @@ public class PatientModel {
     public String getSSN() {
         return SSN;
     }
-
     public void setSSN(String SSN) {
         this.SSN = SSN;
     }
@@ -69,7 +65,6 @@ public class PatientModel {
     public String getDateOfbirth() {
         return DateOfbirth;
     }
-
     public void setDateOfbirth(String dateOfbirth) {
         DateOfbirth = dateOfbirth;
     }
@@ -77,7 +72,6 @@ public class PatientModel {
     public String getGender() {
         return Gender;
     }
-
     public void setGender(String gender) {
         Gender = gender;
     }
@@ -85,7 +79,6 @@ public class PatientModel {
     public String getMaritalStatus() {
         return MaritalStatus;
     }
-
     public void setMaritalStatus(String maritalStatus) {
         MaritalStatus = maritalStatus;
     }
@@ -93,7 +86,6 @@ public class PatientModel {
     public String getRace() {
         return Race;
     }
-
     public void setRace(String race) {
         Race = race;
     }
@@ -101,7 +93,6 @@ public class PatientModel {
     public String getReligion() {
         return Religion;
     }
-
     public void setReligion(String religion) {
         Religion = religion;
     }
@@ -109,7 +100,6 @@ public class PatientModel {
     public String getLanguage() {
         return Language;
     }
-
     public void setLanguage(String language) {
         Language = language;
     }
@@ -117,7 +107,6 @@ public class PatientModel {
     public String getPatientAddress() {
         return PatientAddress;
     }
-
     public void setPatientAddress(String patientAddress) {
         PatientAddress = patientAddress;
     }
@@ -125,7 +114,6 @@ public class PatientModel {
     public String getPatientCity() {
         return PatientCity;
     }
-
     public void setPatientCity(String patientCity) {
         PatientCity = patientCity;
     }
@@ -133,7 +121,6 @@ public class PatientModel {
     public String getPatientState() {
         return PatientState;
     }
-
     public void setPatientState(String patientState) {
         PatientState = patientState;
     }
@@ -141,7 +128,6 @@ public class PatientModel {
     public String getPatientZip() {
         return PatientZip;
     }
-
     public void setPatientZip(String patientZip) {
         PatientZip = patientZip;
     }
@@ -149,7 +135,6 @@ public class PatientModel {
     public String getPatientPhone() {
         return PatientPhone;
     }
-
     public void setPatientPhone(String patientPhone) {
         PatientPhone = patientPhone;
     }
@@ -157,7 +142,6 @@ public class PatientModel {
     public String getEmployerName() {
         return EmployerName;
     }
-
     public void setEmployerName(String employerName) {
         EmployerName = employerName;
     }
@@ -165,7 +149,6 @@ public class PatientModel {
     public String getEmployerAddress() {
         return EmployerAddress;
     }
-
     public void setEmployerAddress(String employerAddress) {
         EmployerAddress = employerAddress;
     }
@@ -173,7 +156,6 @@ public class PatientModel {
     public String getEmployerCity() {
         return EmployerCity;
     }
-
     public void setEmployerCity(String employerCity) {
         EmployerCity = employerCity;
     }
@@ -181,7 +163,6 @@ public class PatientModel {
     public String getEmployerState() {
         return EmployerState;
     }
-
     public void setEmployerState(String employerState) {
         EmployerState = employerState;
     }
@@ -189,7 +170,6 @@ public class PatientModel {
     public String getEmployerZip() {
         return EmployerZip;
     }
-
     public void setEmployerZip(String employerZip) {
         EmployerZip = employerZip;
     }
@@ -197,8 +177,14 @@ public class PatientModel {
     public String getEmployerPhone() {
         return EmployerPhone;
     }
-
     public void setEmployerPhone(String employerPhone) {
         EmployerPhone = employerPhone;
+    }
+    @JsonProperty("Password")
+    public String getPassword() {
+        return Password;
+    }
+    public void setPassword(String password) {
+        Password = password;
     }
 }

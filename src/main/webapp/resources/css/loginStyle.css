@@ -1,0 +1,62 @@
+body{
+    background-image: url(/resources/img/bg-light-4845.png);
+    background-repeat: repeat;
+
+
+
+}
+.loginBar{
+    -moz-box-shadow: 0 0 20px rgba(0,0,0,0.7); /* Для Firefox */
+    -webkit-box-shadow: 0 0 20px rgba(0,0,0,0.7); /* Для Safari и Chrome */
+    box-shadow: 0 0 20px rgba(0,0,0,0.7); /* Параметры тени */
+    border: 3px solid #f8f8f8;
+    border-radius: 10px;
+    margin: 100 auto;
+    width: 400px;
+    height: 200px;
+    background-color: #FdFdFd;
+ }
+
+.loginForm{
+    margin-top: 30px;
+    margin-left: 40px;
+
+
+
+}
+.formRow{
+   line-height: 20px;
+    font-size: 18px;
+    font-family: Arial Verdana sans-serif;
+
+
+}
+.formRow p {
+
+
+}
+.formRow .btn{
+    margin-left: 148px;
+
+}
+.loginForm input{
+    height: 30px;
+    margin-bottom: 5px;
+}
+.logo{
+    margin-top: 25px;
+    float: left;
+}
+.appendImg{
+    width: 100px;
+    height: 100px;
+
+}
+.headerTitle{
+    margin: 50px auto;
+    width: 700px;
+    height: 50px;
+
+
+
+}

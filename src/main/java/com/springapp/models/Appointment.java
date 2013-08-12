@@ -20,7 +20,6 @@ public class Appointment {
     private int EncounterId;
     private int ResourcesId;
     private String CommentsText;
-
     @JsonProperty("id")
     public int getId() {
         return id;

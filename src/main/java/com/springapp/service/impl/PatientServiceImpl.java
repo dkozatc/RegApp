@@ -41,4 +41,13 @@ public class PatientServiceImpl implements PatientService {
         PatientModel patient = patientDao.getPatientById(id);
         return patient;
     }
+
+    @Override
+    public PatientModel getPatientBySSN(String SSN){
+
+        PatientModel patient = patientDao.getPatientBySSN(SSN);
+
+        return patient;
+
+    }
 }

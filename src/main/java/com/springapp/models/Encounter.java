@@ -16,12 +16,10 @@ public class Encounter {
     int PatientID =0;
     String TimeIn;
     String TimeOut;
-
     @JsonProperty("id")
     public int getId() {
         return id;
     }
-
     public void setId(int id) {
         this.id = id;
     }
@@ -29,7 +27,6 @@ public class Encounter {
     public String getDiagnose() {
         return Diagnose;
     }
-
     public void setDiagnose(String diagnose) {
         Diagnose = diagnose;
     }
@@ -37,7 +34,6 @@ public class Encounter {
     public String getStatus() {
         return Status;
     }
-
     public void setStatus(String status) {
         Status = status;
     }
@@ -45,7 +41,6 @@ public class Encounter {
     public int getPatientID() {
         return PatientID;
     }
-
     public void setPatientID(int patientID) {
         PatientID = patientID;
     }
@@ -53,7 +48,6 @@ public class Encounter {
     public String getTimeIn() {
         return TimeIn;
     }
-
     public void setTimeIn(String timeIn) {
         TimeIn = timeIn;
     }
@@ -61,7 +55,6 @@ public class Encounter {
     public String getTimeOut() {
         return TimeOut;
     }
-
     public void setTimeOut(String timeOut) {
         TimeOut = timeOut;
     }

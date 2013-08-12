@@ -13,7 +13,7 @@ define([
 			Event.on("removeAppointment", this.removeApppointment, this);
 		},
 		fetchAppointments: function(object){
-			this.url ="/getAppointmentList?id="+object.model.get("id");
+			this.url ="getAppointmentList?id="+object.model.get("id");
 			console.log(object);
 			this.fetch({
 				success: function(collection){
@@ -22,9 +22,7 @@ define([
 					collection.each(function(model){
 						var resourceModel = object.resources.where({resourceId:model.get("ResourcesId")})
 						if(resourceModel.length != 0){
-			
-					
-						fullCalendarEvents.push({id:model.get("id"), title:model.get("CommentsText"), start:new Date(model.get("StartDateTime")), end:new Date(model.get("EndDateTime")), allDay:false, backgroundColor:resourceModel[0].get("color"),
+			        	fullCalendarEvents.push({id:model.get("id"), title:model.get("CommentsText"), start:new Date(model.get("StartDateTime")), end:new Date(model.get("EndDateTime")), allDay:false, backgroundColor:resourceModel[0].get("color"),
 						ResourcesId:model.get("ResourcesId")});
 						}else{
 							fullCalendarEvents.push({});
@@ -42,7 +40,7 @@ define([
 		removeApppointment: function(id) {
 				console.log(id);
 				var model =  new AppointmentModel({id:id});
-				model.url = "/deleteAppointment?id="+id;
+				model.url = "deleteAppointment?id="+id;
 				model.destroy();
 		}
 	});

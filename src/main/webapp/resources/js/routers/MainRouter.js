@@ -85,7 +85,7 @@ define(['jquery',
 		       			$('#inputSearch').val(model.get('FirstName')+" "+ model.get('LastName'));
 	 	      			$('.autocompleteSearch').hide();
  	      			}else{
- 	      				window.location.href = "http://localhost:8080/";
+ 	      				window.location.href = "http://localhost:8080/Registrator";
  	      			}
     	 	},
     	 	addEncounter: function(id){
@@ -100,8 +100,8 @@ define(['jquery',
     	 	},
     	 	showPatient: function(id){
     	 			var patient = new PatientModel();
-    	 			this.Encounters.url = '/patientEncounts?id='+id;
-    	 			patient.url = "/showPatient?id="+id;
+    	 			this.Encounters.url = 'patientEncounts?id='+id;
+    	 			patient.url = "showPatient?id="+id;
     	 			var that = this;
 	   	 			patient.fetch({
 	   	 			success: function(){
@@ -109,7 +109,7 @@ define(['jquery',
 	   	 					success: function(){
 
 				   	 			console.log(that.Encounters);
-				   	 			var ShowPatientViews = new showPatient({model:patient, collection:that.Encounters});
+				   	 			var ShowPatientViews = new showPatient({model:patient, collection:that.Encounters, editable:true});
 				   	 			$("#content").html(ShowPatientViews.el);
 
 	   	 					}

@@ -21,42 +21,31 @@ public class AppointmentServiceImpl implements AppointmentService {
     private AppointmentDao appointmentDao;
 
     public AppointmentDao getAppointmentDao() {
-
         return appointmentDao;
     }
-
     public void setAppointmentDao(AppointmentDao appointmentDao) {
-
         this.appointmentDao = appointmentDao;
     }
-
     @Override
     public String editAppointment(Appointment appointment) {
-         appointmentDao.updateAppointment(appointment);
-
+        appointmentDao.updateAppointment(appointment);
         return null;
     }
-
     @Override
     public int createAppointmen(Appointment appointment) {
         int id = appointmentDao.insertAppointment(appointment);
-
         return id;
     }
 
     @Override
     public List<Appointment> searchAppointment(String query) {
         List<Appointment> appointments = appointmentDao.getAppointments(query);
-
         return appointments;
     }
 
     @Override
     public String deleteAppointment(String id) {
-
         appointmentDao.removeAppointments(id);
         return null;
     }
-
-
 }

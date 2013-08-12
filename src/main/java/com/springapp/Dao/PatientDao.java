@@ -18,4 +18,6 @@ public interface PatientDao {
     public List<PatientModel> searchPatients(String query);
     public int getPatientID(PatientModel patient);
     public PatientModel getPatientById(String id);
+    public PatientModel getPatientBySSN(String SSN);
+
 }
