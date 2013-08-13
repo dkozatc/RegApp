@@ -74,7 +74,7 @@ define(['underscore',
               setTimeout(function(){ $('.alert').remove();}, 3000);
          },
          addEncounter: function(model){
-            window.location.href = "/#addEncounter/"+model.cid;
+            window.location.href = "#addEncounter/"+model.cid;
 
          }
 

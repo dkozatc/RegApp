@@ -106,13 +106,9 @@ font-size: 15px;
 }
 .addEncounter{
  margin: 70px auto;
-
-
 }
 .addEncounter input.btn {
 margin-left:600px;
-
-
 }
 .PatientInfo{
 width:700px;
@@ -140,7 +136,6 @@ border-top-right-radius: 12.5em;
 .row.headerBodred{
 margin-left:0px;
 }
-
 .imgButton{
   padding-bottom: 10px;
   width:35;
@@ -151,16 +146,13 @@ margin-left:0px;
   padding-right: 450px;
 }
 .addEncouters{
-
   display: none;
 }
 .buttons{
   margin-left: 500px;
-
 }
 .formHeader{
 margin-left: 20px;
-
 }
 .encoutersRow a{
 color:black;
@@ -170,25 +162,18 @@ height: 100%;
 }
 .encoutersRow:hover a{
 text-decoration: none;
-
 cursor: pointer;
-  
 }
 .encoutersRow:hover {
 text-decoration: none;
-
-  
 }
- 
 .appImg{
   width:10%;
 }
 #resDraggable{
   width:90%;
   height:400px;
-  
   border: 1px solid silver;
-
 }
 .blue{
   width:99%;
@@ -197,7 +182,6 @@ text-decoration: none;
   border: 1px solid #3a87ad;
   border-left-width: 1px;
   border-radius: 3px;
-  
 }
 .yellow{
   width:99%;
@@ -208,40 +192,33 @@ text-decoration: none;
   border-radius: 3px;
 }
 .green{
-
   width:99%;
   color: white;
   background-color: #41DB00;
   border: 1px solid #41DB00;
   border-left-width: 1px;
   border-radius: 3px;
-
-
-
 }
-
 .d{
 width:100%;
-
-
-
 }
 .resorce{
   color: white;
   width:99%;
   border-left-width: 1px;
   border-radius: 3px;
-  
 }
 .shredder{
-
 width:50px;
 height: 40px;
-
-
 }
 .out{
  z-index: 999;
+}
+.logout{
+position:fixed;
+right: 2px;
+bottom:2px;
 
 
 }

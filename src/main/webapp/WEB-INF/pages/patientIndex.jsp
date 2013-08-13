@@ -22,7 +22,7 @@
 
 
 
-
+<a class="logout btn-info" href="j_spring_security_logout">Logout</a>
 <script data-main="/resources/js/main2.js" src="/resources/js/lib/require.js"></script>
 </body>
 </html>
