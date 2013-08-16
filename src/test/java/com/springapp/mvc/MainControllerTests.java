@@ -2,6 +2,7 @@ package com.springapp.mvc;
 
 import com.springapp.dao.EncountDao;
 import com.springapp.dao.PatientDao;
+import com.springapp.models.Appointment;
 import com.springapp.models.Encounter;
 import com.springapp.models.PatientModel;
 import com.springapp.service.AppointmentService;
@@ -15,6 +16,7 @@ import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -90,19 +92,122 @@ public class MainControllerTests extends TestCase {
     }
 
     @Test
-    public void testaddNewPatient() {
+    public void testAddNewPatient() {
         PatientModel patient = new PatientModel();
         patient.setFirstName("TestFirstName");
         patient.setLastName("TestLestName");
         patient.setSSN("123-12-1324");
         patient.setDateOfbirth("12/12/1999");
         patient.setMaritalStatus("Single");
-
         ServiceResponse<Integer> response = mainController.addNewPatient(patient);
-        assertTrue("Error addeding new Patient", response.getDate() >= 0);
-
+        assertTrue("Error added new Patient", response.getDate() >= 0);
         String delete = patientDao.deletePatient(response.getDate());
         assertEquals("delete dane", delete);
     }
+    @Test
+    public void testUpdatePatient(){
+        PatientModel patient = new PatientModel();
+        patient.setFirstName("TestFirstName");
+        patient.setLastName("TestLestName");
+        patient.setSSN("123-12-1324");
+        patient.setDateOfbirth("12/12/1999");
+        patient.setMaritalStatus("Single");
+        int id = patientService.createPatient(patient);
+        assertTrue("Add new PAtient Error", id >= 0);
+        patient.setPatientID(id);
+        ServiceResponse<String> response = mainController.updatePatient(patient);
+        assertEquals("All dane", response.getDate());
+        String delete = patientDao.deletePatient(id);
+        assertEquals("delete dane", delete);
+    }
+
+    @Test
+    public void testAddNewEncounter(){
+        Encounter encounter = new Encounter();
+        encounter.setDiagnose("DiagnosisTest");
+        encounter.setStatus("aga");
+        encounter.setPatientID(999);
+        encounter.setTimeIn("12/12/1232");
+        encounter.setTimeOut("12/02/1234");
+        ServiceResponse<Integer> response = mainController.addNewEncounter(encounter);
+        assertTrue("Add new Encounter fails", response.getDate()>=0);
+    }
+    @Test
+    public void testUpdateEncounter(){
+        Encounter encounter = new Encounter();
+        encounter.setDiagnose("DiagnosisTest");
+        encounter.setStatus("aga");
+        encounter.setPatientID(999);
+        encounter.setTimeIn("12/12/1232");
+        encounter.setTimeOut("12/02/1234");
+        ServiceResponse<Integer> response = mainController.addNewEncounter(encounter);
+        assertTrue("Add new Encounter fails", response.getDate()>=0);
+        encounter.setId(response.getDate());
+        ServiceResponse<String> responseUpdate = mainController.updateEncounter(encounter);
+        assertEquals("Update Dane",responseUpdate.getDate());
+    }
+    @Test
+    public void testGetAppointmentList(){
+        Appointment appointment = new Appointment();
+        appointment.setEncounterId(1);
+        appointment.setResourcesId(1);
+        appointment.setCommentsText("test");
+        appointment.setStartDateTime(new Date());
+        appointment.setEndDateTime(new Date());
+        ServiceResponse <Integer> response = mainController.addNewAppointment(appointment);
+        assertTrue("Insert appointment fail",response.getDate()>=0);
+        List<Appointment> appointments = mainController.getAppointmentList(appointment.getEncounterId());
+        assertFalse("Error geting appointments list", appointments.isEmpty());
+
+    }
+    @Test
+    public void testUpdateAppointment(){
+        Appointment appointment = new Appointment();
+        appointment.setEncounterId(1);
+        appointment.setResourcesId(1);
+        appointment.setCommentsText("test");
+        appointment.setStartDateTime(new Date());
+        appointment.setEndDateTime(new Date());
+        ServiceResponse <Integer> response = mainController.addNewAppointment(appointment);
+        assertTrue("Insert appointment fail",response.getDate()>=0);
+        appointment.setId(response.getDate());
+        ServiceResponse <String> responseUpdate = mainController.updateAppointment(appointment);
+        assertEquals("Update dane", responseUpdate.getDate());
+    }
+    @Test
+    public void testAddNewAppointment(){
+        Appointment appointment = new Appointment();
+        appointment.setEncounterId(1);
+        appointment.setResourcesId(1);
+        appointment.setCommentsText("test");
+        appointment.setStartDateTime(new Date());
+        appointment.setEndDateTime(new Date());
+        ServiceResponse <Integer> response = mainController.addNewAppointment(appointment);
+        assertTrue("Insert appointment fail",response.getDate()>=0);
+
+    }
+    @Test
+    public void testDeleteAppointment(){
+        Appointment appointment = new Appointment();
+        appointment.setEncounterId(1);
+        appointment.setResourcesId(1);
+        appointment.setCommentsText("test");
+        appointment.setStartDateTime(new Date());
+        appointment.setEndDateTime(new Date());
+        ServiceResponse <Integer> response = mainController.addNewAppointment(appointment);
+        assertTrue("Insert appointment fail",response.getDate()>=0);
+        ServiceResponse <String> responseDelete = mainController.deleteAppointment(response.getDate());
+        assertEquals("delete dane", responseDelete.getDate());
+
+    }
+
+
+
+
+
+
+
+
+
 
 }

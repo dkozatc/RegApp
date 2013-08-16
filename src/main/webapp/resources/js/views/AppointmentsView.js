@@ -52,7 +52,16 @@ function($, _, Backbone, Tools, Jsrender, AppointmentModel){
                                     console.log($(this).data("ResourcesId"));
                                     $('#calendar').fullCalendar('renderEvent',  obj, true);
                                     var appointment = new AppointmentModel({StartDateTime:date, EndDateTime:date, EncounterId:that.model.get('id'), ResourcesId:$(this).data("ResourcesId"), CommentsText:$(this).text()});
-                                    appointment.save(appointment.toJSON(), {processData:true});
+                                    appointment.save(appointment.toJSON(), {processData:true,
+                                        success:function(model, response){
+                                              console.log(model);
+                                              model.set("id", model.get("date"));
+
+                                        }
+
+
+
+                                    });
                                     console.log(appointment);
                                     console.log($(this));
                                     console.log(ui);
@@ -62,7 +71,7 @@ function($, _, Backbone, Tools, Jsrender, AppointmentModel){
 		                    eventDrop: function(event,dayDelta,minuteDelta,allDay,revertFunc) {
                                 if(that.options.editable){
                                     var appointment = new AppointmentModel({id:event.id, StartDateTime:event.start, EndDateTime:event.end, EncounterId:that.model.get('id'), ResourcesId:event.ResourcesId, CommentsText:event.title});
-                                    appointment.url = "/updateAppointment";
+                                    appointment.url = "updateAppointment";
                                     console.log(appointment);
                                     console.log($(this));
                                     // console.log(ui);
@@ -73,7 +82,7 @@ function($, _, Backbone, Tools, Jsrender, AppointmentModel){
 		                    	console.log(event);
 		                    	console.log("execut");
 						        var appointment = new AppointmentModel({id:event.id, StartDateTime:event.start, EndDateTime:event.end, EncounterId:that.model.get('id'), ResourcesId:event.ResourcesId, CommentsText:event.title});
-		                    	appointment.url = "/updateAppointment";
+		                    	appointment.url = "updateAppointment";
 		                    	console.log(appointment);
 		                  		appointment.save(appointment.toJSON(), {processData:true});
 						    },

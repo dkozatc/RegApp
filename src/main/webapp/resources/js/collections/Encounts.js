@@ -21,6 +21,7 @@ define([
 			model.save(model.toJSON(), {data:model.toJSON(), processData:true,
 				success:function(model, response){
 				console.log("good response");
+                    model.set("id", model.get("data"));
 					console.log(model);
 					console.log(response);	
 				    that.add(model);

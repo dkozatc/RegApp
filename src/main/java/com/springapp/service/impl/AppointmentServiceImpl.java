@@ -40,7 +40,7 @@ public class AppointmentServiceImpl implements AppointmentService {
 
     @Override
     public String deleteAppointment(int id) {
-        appointmentDao.removeAppointments(id);
-        return null;
+       String result = appointmentDao.removeAppointments(id);
+        return result;
     }
 }

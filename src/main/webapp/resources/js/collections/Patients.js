@@ -28,7 +28,10 @@ define([
 				success:function(model, response){
 				console.log("good response");
 					console.log(model);
-					console.log(response);	
+                    var id = model.get("data")
+                    model.set("PatientID", id);
+
+                    console.log(response);
 					that.add(model);
 					Event.trigger('addPatientSuccess_addPatients', model);
 				
