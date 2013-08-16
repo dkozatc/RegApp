@@ -7,10 +7,8 @@ define([
   'Validate'
 ],
 function($, _, Backbone, Tools, Jsrender, Validate){
-
 	var Event = _.extend(Backbone.Events);
 	var AddEncouter = Backbone.View.extend({
-
     		tagName:'div',
     		className:'addEncounter',
     		initialize: function() {
@@ -19,7 +17,6 @@ function($, _, Backbone, Tools, Jsrender, Validate){
        	},
     		events:{
     			'click .btn' : 'addEncounterInformation'
-
     		},
     		render: function() {
                 console.log('render AddEncounter');
@@ -53,7 +50,4 @@ function($, _, Backbone, Tools, Jsrender, Validate){
         }
 	});
 	return AddEncouter;
-
-
-
 });

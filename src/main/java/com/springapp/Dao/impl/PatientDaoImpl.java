@@ -9,6 +9,8 @@ import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
+import org.springframework.jdbc.support.GeneratedKeyHolder;
+import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -36,6 +38,7 @@ public class PatientDaoImpl implements PatientDao {
     private final String GET_PATIENT_LIST = myResources.getString("getPatientList");
     private final String GET_PATIENT_BY_SSN = myResources.getString("getPatientBySSN");
     private final String GET_PATIENT_BY_ID = myResources.getString("getPatientById");
+    private final String DELETE_PATIENT =  myResources.getString("deletePatient");
 
     public DataSource getDataSource() {
         return dataSource;
@@ -47,21 +50,21 @@ public class PatientDaoImpl implements PatientDao {
         System.out.print("set");
     }
     public int insertPatient(PatientModel patient){
+        KeyHolder keyHolder= new GeneratedKeyHolder();
         SqlParameterSource namedParameters = new BeanPropertySqlParameterSource(patient);
-        this.namedParameterJdbcTemplate.update(this.INSERT_PATIENT, namedParameters);
-        return  0;
+        this.namedParameterJdbcTemplate.update(this.INSERT_PATIENT, namedParameters, keyHolder);
+        Number returnId =  keyHolder.getKey();
+        int id = returnId.intValue();
+        return  id;
     }
     public String updatePatient(PatientModel patient){
         SqlParameterSource namedParameters = new BeanPropertySqlParameterSource(patient);
         this.namedParameterJdbcTemplate.update(this.UPDATE_PATIENT, namedParameters);
-
-        return "";
+        return "Dane";
     }
     public @ResponseBody List<PatientModel> searchPatients(String inputString){
-
         String param = "%"+inputString+ "%";
         MapSqlParameterSource paramSource = new MapSqlParameterSource("searchInput", param);
-
         List<PatientModel> patients = this.namedParameterJdbcTemplate.query(this.GET_PATIENT_LIST, paramSource, new PatientRowMapper());
         System.out.print(patients);
         return patients;
@@ -73,9 +76,7 @@ public class PatientDaoImpl implements PatientDao {
         rowCount = this.namedParameterJdbcTemplate.queryForInt(query, namedParameters);
         return rowCount;
     }
-     public PatientModel getPatientById(String id){
-
-
+     public PatientModel getPatientById(int id){
          MapSqlParameterSource paramSource = new MapSqlParameterSource("PatientID", id);
          PatientModel patient = (PatientModel) this.namedParameterJdbcTemplate.queryForObject(GET_PATIENT_BY_ID, paramSource ,new PatientRowMapper());
          return patient;
@@ -83,11 +84,16 @@ public class PatientDaoImpl implements PatientDao {
 
     @Override
     public PatientModel getPatientBySSN(String SSN) {
-
         MapSqlParameterSource paramSource = new MapSqlParameterSource("SSN", SSN);
         PatientModel patient = (PatientModel) this.namedParameterJdbcTemplate.queryForObject(GET_PATIENT_BY_SSN, paramSource ,new PatientRowMapper());
         return patient;
+    }
 
+    @Override
+    public String deletePatient(int PatientID) {
+        MapSqlParameterSource paramSource = new MapSqlParameterSource("PatientID", PatientID);
+        this.namedParameterJdbcTemplate.update(DELETE_PATIENT, paramSource);
+        return "delete dane";
     }
 
 

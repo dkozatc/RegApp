@@ -59,7 +59,7 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.8.2</version>
+            <version>4.11</version>
             <scope>test</scope>
         </dependency>
 
@@ -120,5 +120,11 @@
                 </configuration>
             </plugin>
         </plugins>
+
+        <testResources>
+            <testResource>
+                <directory>src/main/webapp/WEB-INF</directory>
+            </testResource>
+        </testResources>
     </build>
 </project>

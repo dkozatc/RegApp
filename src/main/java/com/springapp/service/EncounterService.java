@@ -14,5 +14,6 @@ import java.util.List;
 public interface EncounterService {
     public String editEncounter(Encounter encounter);
     public int createEncounter(Encounter encounter);
-    public List<Encounter> searchEncounters(String query);
+    public List<Encounter> searchEncounters(int query);
+
 }

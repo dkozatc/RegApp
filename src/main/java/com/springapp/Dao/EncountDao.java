@@ -14,6 +14,7 @@ import java.util.List;
 public interface EncountDao {
     public int insertEncounter(Encounter encounter);
     public String updateEncouter(Encounter encounter);
-    public List<Encounter> getEncounters(String query);
+    public List<Encounter> getEncounters(int PatientID);
     public int getEncounterID(Encounter encounter);
+    public String deleteEncounter(int id);
 }

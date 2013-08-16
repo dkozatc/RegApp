@@ -39,28 +39,28 @@ public class MainController {
     private AppointmentService appointmentService;
 
     @RequestMapping(value="Registrator/test", method = RequestMethod.GET)
-    public @ResponseBody List<PatientModel> printWelcome(@RequestParam("requestString") String requestString ,ModelMap model) {
+    public @ResponseBody List<PatientModel> searchPatient(@RequestParam("requestString") String requestString ) {
         System.out.println(requestString + " string");
         List<PatientModel> result = patientService.searchPatient(requestString);
         return  result;
     }
     @RequestMapping(value="Registrator/showPatient", method = RequestMethod.GET)
-    public @ResponseBody PatientModel getPatient(@RequestParam("id") String id ,ModelMap model) {
+    public @ResponseBody PatientModel getPatient(@RequestParam("id") int id) {
 
         System.out.println(id + " string");
         PatientModel result = patientService.getPatient(id);
         return result;
     }
     @RequestMapping(value="Registrator/patientEncounts", method = RequestMethod.GET)
-    public @ResponseBody List<Encounter> getPatientEncounts(@RequestParam("id") String id ,ModelMap model) {
+    public @ResponseBody List<Encounter> getPatientEncounts(@RequestParam("id") int id) {
         System.out.println(id + " string");
         List<Encounter> result = encounterService.searchEncounters(id);
         return result;
     }
     @RequestMapping(value="Registrator/addPatient", method = RequestMethod.POST)
-    public @ResponseBody String addNewPatient(PatientModel patientModel){
-        int a = patientService.createPatient(patientModel);
-        return "{\"PatientID\":"+a+"}";
+    public @ResponseBody ServiceResponse<Integer> addNewPatient(PatientModel patientModel){
+        int id = patientService.createPatient(patientModel);
+        return new ServiceResponse<Integer>(id);
     }
     @RequestMapping(value="Registrator/updatePatient", method = RequestMethod.POST)
     public @ResponseBody String updatePatient(PatientModel patientModel){
@@ -68,9 +68,9 @@ public class MainController {
         return "Dane!";
     }
     @RequestMapping(value="Registrator/addEncounter", method = RequestMethod.POST)
-    public @ResponseBody String addNewEncounter(Encounter encounter){
+    public @ResponseBody ServiceResponse<Integer> addNewEncounter(Encounter encounter){
       int id = encounterService.createEncounter(encounter);
-       return "{\"id\":"+id+"}";
+       return new ServiceResponse<Integer>(id);
     }
     @RequestMapping(value="Registrator/updateEncouter", method = RequestMethod.POST)
     public @ResponseBody String updateEncounter(Encounter encounter){
@@ -78,7 +78,7 @@ public class MainController {
         return "Update Dane";
     }
     @RequestMapping(value="Registrator/getAppointmentList", method = RequestMethod.GET)
-    public @ResponseBody List<Appointment> getAppointmentList(@RequestParam("id") String id){
+    public @ResponseBody List<Appointment> getAppointmentList(@RequestParam("id")int id){
         System.out.print(id);
         List<Appointment> appointments = appointmentService.searchAppointment(id);
         return  appointments;
@@ -96,7 +96,7 @@ public class MainController {
        return "{\"id\":0}";
     }
     @RequestMapping(value="Registrator/deleteAppointment", method = RequestMethod.DELETE)
-    public @ResponseBody String deleteAppointment(@RequestParam("id") String id){
+    public @ResponseBody String deleteAppointment(@RequestParam("id") int id){
         System.out.print(id);
         appointmentService.deleteAppointment(id);
         return "{\"id\":0}";

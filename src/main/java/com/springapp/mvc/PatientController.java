@@ -36,20 +36,20 @@ public class PatientController {
     private AppointmentService appointmentService;
 
     @RequestMapping(value="/Patient/showPatient", method = RequestMethod.GET)
-    public @ResponseBody PatientModel showPatient(HttpServletRequest request) {
-        Principal user = request.getUserPrincipal();
+    public @ResponseBody PatientModel showPatient(Principal user) {
+
         System.out.print(user.getName());
         PatientModel result = patientService.getPatientBySSN(user.getName());
         return  result;
     }
     @RequestMapping(value="/Patient/patientEncounts", method = RequestMethod.GET)
-    public @ResponseBody List<Encounter> getPatientEncounts(@RequestParam("id") String id ,ModelMap model) {
+    public @ResponseBody List<Encounter> getPatientEncounts(@RequestParam("id") int id) {
         System.out.println(id + " string");
         List<Encounter> result = encounterService.searchEncounters(id);
         return result;
     }
     @RequestMapping(value="/Patient/getAppointmentList", method = RequestMethod.GET)
-    public @ResponseBody List<Appointment> getAppointmentList(@RequestParam("id") String id){
+    public @ResponseBody List<Appointment> getAppointmentList(@RequestParam("id") int id){
         System.out.print(id);
         List<Appointment> appointments = appointmentService.searchAppointment(id);
         return  appointments;

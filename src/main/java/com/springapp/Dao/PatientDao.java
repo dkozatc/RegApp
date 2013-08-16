@@ -17,7 +17,8 @@ public interface PatientDao {
     public String updatePatient(PatientModel patient);
     public List<PatientModel> searchPatients(String query);
     public int getPatientID(PatientModel patient);
-    public PatientModel getPatientById(String id);
+    public PatientModel getPatientById(int id);
     public PatientModel getPatientBySSN(String SSN);
+    public String deletePatient(int PatientID);
 
 }

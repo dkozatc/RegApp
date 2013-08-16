@@ -14,8 +14,8 @@ import java.util.List;
 public interface AppointmentDao {
     public int insertAppointment(Appointment appointment);
     public String updateAppointment(Appointment appointment);
-    public List<Appointment> getAppointments(String query);
-    public String removeAppointments(String query);
+    public List<Appointment> getAppointments(int query);
+    public String removeAppointments(int id);
 
 
 

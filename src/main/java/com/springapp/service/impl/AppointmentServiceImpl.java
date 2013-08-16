@@ -20,16 +20,11 @@ public class AppointmentServiceImpl implements AppointmentService {
     @Autowired
     private AppointmentDao appointmentDao;
 
-    public AppointmentDao getAppointmentDao() {
-        return appointmentDao;
-    }
-    public void setAppointmentDao(AppointmentDao appointmentDao) {
-        this.appointmentDao = appointmentDao;
-    }
+
     @Override
     public String editAppointment(Appointment appointment) {
-        appointmentDao.updateAppointment(appointment);
-        return null;
+       String result = appointmentDao.updateAppointment(appointment);
+        return result;
     }
     @Override
     public int createAppointmen(Appointment appointment) {
@@ -38,13 +33,13 @@ public class AppointmentServiceImpl implements AppointmentService {
     }
 
     @Override
-    public List<Appointment> searchAppointment(String query) {
+    public List<Appointment> searchAppointment(int query) {
         List<Appointment> appointments = appointmentDao.getAppointments(query);
         return appointments;
     }
 
     @Override
-    public String deleteAppointment(String id) {
+    public String deleteAppointment(int id) {
         appointmentDao.removeAppointments(id);
         return null;
     }

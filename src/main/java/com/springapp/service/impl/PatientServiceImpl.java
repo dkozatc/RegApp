@@ -24,7 +24,7 @@ public class PatientServiceImpl implements PatientService {
     @Override
     public String editPatient(PatientModel patient) {
         patientDao.updatePatient(patient);
-        return null;
+        return "All dane";
     }
     public int createPatient(PatientModel patient){
         patientDao.insertPatient(patient);
@@ -37,7 +37,7 @@ public class PatientServiceImpl implements PatientService {
         return patientList;
     }
     @Override
-    public PatientModel getPatient(String id) {
+    public PatientModel getPatient(int id) {
         PatientModel patient = patientDao.getPatientById(id);
         return patient;
     }

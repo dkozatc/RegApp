@@ -23,16 +23,16 @@ public class EncounterServiceImpl implements EncounterService {
     @Override
     public String editEncounter(Encounter encounter) {
         encountDao.updateEncouter(encounter);
-        return null;
+        return "All dane";
     }
     public int createEncounter(Encounter encounter) {
        int id = encountDao.insertEncounter(encounter);
-        return id;
+       return id;
     }
-
     @Override
-    public List<Encounter> searchEncounters(String query) {
+    public List<Encounter> searchEncounters(int query) {
        List<Encounter> encounters = encountDao.getEncounters(query);
        return encounters;
     }
+
 }

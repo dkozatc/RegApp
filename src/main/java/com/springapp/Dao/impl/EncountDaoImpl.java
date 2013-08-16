@@ -9,6 +9,8 @@ import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
+import org.springframework.jdbc.support.GeneratedKeyHolder;
+import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Component;
 
 import javax.sql.DataSource;
@@ -33,6 +35,7 @@ public class  EncountDaoImpl implements EncountDao {
     private final String INSERT_ENCOUNTER = myResources.getString("insertEncounter");
     private final String UPDATE_ENCOUNTER =  myResources.getString("updateEncounter");
     private final String GET_ENCOUNTER = myResources.getString("getEncounterList");
+    private final String DELETE_ENCOUNTER =  myResources.getString("deleteEncounter");
 
     public DataSource getDataSource() {
         return dataSource;
@@ -44,19 +47,20 @@ public class  EncountDaoImpl implements EncountDao {
         System.out.print("set");
     }
     public int insertEncounter(Encounter encounter){
+        KeyHolder keyHolder= new GeneratedKeyHolder();
         SqlParameterSource namedParameters = new BeanPropertySqlParameterSource(encounter);
-        this.namedParameterJdbcTemplate.update(this.INSERT_ENCOUNTER, namedParameters);
+        this.namedParameterJdbcTemplate.update(this.INSERT_ENCOUNTER, namedParameters, keyHolder);
         String sqlQuery = myResources.getString("getEncounterId");
-        int id = this.namedParameterJdbcTemplate.queryForInt(sqlQuery, namedParameters);
+        int id = keyHolder.getKey().intValue();
         return id;
     }
     public String updateEncouter(Encounter encounter){
         SqlParameterSource namedParameters = new BeanPropertySqlParameterSource(encounter);
         this.namedParameterJdbcTemplate.update(this.UPDATE_ENCOUNTER, namedParameters);
-        return null;
+        return "All dane";
     }
     @Override
-    public List<Encounter> getEncounters(String query) {
+    public List<Encounter> getEncounters(int query) {
       MapSqlParameterSource paramSource = new MapSqlParameterSource("PatientID", query);
           List<Encounter> encounters = this.namedParameterJdbcTemplate.query(this.GET_ENCOUNTER, paramSource, new RowMapper() {
               @Override
@@ -75,7 +79,16 @@ public class  EncountDaoImpl implements EncountDao {
     }
     public int getEncounterID(Encounter encounter){
 
-          return 0;
+
+
+        return 0;
+    }
+
+    @Override
+    public String deleteEncounter(int id) {
+        MapSqlParameterSource paramSource = new MapSqlParameterSource("id", id);
+        this.namedParameterJdbcTemplate.update(DELETE_ENCOUNTER, paramSource);
+        return "delete dane";
     }
 
 

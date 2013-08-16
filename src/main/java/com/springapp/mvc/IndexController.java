@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 public class IndexController {
 
     @RequestMapping(value="/", method = RequestMethod.GET)
-    public String printWelcome() {
+    public String redirectIndex() {
           return "redirect:/Registrator/";
     }
 	@RequestMapping(value="Registrator/", method = RequestMethod.GET)
@@ -20,21 +20,21 @@ public class IndexController {
 		return "index";
 	}
     @RequestMapping(value="Patient/", method = RequestMethod.GET)
-    public String patientShow(ModelMap model) {
+    public String patientShow() {
 
         return "patientIndex";
     }
     @RequestMapping(value="/login", method = RequestMethod.GET)
-    public String login(ModelMap model) {
+    public String login() {
         return "login";
     }
     @RequestMapping(value="/loginfailed", method = RequestMethod.GET)
-    public String loginerror(ModelMap model) {
+    public String loginError(ModelMap model) {
         model.addAttribute("error", "true");
         return "login";
     }
     @RequestMapping(value="/logout", method = RequestMethod.GET)
-    public String logout(ModelMap model) {
+    public String logout() {
         return "login";
     }
 
