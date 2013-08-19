@@ -1,8 +1,5 @@
 define(['jquery'], function($){
-
 	var Validate = {};
-
-
 	Validate.checkNumbers = function(text){
 		var Rules = /[^0-9]+/i;
 		if(text.search(Rules)==-1 && text.length>0) return true;
@@ -11,12 +8,11 @@ define(['jquery'], function($){
 	Validate.checkText = function(text){
 		var Rules = /[^a-zA-ZА-Яа-яА-Яа-я]+/i;
 		console.log(text);
-		//console.log(text.search(Rules));
 		if(text.search(Rules)==-1 && text.length>0) return true;
 		return false;
 	}
 	Validate.checkTextNambers = function(text){
-		var Rules = /[^a-zA-ZА-Яа-яА-Яа-я0-9]*/i;
+		var Rules = /[^a-zA-ZА-Яа-яА-Яа-я0-9]+/i;
 		if(text.search(Rules)==-1) return true;
 		return false;
 	}
@@ -29,7 +25,6 @@ define(['jquery'], function($){
 		var Rules = /[0-9]{3}-[0-9]{2}-[0-9]{4}/i;
 		console.log(" ssn "+text.search(Rules) + " "+text.length);
 		if(text.search(Rules)==-1){ return false;}
-
 		return true;
 	}
 	Validate.checkDate = function(text){
@@ -38,14 +33,12 @@ define(['jquery'], function($){
 		return true;
 	}
 	Validate.checkForm = function(fieldName, fieldValue){
-
 		switch(fieldName){
 			case "FirstName":
 				if(Validate.checkText(fieldValue)){
 					console.log("true  First");
 						$('input[name="FirstName"]').parents('.controls').find('p').remove();
 					return true;
-
 				}else{
 						$('.errorMessage').html("");
 						$('.errorMessage').show();
@@ -73,7 +66,6 @@ define(['jquery'], function($){
 						$('input[name="SSN"]').parents('.controls').find('p').remove();
 					return true;
 				}else{
-						
 						$('.errorMessage').show();	
 						$('input[name="SSN"]').parents('.controls').find('.validateMessage').html("<p class='label label-important'>Wrong type of SSN!</p>")
 						$('input[name="SSN"]').focus();	
@@ -109,7 +101,6 @@ define(['jquery'], function($){
 						$('input[name="MaritalStatus"]').parents('.controls').find('p').remove();
 					return true;
 				}else{
-						
 						$('.errorMessage').show();		
 						$('input[name="MaritalStatus"]').parents('.controls').find('.validateMessage').html("<p class='label label-important'>Wrong Marital Status!</p>");
 						$('input[name="MaritalStatus"]').focus();	
@@ -144,7 +135,6 @@ define(['jquery'], function($){
 						$('input[name="Language"]').parents('.controls').find('p').remove();
 					return true;
 				}else{
-					
 						$('.errorMessage').show();
 						$('input[name="Language"]').parents('.controls').find('.validateMessage').html("<p class='label label-important'>Wrong Language!</p>");
 						$('input[name="Language"]').focus();
@@ -156,7 +146,6 @@ define(['jquery'], function($){
 						$('input[name="PatientAddress"]').parents('.controls').find('p').remove();
 					return true;
 				}else{
-				
 						$('.errorMessage').show();
 						$('input[name="PatientAddress"]').parents('.controls').find('.validateMessage').html("<p class='label label-important'>Wrong Patient Address!</p>");
 						$('input[name="PatientAddress"]').focus();
