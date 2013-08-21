@@ -47,10 +47,6 @@ define(['jquery', 'underscore',
                     $("#addEncountersBtn").remove();
                 }
             }, 0);
-            console.log(this.options.editable);
-
-            console.log($('#encountersTab').html());
-
         },
         addEncounter: function() {
             $('.addEncouters').toggle();

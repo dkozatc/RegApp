@@ -23,7 +23,8 @@ require.config({
         'Fullcalender':'lib/fullcalendar.min',
         'jasmineMain' :'lib/jasmine',
         'jasmine-html':'lib/jasmine-html',
-        'initTests' : '../spec/initTest_spec'
+        'initTests' : '../spec/initTest_spec',
+        'Appointments' : 'collections/Appointments'
     },
     shim:{
         jquery : {

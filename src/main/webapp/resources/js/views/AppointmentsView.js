@@ -50,13 +50,14 @@ function($, _, Backbone, Tools, Jsrender, AppointmentModel){
                                             }
                                     console.log($(this).css('background-color'));
                                     console.log($(this).data("ResourcesId"));
-                                    $('#calendar').fullCalendar('renderEvent',  obj, true);
+                             
                                     var appointment = new AppointmentModel({StartDateTime:date, EndDateTime:date, EncounterId:that.model.get('id'), ResourcesId:$(this).data("ResourcesId"), CommentsText:$(this).text()});
                                     appointment.save(appointment.toJSON(), {processData:true,
                                         success:function(model, response){
                                               console.log(model);
                                               model.set("id", model.get("date"));
-
+                                              obj.id =model.get("date");
+ 											$('#calendar').fullCalendar('renderEvent',  obj, true);
                                         }
 
 
@@ -117,6 +118,7 @@ function($, _, Backbone, Tools, Jsrender, AppointmentModel){
 	        	$(".shredder").droppable({
 	        		accept:'.fc-event',
 	        		drop: function(event, ui){
+	        			console.log("drop");
 	        			console.log("drop");
 	        			var el = $(event.toElement).parent();
 	        			if(confirm("Do you wont delete event"+ event.title)){

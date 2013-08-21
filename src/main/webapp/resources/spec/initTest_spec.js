@@ -1,11 +1,11 @@
 define([
-	'../spec/test_spec',
+	'../spec/Validation_spec',
 
 	]
-	, function(ferst){
+	, function(ValidationTests){
 
 		var runTest = function(){
-		ferst();
+			ValidationTests();
 		}
 		return runTest;
 

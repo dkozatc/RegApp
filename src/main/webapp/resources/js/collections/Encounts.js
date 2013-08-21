@@ -25,17 +25,14 @@ define([
 					console.log(model);
 					console.log(response);	
 				    that.add(model);
-				   
+				   Event.trigger('AlertAddTrue');
 				},
 				error: function(model, response){
 					console.log("error hendler");
 				}
 			});
-			Event.trigger('AlertAddTrue');
 		}
 
     	 });
 	return EncountsCollection;
-
-
 	});

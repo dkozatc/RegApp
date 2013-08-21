@@ -1,6 +1,5 @@
 package com.springapp.mvc;
 
-
 import com.google.gson.Gson;
 import com.springapp.models.Appointment;
 import com.springapp.models.Encounter;
@@ -25,9 +24,6 @@ import java.util.List;
  * Time: 11:58 AM
  * To change this template use File | Settings | File Templates.
  */
-
-
-
 
 @Controller
 public class MainController {
