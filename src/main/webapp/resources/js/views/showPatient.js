@@ -12,10 +12,8 @@ define(['jquery', 'underscore',
 
 
 		 ], function($, _, Backbone, inTemplate, jsrender, bootstrap, PatientEcounters, Fullcalender, Validate, inputmask, ModelWindow){
-
 		var Event = _.extend(Backbone.Events);
 		var ShowPatientView =  Backbone.View.extend({
-
 			tabName: 'div',
 			initialize: function(){
 				console.log(this.model);
@@ -29,7 +27,6 @@ define(['jquery', 'underscore',
 			events:{
 				'click #addEncountersBtn':'addEncounter',
 				'click #sendEncounters' : 'sendEncounters'
-
 			},
 			render: function(){
 				var template = $.templates('#showPatient');
@@ -47,10 +44,8 @@ define(['jquery', 'underscore',
                         $("#addEncountersBtn").remove();
                     }
 		 		}, 0);
-                 console.log(this.options.editable);
-
+                console.log(this.options.editable);
 				console.log($('#encountersTab').html());
-
 			},
 			addEncounter: function() {
 				$('.addEncouters').toggle();
@@ -74,9 +69,6 @@ define(['jquery', 'underscore',
                        $('.errorMessage').hide(); 
                 }
         	}
-			
-
-
 		});
 		return ShowPatientView;
 });

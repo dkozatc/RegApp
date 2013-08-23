@@ -1,224 +1,225 @@
-
+body{
+   background-image: url(/resources/img/bg-light-4845.png);
+   background-repeat: repeat;
+}
 h3{
- padding-left: 5px;
+    padding-left: 5px;
 }
 #inputSearch{
-	height:30px;
+    height:30px;
 }
 #addPatientForm{
-  margin: 70px auto;
+    margin: 70px auto;
  }
 .resultBlock{
-  padding-top: 3px;
-  margin: 3px;
+    padding-top: 3px;
+    margin: 3px;
 }
 .resultLabel{
-font-style: inherit;
-font-weight: bold;
+    font-style: inherit;
+    font-weight: bold;
 }
 .resultName{
-font-style: italic;
+    font-style: italic;
 }
 .resultBlock:hover{
-background-image: url('/resources/img/background.png');
-background-repeat: repeat-x;
-
+    background-image: url('/resources/img/background.png');
+    background-repeat: repeat-x;
 }
 .resultRow{
-line-height: 10px;
+    line-height: 10px;
 }
 #PatientsForm{
-  margin: 70px auto;
+    width:800px;
+    margin: 20px auto;
 }
 .autocompleteSearch{
-   position:absolute;
-   top:35px;
-   left:758px;
-   Z-INDEX:999;
-   width: 287px;
-   border:1px solid silver;
-   background-color: white;
+    position:absolute;
+    top:35px;
+    left:758px;
+    Z-INDEX:999;
+    width: 287px;
+    border:1px solid silver;
+    background-color: white;
 }
 .formAdd{padding-left: 30px;}
-select{height: 27px;}
-body{
- background-position: 790px  200px;
+    select{height: 27px;}
+    body{
+    background-position: 790px  200px;
 }
 p label{
- font-size: 18px;
- padding-bottom: 10px;
- height: 20px;
+    font-size: 18px;
+    padding-bottom: 10px;
+    height: 20px;
 }
 p input[type="text"]{
-  height: 20px;
+    height: 20px;
 }
-
 #addPatientForm .btn{ 
-  margin-left: 620px;
+    margin-left: 620px;
 }
 .hederInfo{
-margin-left: 50px;
-padding-left: 50px;
-font-size: 20px;
-background-color: #f2f2f2;
-width: 610px;
-height: 30px;
+    margin-left: 50px;
+    padding-left: 50px;
+    font-size: 20px;
+    background-color: #f2f2f2;
+    width: 610px;
+    height: 30px;
 }
 #PatientsForm  .btn{
-  margin-left: 620px;
+    margin-left: 620px;
 }
 .selected{
-  background-image: url('/resources/img/background.png');
-  background-repeat: repeat-x;
+    background-image: url('/resources/img/background.png');
+    background-repeat: repeat-x;
 }
- .form-horizontal div.control-group{
-margin-bottom: 5px;
+.form-horizontal div.control-group{
+    margin-bottom: 5px;
 }
 .alertMessage{
-position:fixed;
-top:0px;
-right:0px;
+    position:fixed;
+    top:0px;
+    right:0px;
 }
 .PatientAll{
-  margin-top: 100px;
+    margin-top: 100px;
 }
 .Names{
-font-size: 18px;
-color:#00ADCF;
+    font-size: 18px;
+    color:#00ADCF;
 }
 .patientBlock{
-font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-margin:1px 90px;
-width: 600px;
-padding: 3px;
-border:1px solid #AAB6B6;
--webkit-border-radius: 10px;
--moz-border-radius: 10px;
-border-radius: 10px;
-background-color: #FBFBFB; 
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    margin:1px 90px;
+    width: 600px;
+    padding: 3px;
+    border:1px solid #AAB6B6;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    background-color: #FBFBFB; 
 }
 .boxValue{
-color:#00ADCF;
+    color:#00ADCF;
 }
 .errorMessage{
-color: red;
-font-size: 15px;
+    color: red;
+    font-size: 15px;
 }
 .addEncounter{
- margin: 70px auto;
+    width:800;
+    margin: 70px auto;
 }
 .addEncounter input.btn {
-margin-left:600px;
+    margin-left:600px;
 }
 .PatientInfo{
-width:700px;
-margin-left: 50px;
+    width:700px;
+    margin:auto;
 }
 .headerBlock{
-
-background-color:#FBFBFB;
-padding-bottom:10px;
-line-height: 20px;
-height: 25px;
-padding-right: 20px;
-display: inline-block;
-border-top: 1px solid silver;
-border-left: 1px solid silver;
-border-right: 1px solid silver;
--webkit-border-top-right-radius: 12.5em;
--moz-border-radius-topright: 12.5em;
-border-top-right-radius: 12.5em;
+    background-color:#FBFBFB;
+    padding-bottom:10px;
+    line-height: 20px;
+    height: 25px;
+    padding-right: 20px;
+    display: inline-block;
+    border-top: 1px solid silver;
+    border-left: 1px solid silver;
+    border-right: 1px solid silver;
+    -webkit-border-top-right-radius: 12.5em;
+    -moz-border-radius-topright: 12.5em;
+    border-top-right-radius: 12.5em;
 }
 .headerBodred{
-  border: 1px solid silver;
-  margin-top: -10px;
+    border: 1px solid silver;
+    margin-top: -10px;
 }
 .row.headerBodred{
-margin-left:0px;
+    margin-left:0px;
 }
 .imgButton{
-  padding-bottom: 10px;
-  width:35;
-  height: 35;
+    padding-bottom: 10px;
+    width:35;
+    height: 35;
 }
 .addButton{
-  padding-top: 17px;
-  padding-right: 450px;
+    padding-top: 17px;
+    padding-right: 450px;
 }
 .addEncouters{
-  display: none;
+    display: none;
 }
 .buttons{
-  margin-left: 500px;
+    margin-left: 500px;
 }
 .formHeader{
-margin-left: 20px;
+    margin-left: 20px;
 }
 .encoutersRow a{
-color:black;
-text-decoration: none;
-width:100%;
-height: 100%;
+    color:black;
+    text-decoration: none;
+    width:100%;
+    height: 100%;
 }
 .encoutersRow:hover a{
-text-decoration: none;
-cursor: pointer;
+    text-decoration: none;
+    cursor: pointer;
 }
 .encoutersRow:hover {
-text-decoration: none;
+    text-decoration: none;
 }
 .appImg{
-  width:10%;
+    width:10%;
 }
 #resDraggable{
-  width:90%;
-  height:400px;
-  border: 1px solid silver;
+    width:90%;
+    height:400px;
+    border: 1px solid silver;
 }
 .blue{
-  width:99%;
-  color: white;
-  background-color: #3a87ad;
-  border: 1px solid #3a87ad;
-  border-left-width: 1px;
-  border-radius: 3px;
+    width:99%;
+    color: white;
+    background-color: #3a87ad;
+    border: 1px solid #3a87ad;
+    border-left-width: 1px;
+    border-radius: 3px;
 }
 .yellow{
-  width:99%;
-  color: white;
-  background-color: #FFB000;
-  border: 1px solid #FFB000;
-  border-left-width: 1px;
-  border-radius: 3px;
+    width:99%;
+    color: white;
+    background-color: #FFB000;
+    border: 1px solid #FFB000;
+    border-left-width: 1px;
+    border-radius: 3px;
 }
 .green{
-  width:99%;
-  color: white;
-  background-color: #41DB00;
-  border: 1px solid #41DB00;
-  border-left-width: 1px;
-  border-radius: 3px;
+    width:99%;
+    color: white;
+    background-color: #41DB00;
+    border: 1px solid #41DB00;
+    border-left-width: 1px;
+    border-radius: 3px;
 }
 .d{
-width:100%;
+    width:100%;
 }
 .resorce{
-  color: white;
-  width:99%;
-  border-left-width: 1px;
-  border-radius: 3px;
+    color: white;
+    width:99%;
+    border-left-width: 1px;
+    border-radius: 3px;
 }
 .shredder{
-width:50px;
-height: 40px;
+    width:50px;
+    height: 40px;
 }
 .out{
- z-index: 999;
+    z-index: 999;
 }
 .logout{
-position:fixed;
-right: 2px;
-bottom:2px;
-
-
+    position:fixed;
+    right: 2px;
+    bottom:2px;
 }
+  

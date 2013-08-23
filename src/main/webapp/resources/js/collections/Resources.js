@@ -7,7 +7,7 @@ define([
 	var Event = _.extend(Backbone.Events);
 	var resourceCollection = Backbone.Collection.extend({
 		url:'/resources/JSONS/Resources.json',
-		model:resourceModel,
+		model:resourceModel
 
 
 	});

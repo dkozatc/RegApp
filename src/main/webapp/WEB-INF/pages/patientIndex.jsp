@@ -8,6 +8,15 @@
 </head>
 <body>
 <div id="navElements" class="container">
+    <div class="navbar">
+        <div class="navbar-inner">
+            <span class="brand">Patient Information</span>
+            <a class="btn pull-right" href="j_spring_security_logout">Logout</a>
+        </div>
+     </div>
+
+
+
 
 </div>
 <div id="content" class="container">
@@ -22,7 +31,7 @@
 
 
 
-<a class="logout btn-info" href="j_spring_security_logout">Logout</a>
+
 <script data-main="/resources/js/main2.js" src="/resources/js/lib/require.js"></script>
 </body>
 </html>
