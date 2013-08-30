@@ -45,9 +45,7 @@ public class UsersImpl implements Users {
         System.out.print(dataSource);
     }
 
-    public DataSource getDataSource() {
-        return dataSource;
-    }
+
 
     @Override
     public User getUserByUsername(String username) {

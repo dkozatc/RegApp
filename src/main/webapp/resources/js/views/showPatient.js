@@ -9,8 +9,6 @@ define(['jquery', 'underscore',
 		 'inputMask',
 		 'text!../../templates/ModelWindow.html',
 
-
-
 		 ], function($, _, Backbone, inTemplate, jsrender, bootstrap, PatientEcounters, Fullcalender, Validate, inputmask, ModelWindow){
 		var Event = _.extend(Backbone.Events);
 		var ShowPatientView =  Backbone.View.extend({
@@ -53,22 +51,34 @@ define(['jquery', 'underscore',
 			sendEncounters: function(){
 				console.log("click1");
 				var valideteErrors = 0;
+                var that = this;
                 var Encounter = new Object();
-                $("form[name='EncounterForm']").find('input').not('[type="button"]').each(function(){
-                      if(Validate.checkForm($(this).attr('name'), $(this).val())){
-                          Encounter[$(this).attr('name')] = $(this).val();
-                          $(this).parents('.control-group').removeClass('error');
-                      }else{
-                          valideteErrors++;
-                          $(this).parents('.control-group').addClass('error');
-                      }
+                $.ajax({
+                    type: "GET",
+                    dataType:'json',
+                    url: "validation",
+                    data:{modelType:"encounters"},
+                    success: function(ValidationRules){
+                        console.log(ValidationRules.date)
+                        $("form[name='EncounterForm']").find('input').not('[type="button"]').each(function(){
+                            if(Validate.checkForm1($(this).attr('name'), $(this).val(), ValidationRules.date)){
+                                Encounter[$(this).attr('name')] = $(this).val();
+                                $(this).parents('.control-group').removeClass('error');
+                            }else{
+                                valideteErrors++;
+                                $(this).parents('.control-group').addClass('error');
+                            }
+                        });
+                        Encounter['PatientID'] = that.model.get("PatientID");
+                        if(valideteErrors==0){
+                            Event.trigger('AddNewEncouter', Encounter);
+                            $('.errorMessage').hide();
+                        }
+
+                    }
+
                 });
-                Encounter['PatientID'] = this.model.get("PatientID");
-                if(valideteErrors==0){
-                       Event.trigger('AddNewEncouter', Encounter);
-                       $('.errorMessage').hide(); 
-                }
-        	}
+           	}
 		});
 		return ShowPatientView;
 });

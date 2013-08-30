@@ -30,37 +30,36 @@ import java.util.ResourceBundle;
 public class AppointmentDaoImpl implements AppointmentDao {
 
 
-    @Autowired
-    private DataSource dataSource;
-
     private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
-    private  ResourceBundle myResources = ResourceBundle.getBundle("com.springapp.properties.AppointmentDao");
-    private  final String INSERT_APPOINTMENT = myResources.getString("insertAppointment");
-    private final  String UPDATE_APPOINTMENT =  this.myResources.getString("updateAppointment");
+    private ResourceBundle myResources = ResourceBundle.getBundle("com.springapp.properties.AppointmentDao");
+    private final String INSERT_APPOINTMENT = myResources.getString("insertAppointment");
+    private final String UPDATE_APPOINTMENT = this.myResources.getString("updateAppointment");
     private final String GET_APPOINTMENT_LIST = this.myResources.getString("getAppointmentList");
     private final String DELETE_APPOINTMENT = this.myResources.getString("deleteAppointment");
 
 
     @Autowired
     public void setDataSource(DataSource dataSource) {
-        this.dataSource = dataSource;
-        this.namedParameterJdbcTemplate = new  NamedParameterJdbcTemplate(this.dataSource);
+        this.namedParameterJdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
         System.out.print("set");
     }
+
     @Override
     public int insertAppointment(Appointment appointment) {
-        KeyHolder keyHolder= new GeneratedKeyHolder();
+        KeyHolder keyHolder = new GeneratedKeyHolder();
         SqlParameterSource namedParameters = new BeanPropertySqlParameterSource(appointment);
         this.namedParameterJdbcTemplate.update(this.INSERT_APPOINTMENT, namedParameters, keyHolder);
         int id = keyHolder.getKey().intValue();
         return id;
     }
+
     @Override
     public String updateAppointment(Appointment appointment) {
         SqlParameterSource namedParameters = new BeanPropertySqlParameterSource(appointment);
         this.namedParameterJdbcTemplate.update(this.UPDATE_APPOINTMENT, namedParameters);
         return "Update dane";
     }
+
     @Override
     public List<Appointment> getAppointments(int query) {
         MapSqlParameterSource paramSource = new MapSqlParameterSource("EncounterId", query);

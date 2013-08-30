@@ -38,9 +38,7 @@ public class EncounterDaoTests extends TestCase {
         assertTrue("Encounert not inserted", result>=0);
         String deleteResult = encountDao.deleteEncounter(result);
         assertEquals("delete dane", deleteResult);
-
     }
-
     @Test
     public void testUpdateEncouter(){
         Encounter encounter = new Encounter();
@@ -62,9 +60,7 @@ public class EncounterDaoTests extends TestCase {
         assertEquals("All dane", resultReturn);
         String deleteResult = encountDao.deleteEncounter(result);
         assertEquals("delete dane", deleteResult);
-
     }
-
     @Test
     public void testGetEncounters(){
         Encounter encounter = new Encounter();
@@ -79,7 +75,6 @@ public class EncounterDaoTests extends TestCase {
         assertFalse("Encounerts empty", encounters.isEmpty());
         String deleteResult = encountDao.deleteEncounter(result);
         assertEquals("delete dane", deleteResult);
-
     }
     @Ignore
     @Test

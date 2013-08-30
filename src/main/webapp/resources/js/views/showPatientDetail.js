@@ -70,9 +70,6 @@ define(['jquery', 'underscore',
                 $('.errorMessage').hide();
             }
         }
-
-
-
     });
     return ShowPatientView;
 });

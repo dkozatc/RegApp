@@ -1,14 +1,19 @@
 package com.springapp.mvc;
 
+import com.springapp.service.ValidationServices;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.IOException;
 
 @Controller
 public class IndexController {
+    @Autowired
+    private ValidationServices validationServices;
 
     @RequestMapping(value="/", method = RequestMethod.GET)
     public String redirectIndex() {
@@ -16,13 +21,14 @@ public class IndexController {
     }
 	@RequestMapping(value="Registrator/", method = RequestMethod.GET)
 	public String printWelcome(ModelMap model) {
-   		model.addAttribute("message", "Hello world!");
-		return "index";
+
+
+
+       return "index";
 	}
     @RequestMapping(value="Patient/", method = RequestMethod.GET)
     public String patientShow() {
-
-        return "patientIndex";
+          return "patientIndex";
     }
     @RequestMapping(value="/login", method = RequestMethod.GET)
     public String login() {

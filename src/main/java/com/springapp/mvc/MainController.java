@@ -7,6 +7,7 @@ import com.springapp.models.PatientModel;
 import com.springapp.service.AppointmentService;
 import com.springapp.service.EncounterService;
 import com.springapp.service.PatientService;
+import com.springapp.service.ValidationServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -33,6 +34,8 @@ public class MainController {
     private EncounterService encounterService;
     @Autowired
     private AppointmentService appointmentService;
+    @Autowired
+    private ValidationServices validationServices;
 
     @RequestMapping(value="Registrator/test", method = RequestMethod.GET)
     public @ResponseBody List<PatientModel> searchPatient(@RequestParam("requestString") String requestString ) {
@@ -65,7 +68,9 @@ public class MainController {
     }
     @RequestMapping(value="Registrator/addEncounter", method = RequestMethod.POST)
     public @ResponseBody ServiceResponse<Integer> addNewEncounter(Encounter encounter){
-      int id = encounterService.createEncounter(encounter);
+        validationServices.doValidationOfModel("encounters", encounter);
+      int id =0;// encounterService.createEncounter(encounter);
+
       return new ServiceResponse<Integer>(id);
     }
     @RequestMapping(value="Registrator/updateEncouter", method = RequestMethod.POST)
@@ -96,6 +101,12 @@ public class MainController {
         System.out.print(id);
         String  result = appointmentService.deleteAppointment(id);
         return new ServiceResponse<String>(result);
+    }
+
+    @RequestMapping(value="Registrator/validation", method = RequestMethod.GET)
+    public @ResponseBody ServiceResponse<Object> getValidation(@RequestParam("modelType") String ModelName){
+        Object json =   validationServices.getFieldRulesByModelName(ModelName);
+        return new ServiceResponse<Object>(json);
     }
 
 

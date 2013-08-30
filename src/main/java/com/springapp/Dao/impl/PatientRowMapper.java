@@ -42,6 +42,6 @@ public class PatientRowMapper implements RowMapper {
         patient.setEmployerState(resultSet.getString("EmpState"));
         patient.setEmployerZip(resultSet.getString("EmpZip"));
         patient.setEmployerPhone(resultSet.getString("EmpPhoneNumber"));
-        return patient;  //To change body of implemented methods use File | Settings | File Templates.
+        return patient;
     }
 }

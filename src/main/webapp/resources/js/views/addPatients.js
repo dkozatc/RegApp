@@ -43,25 +43,45 @@ define(['underscore',
                     var valideteErrors = 0;
                     var Patient = new Object();
                     var  firstErrorElement;
-                    $("form[name='PatientForm']").find('input,select').not('[type="button"]').each(function(){
-                          if(Validate.checkForm($(this).attr('name'), $(this).val())){
-                              Patient[$(this).attr('name')] = $(this).val();
-                              $(this).parents('.control-group').removeClass('error');
-                          }else{
-                              valideteErrors++;
-                              if(valideteErrors==1){
-                                firstErrorElement =  this;
-                              }
-                              $(this).parents('.control-group').addClass('error');
-                          }
+                    console.log("same hendler");
+                    $.ajax({
+                        type: "GET",
+                        dataType:'json',
+                        url: "validation",
+                        data:{modelType:"patient"},
+                        success: function(ValidationRules){
+                              console.log(ValidationRules.date);
+
+                                $("form[name='PatientForm']").find('input,select').not('[type="button"]').each(function(){
+                                    if(Validate.checkForm1($(this).attr('name'), $(this).val(), ValidationRules.date)){
+                                        Patient[$(this).attr('name')] = $(this).val();
+                                        $(this).parents('.control-group').removeClass('error');
+                                    }else{
+                                        valideteErrors++;
+                                        if(valideteErrors==1){
+                                            firstErrorElement =  this;
+                                        }
+                                        $(this).parents('.control-group').addClass('error');
+                                    }
+                                });
+                                if(valideteErrors==0){
+                                    Event.trigger('AddNewPatient', Patient);
+                                    $('.errorMessage').hide();
+                                    $('#addPatientForm').remove();
+                                }else{
+                                    $(firstErrorElement).focus();
+                                }
+                        },
+                        error: function(data){
+                            console.log("error");
+
+
+                        }
+
                     });
-                    if(valideteErrors==0){
-                           Event.trigger('AddNewPatient', Patient);
-                           $('.errorMessage').hide();
-                           $('#addPatientForm').remove();
-                    }else{
-                           $(firstErrorElement).focus();
-                    }
+
+
+
                 },
                 alerAddTrue: function (){
                     $('.container').append("<div class='alert alert-success alertMessage'><button type='button' class='close' data-dismiss='alert'>&times;</button><h4>Success!</h4>Added Patient success!!</div>");

@@ -32,59 +32,53 @@ public class AppointmentsServicesTests extends TestCase {
     private AppointmentDao appointmentDao;
 
     @Test
-    public void testEditAppointment(){
+    public void testEditAppointment() {
         Appointment appointment = new Appointment();
         appointment.setEncounterId(1);
         appointment.setResourcesId(1);
         appointment.setCommentsText("test");
         appointment.setStartDateTime(new Date());
         appointment.setEndDateTime(new Date());
-        int appointmnetId= appointmentService.createAppointmen(appointment);
-        assertTrue("Insert appointment fail", appointmnetId>=0);
+        int appointmnetId = appointmentService.createAppointmen(appointment);
+        assertTrue("Insert appointment fail", appointmnetId >= 0);
         appointment.setId(appointmnetId);
-        String result  = appointmentService.editAppointment(appointment);
+        String result = appointmentService.editAppointment(appointment);
         assertEquals("Update dane", result);
         String resultRemove = appointmentDao.removeAppointments(appointmnetId);
         assertEquals("delete dane", resultRemove);
 
 
-
     }
+
     @Test
-    public void testCreateAppointmen(){
+    public void testCreateAppointmen() {
         Appointment appointment = new Appointment();
         appointment.setEncounterId(1);
         appointment.setResourcesId(1);
         appointment.setCommentsText("test");
         appointment.setStartDateTime(new Date());
         appointment.setEndDateTime(new Date());
-        int appointmnetId= appointmentService.createAppointmen(appointment);
-        assertTrue("Insert appointment fail", appointmnetId>=0);
+        int appointmnetId = appointmentService.createAppointmen(appointment);
+        assertTrue("Insert appointment fail", appointmnetId >= 0);
         String resultRemove = appointmentDao.removeAppointments(appointmnetId);
         assertEquals("delete dane", resultRemove);
     }
 
     @Test
-    public void testSearchAppointment(){
+    public void testSearchAppointment() {
         Appointment appointment = new Appointment();
         appointment.setEncounterId(1);
         appointment.setResourcesId(1);
         appointment.setCommentsText("test");
         appointment.setStartDateTime(new Date());
         appointment.setEndDateTime(new Date());
-        int appointmnetId= appointmentService.createAppointmen(appointment);
-        List<Appointment> appointments =  appointmentService.searchAppointment(appointment.getEncounterId());
+        int appointmnetId = appointmentService.createAppointmen(appointment);
+        List<Appointment> appointments = appointmentService.searchAppointment(appointment.getEncounterId());
         assertFalse("Appointmnets list is empty", appointments.isEmpty());
         String resultRemove = appointmentDao.removeAppointments(appointmnetId);
         assertEquals("delete dane", resultRemove);
 
     }
-
-
-
-
-
-
 
 
 }

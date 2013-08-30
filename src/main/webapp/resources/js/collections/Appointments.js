@@ -5,7 +5,6 @@ define([
 ], function (_, Backbone, AppointmentModel) {
 
     var Event = _.extend(Backbone.Events);
-
     var AppointmentsCollection = Backbone.Collection.extend({
         model: AppointmentModel,
         initialize: function () {

@@ -1,0 +1,104 @@
+{
+ "patient":{
+     "FirstName" : [
+         {"param": true, "Rule":"Required"},
+         {"param": 40, "Rule": "Max"},
+         {"param": "[^a-zA-Z]+", "Rule":"RegularExpression"}
+     ],
+     "LastName": [
+         {"param": true, "Rule":"Required"},
+         {"param": 40, "Rule": "Max"},
+         {"param": "[^a-zA-Z]+", "Rule":"RegularExpression"}
+     ],
+     "SSN":[
+         {"param": true, "Rule":"Required"},
+         {"param": "[^\d{3}-\d{2-\d{4}]", "Rule":"RegularExpression"}
+     ],
+     "DateOfbirth": [
+         {"param": 10, "Rule": "Max"},
+         {"param": "[^\d{2}/\d{2}/\d{4}]", "Rule":"RegularExpression"}
+     ],
+     "Gender" : [
+         {"param": 20, "Rule": "Max"},
+         {"param": "[^a-zA-Z]+", "Rule":"RegularExpression"}
+     ],
+     "MaritalStatus" :[
+         {"param": 20, "Rule": "Max"},
+         {"param": "[^a-zA-Z]+", "Rule":"RegularExpression"}
+     ],
+     "Race" :[
+         {"param": 20, "Rule": "Max"},
+         {"param": "[^a-zA-Z]+", "Rule":"RegularExpression"}
+     ],
+     "Religion" :[
+         {"param": 20, "Rule": "Max"},
+         {"param": "[^a-zA-Z]+", "Rule":"RegularExpression"}
+     ],
+     "Language" :[
+         {"param": 20, "Rule": "Max"},
+         {"param": "[^a-zA-Z]+", "Rule":"RegularExpression"}
+     ],
+     "PatientAddress" :[
+         {"param": 20, "Rule": "Max"},
+         {"param": "[^a-zA-Z]+", "Rule":"RegularExpression"}
+     ],
+     "PatientCity" :[
+         {"param": 20, "Rule": "Max"},
+         {"param": "[^a-zA-Z]+", "Rule":"RegularExpression"}
+     ],
+     "PatientState" :[
+         {"param": 20, "Rule": "Max"},
+         {"param": "[^a-zA-Z]+", "Rule":"RegularExpression"}
+     ],
+     "PatientZip" :[
+         {"param": 20, "Rule": "Max"},
+         {"param": "[^0-9]+", "Rule":"RegularExpression"}
+     ],
+     "PatientPhone" :[
+         {"param": 20, "Rule": "Max"},
+         {"param": "[a-zA-Z!@#$%^&*()_+\<?/\\\'\"`]+", "Rule":"RegularExpression"}
+      ],
+     "EmployerName" :[
+         {"param": 20, "Rule": "Max"},
+         {"param": "[^a-zA-Z]+", "Rule":"RegularExpression"}
+     ],
+     "EmployerAddress" :[
+         {"param": 20, "Rule": "Max"},
+         {"param": "[^a-zA-Z]+", "Rule":"RegularExpression"}
+     ],
+     "EmployerCity" :[
+         {"param": 20, "Rule": "Max"},
+         {"param": "[^a-zA-Z]+", "Rule":"RegularExpression"}
+     ],
+     "EmployerState" :[
+         {"param": 20, "Rule": "Max"},
+         {"param": "[^a-zA-Z]+", "Rule":"RegularExpression"}
+     ],
+     "EmployerZip" :[
+         {"param": 20, "Rule": "Max"},
+         {"param": "[a-zA-Z!@#$%^&*()_+\<?/\\\'\"`]+", "Rule":"RegularExpression"}
+     ],
+     "EmployerPhone" :[
+         {"param": 20, "Rule": "Max"},
+         {"param": "[a-zA-Z!@#$%^&*()_+\<?/\\\'\"`]+", "Rule":"RegularExpression"}
+     ]
+ },
+ "encounters" :{
+     "Diagnose":[
+         {"param": 50, "Rule": "Max"},
+         {"param": "[^a-zA-Z]+", "Rule":"RegularExpression"}
+     ],
+     "Status": [
+         {"param": 20, "Rule": "Max"},
+         {"param": "[^a-zA-Z]+", "Rule":"RegularExpression"}
+     ],
+     "TimeIn":[
+         {"param": 10, "Rule": "Max"},
+         {"param": "[^\d{2}/\d{2}/\d{4}]", "Rule":"RegularExpression"}
+     ],
+     "TimeOut":[
+         {"param": 10, "Rule": "Max"},
+         {"param": "[^\d{2}/\d{2}/\d{4}]", "Rule":"RegularExpression"}
+     ]
+  }
+}

@@ -85,7 +85,7 @@ define(['jquery',
 		       			$('#inputSearch').val(model.get('FirstName')+" "+ model.get('LastName'));
 	 	      			$('.autocompleteSearch').hide();
  	      			}else{
- 	      				window.location.href = "http://localhost:8080/Registrator";
+ 	      				window.location.href = "/Registrator";
  	      			}
     	 	},
     	 	addEncounter: function(id){
@@ -114,11 +114,8 @@ define(['jquery',
 
 	   	 					}
 	   	 				});
-
-
 	   	 			}
-
-	   	 			});
+  	   	 	    });
 	
     	 	}	
 		 });

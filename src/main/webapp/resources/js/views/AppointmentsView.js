@@ -121,7 +121,7 @@ function($, _, Backbone, Tools, Jsrender, AppointmentModel){
 	        			console.log("drop");
 	        			console.log("drop");
 	        			var el = $(event.toElement).parent();
-	        			if(confirm("Do you wont delete event"+ event.title)){
+	        			if(confirm("Do you wont delete event?")){
 	        								console.log(event.id);
 						    				$('#calendar').fullCalendar( 'removeEvents', el[0].id);
 						    				Event.trigger("removeAppointment", el[0].id);

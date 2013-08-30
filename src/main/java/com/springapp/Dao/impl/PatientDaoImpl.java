@@ -30,7 +30,7 @@ import java.util.ResourceBundle;
  */
 @Component
 public class PatientDaoImpl implements PatientDao {
-    private DataSource dataSource;
+
     private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
     private ResourceBundle myResources = ResourceBundle.getBundle("com.springapp.properties.PatientDao");
     private final String INSERT_PATIENT = myResources.getString("insertPatient");
@@ -38,54 +38,57 @@ public class PatientDaoImpl implements PatientDao {
     private final String GET_PATIENT_LIST = myResources.getString("getPatientList");
     private final String GET_PATIENT_BY_SSN = myResources.getString("getPatientBySSN");
     private final String GET_PATIENT_BY_ID = myResources.getString("getPatientById");
-    private final String DELETE_PATIENT =  myResources.getString("deletePatient");
+    private final String DELETE_PATIENT = myResources.getString("deletePatient");
 
-    public DataSource getDataSource() {
-        return dataSource;
-    }
-       @Autowired
+    @Autowired
     public void setDataSource(DataSource dataSource) {
-        this.dataSource = dataSource;
-           this.namedParameterJdbcTemplate = new  NamedParameterJdbcTemplate(this.dataSource);
+        this.namedParameterJdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
         System.out.print("set");
     }
-    public int insertPatient(PatientModel patient){
-        KeyHolder keyHolder= new GeneratedKeyHolder();
+
+    public int insertPatient(PatientModel patient) {
+        KeyHolder keyHolder = new GeneratedKeyHolder();
         SqlParameterSource namedParameters = new BeanPropertySqlParameterSource(patient);
         this.namedParameterJdbcTemplate.update(this.INSERT_PATIENT, namedParameters, keyHolder);
-        Number returnId =  keyHolder.getKey();
+        Number returnId = keyHolder.getKey();
         int id = returnId.intValue();
-        return  id;
+        return id;
     }
-    public String updatePatient(PatientModel patient){
+
+    public String updatePatient(PatientModel patient) {
         SqlParameterSource namedParameters = new BeanPropertySqlParameterSource(patient);
         this.namedParameterJdbcTemplate.update(this.UPDATE_PATIENT, namedParameters);
         return "Dane";
     }
-    public @ResponseBody List<PatientModel> searchPatients(String inputString){
-        String param = "%"+inputString+ "%";
+
+    public
+    @ResponseBody
+    List<PatientModel> searchPatients(String inputString) {
+        String param = "%" + inputString + "%";
         MapSqlParameterSource paramSource = new MapSqlParameterSource("searchInput", param);
         List<PatientModel> patients = this.namedParameterJdbcTemplate.query(this.GET_PATIENT_LIST, paramSource, new PatientRowMapper());
         System.out.print(patients);
         return patients;
     }
-    public int getPatientID(PatientModel patient){
+
+    public int getPatientID(PatientModel patient) {
         String query = myResources.getString("getPatientId");
         SqlParameterSource namedParameters = new BeanPropertySqlParameterSource(patient);
         int rowCount;
         rowCount = this.namedParameterJdbcTemplate.queryForInt(query, namedParameters);
         return rowCount;
     }
-     public PatientModel getPatientById(int id){
-         MapSqlParameterSource paramSource = new MapSqlParameterSource("PatientID", id);
-         PatientModel patient = (PatientModel) this.namedParameterJdbcTemplate.queryForObject(GET_PATIENT_BY_ID, paramSource ,new PatientRowMapper());
-         return patient;
-     }
+
+    public PatientModel getPatientById(int id) {
+        MapSqlParameterSource paramSource = new MapSqlParameterSource("PatientID", id);
+        PatientModel patient = (PatientModel) this.namedParameterJdbcTemplate.queryForObject(GET_PATIENT_BY_ID, paramSource, new PatientRowMapper());
+        return patient;
+    }
 
     @Override
     public PatientModel getPatientBySSN(String SSN) {
         MapSqlParameterSource paramSource = new MapSqlParameterSource("SSN", SSN);
-        PatientModel patient = (PatientModel) this.namedParameterJdbcTemplate.queryForObject(GET_PATIENT_BY_SSN, paramSource ,new PatientRowMapper());
+        PatientModel patient = (PatientModel) this.namedParameterJdbcTemplate.queryForObject(GET_PATIENT_BY_SSN, paramSource, new PatientRowMapper());
         return patient;
     }
 
