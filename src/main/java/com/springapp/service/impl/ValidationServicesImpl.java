@@ -27,8 +27,6 @@ public class ValidationServicesImpl implements ValidationServices {
     private JsonFactory jsonFactory;
     private JSONParser jp = new JSONParser();
 
-
-
     @Override
     public Object getFieldRulesByModelName(String ModelName){
         Object one = null;
@@ -44,8 +42,6 @@ public class ValidationServicesImpl implements ValidationServices {
             e.printStackTrace();
         }
         JSONObject jsonObject = (JSONObject) one;
-
-
         return jsonObject.get(ModelName);
     }
 
@@ -68,10 +64,6 @@ public class ValidationServicesImpl implements ValidationServices {
            } catch (NoSuchFieldException e) {
                e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
            }
-
-
-
-
        }    */
        return false;
     }

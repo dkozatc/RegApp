@@ -20,6 +20,21 @@ define(['underscore','jquery', 'backbone', 'models/Appointment'], function( _, $
                 }   
             });
         };
+
+        Tools.LoadValidationRules = function(modelName){
+            $.ajax({
+                type: "GET",
+                dataType:'json',
+                url: "validation",
+                data:{modelType:modelName},
+                success: function(ValidationRules){
+                    console.log("get rules");
+                    Event.trigger('getValidationRulesSuccess', ValidationRules);
+                }
+            });
+        };
+
+
         Tools.LoadTemplate = function(name){
             $.ajax({
                 type: "GET",
