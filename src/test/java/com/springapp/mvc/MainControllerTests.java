@@ -100,8 +100,8 @@ public class MainControllerTests extends TestCase {
         patient.setDateOfbirth("12/12/1999");
         patient.setMaritalStatus("Single");
         ServiceResponse<Integer> response = mainController.addNewPatient(patient);
-        assertTrue("Error added new Patient", response.getDate() >= 0);
-        String delete = patientDao.deletePatient(response.getDate());
+        assertTrue("Error added new Patient", response.getData() >= 0);
+        String delete = patientDao.deletePatient(response.getData());
         assertEquals("delete dane", delete);
     }
     @Test
@@ -116,7 +116,7 @@ public class MainControllerTests extends TestCase {
         assertTrue("Add new PAtient Error", id >= 0);
         patient.setPatientID(id);
         ServiceResponse<String> response = mainController.updatePatient(patient);
-        assertEquals("All dane", response.getDate());
+        assertEquals("All dane", response.getData());
         String delete = patientDao.deletePatient(id);
         assertEquals("delete dane", delete);
     }
@@ -130,7 +130,7 @@ public class MainControllerTests extends TestCase {
         encounter.setTimeIn("12/12/1232");
         encounter.setTimeOut("12/02/1234");
         ServiceResponse<Integer> response = mainController.addNewEncounter(encounter);
-        assertTrue("Add new Encounter fails", response.getDate()>=0);
+        assertTrue("Add new Encounter fails", response.getData()>=0);
     }
     @Test
     public void testUpdateEncounter(){
@@ -141,10 +141,10 @@ public class MainControllerTests extends TestCase {
         encounter.setTimeIn("12/12/1232");
         encounter.setTimeOut("12/02/1234");
         ServiceResponse<Integer> response = mainController.addNewEncounter(encounter);
-        assertTrue("Add new Encounter fails", response.getDate()>=0);
-        encounter.setId(response.getDate());
+        assertTrue("Add new Encounter fails", response.getData()>=0);
+        encounter.setId(response.getData());
         ServiceResponse<String> responseUpdate = mainController.updateEncounter(encounter);
-        assertEquals("Update Dane",responseUpdate.getDate());
+        assertEquals("Update Dane",responseUpdate.getData());
     }
     @Test
     public void testGetAppointmentList(){
@@ -155,7 +155,7 @@ public class MainControllerTests extends TestCase {
         appointment.setStartDateTime(new Date());
         appointment.setEndDateTime(new Date());
         ServiceResponse <Integer> response = mainController.addNewAppointment(appointment);
-        assertTrue("Insert appointment fail",response.getDate()>=0);
+        assertTrue("Insert appointment fail",response.getData()>=0);
         List<Appointment> appointments = mainController.getAppointmentList(appointment.getEncounterId());
         assertFalse("Error geting appointments list", appointments.isEmpty());
 
@@ -169,10 +169,10 @@ public class MainControllerTests extends TestCase {
         appointment.setStartDateTime(new Date());
         appointment.setEndDateTime(new Date());
         ServiceResponse <Integer> response = mainController.addNewAppointment(appointment);
-        assertTrue("Insert appointment fail",response.getDate()>=0);
-        appointment.setId(response.getDate());
+        assertTrue("Insert appointment fail",response.getData()>=0);
+        appointment.setId(response.getData());
         ServiceResponse <String> responseUpdate = mainController.updateAppointment(appointment);
-        assertEquals("Update dane", responseUpdate.getDate());
+        assertEquals("Update dane", responseUpdate.getData());
     }
     @Test
     public void testAddNewAppointment(){
@@ -183,7 +183,7 @@ public class MainControllerTests extends TestCase {
         appointment.setStartDateTime(new Date());
         appointment.setEndDateTime(new Date());
         ServiceResponse <Integer> response = mainController.addNewAppointment(appointment);
-        assertTrue("Insert appointment fail",response.getDate()>=0);
+        assertTrue("Insert appointment fail",response.getData()>=0);
 
     }
     @Test
@@ -195,9 +195,9 @@ public class MainControllerTests extends TestCase {
         appointment.setStartDateTime(new Date());
         appointment.setEndDateTime(new Date());
         ServiceResponse <Integer> response = mainController.addNewAppointment(appointment);
-        assertTrue("Insert appointment fail",response.getDate()>=0);
-        ServiceResponse <String> responseDelete = mainController.deleteAppointment(response.getDate());
-        assertEquals("delete dane", responseDelete.getDate());
+        assertTrue("Insert appointment fail",response.getData()>=0);
+        ServiceResponse <String> responseDelete = mainController.deleteAppointment(response.getData());
+        assertEquals("delete dane", responseDelete.getData());
 
     }
 

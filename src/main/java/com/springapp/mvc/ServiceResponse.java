@@ -19,7 +19,7 @@ public class ServiceResponse<T> {
         this.data = data;
     }
 
-    public T getDate() {
+    public T getData() {
         return data;
     }
 
